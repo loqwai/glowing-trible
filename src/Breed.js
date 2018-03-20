@@ -7,17 +7,28 @@ import clamp  from 'lodash/fp/clamp'
 import isArray from 'lodash/fp/isArray'
 import compact from  'lodash/fp/compact'
 import zipAll  from 'lodash/fp/zipAll'
+import difference from  'lodash/fp/difference'
+import cloneDeep  from 'lodash/fp/cloneDeep'
 
 const randomWithFloat = random.convert({fixed: false})
 const eachWithKey = each.convert({cap: false})
 const mapWithIndex = map.convert({cap: false})
 
+const plus = (a,b) => a+b
+const minus = (a,b) => a+b
+
 const mutateFloat =  (originalValue) => {
-  const plus = (a,b) => a+b
-  const minus = (a,b) => a+b
   const mutationSelector = sample([plus, minus])
   const mutant = mutationSelector(originalValue, (originalValue/10) || 0.01)
   return clamp(0,1,mutant)
+}
+
+const remove = (originalArray) => difference(originalArray, [sample(originalArray)])
+const add = (originalArray) => cloneDeep(originalArray).push(sample(originalArray))
+
+const mutateArray = (originalArray) => {
+  const mutationSelector = sample([remove, add])
+  return mutationSelector(originalArray)
 }
 
 const crossAndMutateFloat = ({genomes, key, mutationRate}) => {
@@ -35,8 +46,7 @@ const crossAndMutateArray = ({genomes, key, mutationRate}) => {
   const zippedParts = zipAll(genomeParts)
   const newParts = map(Breed, zippedParts)
   if(randomWithFloat(0,1, true) < mutationRate) {
-    // return mutateArray(newParts)
-    return newParts
+    return mutateArray(newParts)
   }
   return newParts
 }
