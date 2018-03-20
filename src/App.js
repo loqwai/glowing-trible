@@ -11,7 +11,14 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      genomes: times(i => ({ luminosity: i / numCreatures }), numCreatures)
+      genomes: times(
+        i => ({
+          red: i / numCreatures,
+          green: i / numCreatures,
+          blue: i / numCreatures
+        }),
+        numCreatures
+      )
     }
   }
 
