@@ -1,8 +1,17 @@
-import styled from "styled-components"
+import React from "react"
+import Card from "material-ui/Card"
+import { withStyles } from "material-ui/styles"
 
-const Generation = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
+const styles = {
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "1em"
+  }
+}
 
-export default Generation
+const Generation = ({ children, classes }) => (
+  <Card className={classes.root}>{children}</Card>
+)
+
+export default withStyles(styles)(Generation)

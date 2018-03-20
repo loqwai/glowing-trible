@@ -4,6 +4,9 @@ import concat from "lodash/fp/concat"
 import map from "lodash/fp/map"
 import size from "lodash/fp/size"
 import times from "lodash/fp/times"
+import CssBaseline from "material-ui/CssBaseline"
+import Paper from "material-ui/Paper"
+
 import Breed from "./Breed"
 import Creatures from "./Creatures"
 import Generation from "./Generation"
@@ -48,7 +51,12 @@ class App extends Component {
   render() {
     const { generations } = this.state
 
-    return <div>{map(this.renderGeneration, generations)}</div>
+    return (
+      <div>
+        <CssBaseline />
+        {map(this.renderGeneration, generations)}
+      </div>
+    )
   }
 
   renderGeneration({ children, suitors, number }) {
