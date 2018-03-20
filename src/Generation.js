@@ -6,7 +6,7 @@ const styles = {
   root: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "1em"
+    maxWidth: "912px"
   }
 }
 

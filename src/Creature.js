@@ -1,7 +1,14 @@
-import React from "react"
-import map from "lodash/fp/map"
+import React from 'react'
+import map from 'lodash/fp/map'
+import { withStyles } from 'material-ui/styles'
 
 const mapWithIndex = map.convert({ cap: false })
+
+const styles = {
+  root: {
+    cursor: 'pointer',
+  },
+}
 
 const formatHSL = ({ hue, saturation, luminosity }) => {
   const h = parseInt(hue * 360, 10)
@@ -10,6 +17,8 @@ const formatHSL = ({ hue, saturation, luminosity }) => {
 
   return `hsl(${h}, ${s}%, ${l}%)`
 }
+
+const formatPercent = n => `${n}%`
 
 const Square = ({ genome }) => {
   const { hue, saturation, luminosity } = genome
@@ -21,10 +30,10 @@ const Square = ({ genome }) => {
 
   return (
     <rect
-      height={height}
-      width={width}
-      x={x}
-      y={y}
+      height={formatPercent(height)}
+      width={formatPercent(width)}
+      x={formatPercent(x)}
+      y={formatPercent(y)}
       fill={formatHSL({ hue, saturation, luminosity })}
     />
   )
@@ -34,16 +43,13 @@ const renderSquares = mapWithIndex((part, i) => (
   <Square genome={part} key={i} />
 ))
 
-const Creature = ({ genome, onClick }) => (
-  <svg height="100" width="100" onClick={onClick}>
+const Creature = ({ className, classes, genome, onClick }) => (
+  <svg onClick={onClick} className={[className, classes.root].join(' ')}>
     <title>{JSON.stringify(genome, null, 2)}</title>
-    <g height="100" width="100">
-      <Square genome={genome} />
-      <g height="100" width="100">
-        {renderSquares(genome.parts)}
-      </g>
-    </g>
+
+    <Square genome={genome} />
+    <g>{renderSquares(genome.parts)}</g>
   </svg>
 )
 
-export default Creature
+export default withStyles(styles)(Creature)

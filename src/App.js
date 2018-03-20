@@ -1,18 +1,28 @@
-import React, { Component } from "react"
-import bindAll from "lodash/fp/bindAll"
-import concat from "lodash/fp/concat"
-import map from "lodash/fp/map"
-import size from "lodash/fp/size"
-import times from "lodash/fp/times"
-import CssBaseline from "material-ui/CssBaseline"
-import Paper from "material-ui/Paper"
+import React, { Component } from 'react'
+import bindAll from 'lodash/fp/bindAll'
+import concat from 'lodash/fp/concat'
+import map from 'lodash/fp/map'
+import size from 'lodash/fp/size'
+import times from 'lodash/fp/times'
+import AppBar from 'material-ui/AppBar'
+import CssBaseline from 'material-ui/CssBaseline'
+import { withStyles } from 'material-ui/styles'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
 
-import Breed from "./Breed"
-import Creatures from "./Creatures"
-import Generation from "./Generation"
-import GenerateSuitors from "./GenerateSuitors"
+import Breed from './Breed'
+import Creatures from './Creatures'
+import Generation from './Generation'
+import GenerateSuitors from './GenerateSuitors'
 
-import { numChildren, numSuitors, properties } from "./Configuration"
+import { numChildren, numSuitors, properties } from './Configuration'
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    paddingTop: theme.spacing.unit * 10,
+  },
+})
 
 class App extends Component {
   constructor() {
@@ -25,9 +35,9 @@ class App extends Component {
         {
           children: GenerateSuitors(properties, numChildren),
           suitors: GenerateSuitors(properties, numSuitors),
-          number: 0
-        }
-      ]
+          number: 0,
+        },
+      ],
     }
   }
 
@@ -39,12 +49,12 @@ class App extends Component {
     const generations = concat(this.state.generations, {
       children: times(() => Breed(parents), numChildren),
       suitors: GenerateSuitors(properties, numSuitors),
-      number: size(this.state.generations)
+      number: size(this.state.generations),
     })
 
     this.setState({
       parents: [],
-      generations
+      generations,
     })
   }
 
@@ -52,8 +62,15 @@ class App extends Component {
     const { generations } = this.state
 
     return (
-      <div>
+      <div className={this.props.classes.root}>
         <CssBaseline />
+        <AppBar>
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Glowing Trible
+            </Typography>
+          </Toolbar>
+        </AppBar>
         {map(this.renderGeneration, generations)}
       </div>
     )
@@ -77,4 +94,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withStyles(styles)(App)
