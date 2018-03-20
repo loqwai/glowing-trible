@@ -10,6 +10,10 @@ describe('when breeding two creatures together', () => {
   })
 
   it('should create a creature with all of the properties', () => {
-    expect(isEqual(properties, keys(creature))).toEqual(true)
+    expect(keys(creature)).toEqual(expect.arrayContaining(properties))
+  })
+
+  it('should create a "parts" array', () => {
+    expect(creature.parts).toBeTruthy
   })
 })

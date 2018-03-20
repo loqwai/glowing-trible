@@ -40,3 +40,24 @@ describe('when breeding two creatures together', () => {
 
   })
 })
+
+describe('when breeding two creatures together with nested properties', () => {
+  const genome1  = {
+    mutationRate: 0.1,
+    parts: [
+      {aaronosity:1, mutationRate:0.1},
+      {royishness:0, mutationRate: 0.1}
+    ]
+  }
+  const genome2  = {
+    mutationRate: 0.1,
+    parts: [{cryptovision: 0}]
+  }
+
+  const children =  times(()=> Breed([genome1, genome2]), 1000)
+
+  it('should sometimes create a creature with 1 part', () => {
+      expect(some(({parts}) => parts.length == 1, children)).toBe(true)
+  })
+
+})
