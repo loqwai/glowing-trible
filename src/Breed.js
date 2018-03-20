@@ -2,11 +2,12 @@ import sample from 'lodash/fp/sample'
 import first  from 'lodash/fp/first'
 import last   from 'lodash/fp/last'
 import mean   from 'lodash/fp/mean'
+import map    from  'lodash/fp/map'
 
-const Breed = (genome1, genome2) => {
-  const geneSelectors = [first, last, mean]
-  const geneSelector = sample([first, last, mean])
-  return {luminosity: geneSelector([genome1.luminosity, genome2.luminosity])}
+const Breed = (genomes) => {
+  const luminosities = map('luminosity', genomes)
+  const geneSelector = sample([sample, mean])  
+  return {luminosity: geneSelector(luminosities)}
 }
 
 export default Breed
