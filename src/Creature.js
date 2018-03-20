@@ -9,7 +9,7 @@ const Creature = ({ genome }) => {
           height="100"
           width="100"
           fill="white"
-          fill-opacity={genome.luminosity}
+          fillOpacity={genome.luminosity}
         />
       </g>
     </svg>

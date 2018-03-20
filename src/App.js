@@ -1,13 +1,34 @@
 import React, { Component } from "react"
+import map from "lodash/fp/map"
 import times from "lodash/fp/times"
 import logo from "./logo.svg"
+import Breed from "./Breed"
 import Creatures from "./Creatures"
 
-class App extends Component {
-  render() {
-    const genomes = times(i => ({ luminosity: i / 10 }), 10)
+const numCreatures = 84
 
-    return <Creatures genomes={genomes} />
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      genomes: times(i => ({ luminosity: i / numCreatures }), numCreatures)
+    }
+  }
+
+  render() {
+    const { genomes } = this.state
+
+    const doBreed = () =>
+      this.setState({
+        genomes: map(() => Breed(genomes), genomes)
+      })
+
+    return (
+      <div>
+        <Creatures genomes={genomes} />
+        <button onClick={doBreed}>Breed</button>
+      </div>
+    )
   }
 }
 
