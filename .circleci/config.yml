@@ -1,0 +1,72 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  checkout_code:
+    docker:
+      - image: circleci/node:9.7
+    working_directory: ~/workspace/project
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "~/workspace/project/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - ~/workspace/project/node_modules
+          key: v1-dependencies-{{ checksum "~/workspace/project/package.json" }}
+
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - project
+  build:
+    docker:
+      - image: circleci/node:9.7
+    working_directory: ~/workspace/project
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/workspace
+          paths:
+            - project
+
+  deploy:
+    docker:
+      - image: circleci/node:9.7
+    working_directory: ~/workspace/project
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - run: mkdir -p ~/.ssh
+      - add_ssh_keys:
+          fingerprints:
+            - "f0:55:45:c4:53:bd:21:62:cd:c2:a6:b4:40:9c:dc:9b"
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run: git config --global user.email "roy.v.water@gmail.com"
+      - run: git config --global user.name "Roy Deploy Bot"
+      - run: yarn deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_code:
+      - build:
+          requires:
+            - checkout_code
+      - deploy:
+          requires:
+            - build
