@@ -18,7 +18,15 @@ const BreedingGround = styled.div`
 `
 
 const generateCreature = () =>
-  GenerateCreature(["hue", "saturation", "luminosity"])
+  GenerateCreature([
+    "hue",
+    "saturation",
+    "luminosity",
+    "height",
+    "width",
+    "x",
+    "y"
+  ])
 
 const setMutation = set("mutationRate", 0.005)
 
