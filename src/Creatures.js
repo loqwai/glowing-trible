@@ -5,18 +5,23 @@ import Creature from "./Creature"
 
 const mapWithIndex = map.convert({ cap: false })
 
-const renderCreatures = mapWithIndex((genome, i) => (
-  <Creature genome={genome} key={i} />
-))
+const Creatures = ({ genomes, title, onSelectParent }) => {
+  const renderCreatures = mapWithIndex((genome, i) => {
+    return (
+      <Creature
+        genome={genome}
+        key={i}
+        onClick={() => onSelectParent(genome)}
+      />
+    )
+  })
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-`
-
-const Creatures = ({ genomes }) => {
-  return <Column>{renderCreatures(genomes)}</Column>
+  return (
+    <div>
+      <h3>{title}</h3>
+      {renderCreatures(genomes)}
+    </div>
+  )
 }
 
 export default Creatures

@@ -1,7 +1,10 @@
 import React, { Component } from "react"
+import bindAll from "lodash/fp/bindAll"
+import concat from "lodash/fp/concat"
 import map from "lodash/fp/map"
-import times from "lodash/fp/times"
 import set from "lodash/fp/set"
+import size from "lodash/fp/size"
+import times from "lodash/fp/times"
 import styled from "styled-components"
 import logo from "./logo.svg"
 import Breed from "./Breed"
@@ -11,37 +14,70 @@ import GenerateCreature from "./GenerateCreature"
 const numCreatures = 5
 const BreedingGround = styled.div`
   display: flex;
+  justify-content: space-between;
 `
 
-const generateCreature = () => GenerateCreature(["red", "green", "blue"])
+const generateCreature = () =>
+  GenerateCreature(["hue", "saturation", "luminosity"])
 
-const setMutation = set("mutationRate", 0.00000000000000001)
+const setMutation = set("mutationRate", 0.005)
 
 class App extends Component {
   constructor() {
     super()
+    bindAll(Object.getOwnPropertyNames(App.prototype), this)
+
     this.state = {
-      children: map(setMutation, times(generateCreature, numCreatures)),
-      parents: map(setMutation, times(generateCreature, numCreatures))
+      parents: [],
+      generations: [
+        {
+          children: map(setMutation, times(generateCreature, numCreatures)),
+          suitors: map(setMutation, times(generateCreature, numCreatures)),
+          number: 0
+        }
+      ]
     }
   }
 
+  selectParent(parent) {
+    const parents = concat(this.state.parents, parent)
+
+    if (size(parents) < 2) return this.setState({ parents })
+
+    const generations = concat(this.state.generations, {
+      children: times(() => Breed(parents), numCreatures),
+      suitors: map(setMutation, times(generateCreature, numCreatures)),
+      number: size(this.state.generations)
+    })
+
+    this.setState({
+      parents: [],
+      generations
+    })
+  }
+
   render() {
-    const { children, parents } = this.state
+    const { generations } = this.state
 
-    const doBreed = () =>
-      this.setState({
-        children: map(() => Breed(children), children)
-      })
+    const breedingGrounds = map(this.renderBreedingGround, generations)
 
+    return <div>{breedingGrounds}</div>
+  }
+
+  renderBreedingGround({ children, suitors, number }) {
     return (
-      <div>
-        <BreedingGround>
-          <Creatures genomes={children} />
-          <Creatures genomes={parents} />
-        </BreedingGround>
-        <button onClick={doBreed}>Breed</button>
-      </div>
+      <BreedingGround key={number}>
+        <Creatures
+          title="Children"
+          genomes={children}
+          onSelectParent={this.selectParent}
+        />
+        <Creatures
+          title="Suitors"
+          genomes={suitors}
+          onSelectParent={this.selectParent}
+        />
+      </BreedingGround>
     )
   }
 }
