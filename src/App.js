@@ -2,32 +2,14 @@ import React, { Component } from "react"
 import bindAll from "lodash/fp/bindAll"
 import concat from "lodash/fp/concat"
 import map from "lodash/fp/map"
-import set from "lodash/fp/set"
 import size from "lodash/fp/size"
 import times from "lodash/fp/times"
-import styled from "styled-components"
 import Breed from "./Breed"
 import Creatures from "./Creatures"
-import GenerateCreature from "./GenerateCreature"
+import Generation from "./Generation"
+import GenerateSuitors from "./GenerateSuitors"
 
-const numCreatures = 5
-const BreedingGround = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-
-const generateCreature = () =>
-  GenerateCreature([
-    "hue",
-    "saturation",
-    "luminosity",
-    "height",
-    "width",
-    "x",
-    "y"
-  ])
-
-const setMutation = set("mutationRate", 0.005)
+import { numChildren, numSuitors, properties } from "./Configuration"
 
 class App extends Component {
   constructor() {
@@ -38,8 +20,8 @@ class App extends Component {
       parents: [],
       generations: [
         {
-          children: map(setMutation, times(generateCreature, numCreatures)),
-          suitors: map(setMutation, times(generateCreature, numCreatures)),
+          children: GenerateSuitors(properties, numChildren),
+          suitors: GenerateSuitors(properties, numSuitors),
           number: 0
         }
       ]
@@ -52,8 +34,8 @@ class App extends Component {
     if (size(parents) < 2) return this.setState({ parents })
 
     const generations = concat(this.state.generations, {
-      children: times(() => Breed(parents), numCreatures),
-      suitors: map(setMutation, times(generateCreature, numCreatures)),
+      children: times(() => Breed(parents), numChildren),
+      suitors: GenerateSuitors(properties, numSuitors),
       number: size(this.state.generations)
     })
 
@@ -66,14 +48,12 @@ class App extends Component {
   render() {
     const { generations } = this.state
 
-    const breedingGrounds = map(this.renderBreedingGround, generations)
-
-    return <div>{breedingGrounds}</div>
+    return <div>{map(this.renderGeneration, generations)}</div>
   }
 
-  renderBreedingGround({ children, suitors, number }) {
+  renderGeneration({ children, suitors, number }) {
     return (
-      <BreedingGround key={number}>
+      <Generation key={number}>
         <Creatures
           title="Children"
           genomes={children}
@@ -84,7 +64,7 @@ class App extends Component {
           genomes={suitors}
           onSelectParent={this.selectParent}
         />
-      </BreedingGround>
+      </Generation>
     )
   }
 }

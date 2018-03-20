@@ -1,6 +1,8 @@
 import React from "react"
 import map from "lodash/fp/map"
 
+const mapWithIndex = map.convert({ cap: false })
+
 const formatHSL = ({ hue, saturation, luminosity }) => {
   const h = parseInt(hue * 360, 10)
   const s = parseInt(saturation * 100, 10)
@@ -28,18 +30,20 @@ const Square = ({ genome }) => {
   )
 }
 
-const Creature = ({ genome, onClick }) => {
-  const squares = map(part => <Square genome={part} />, genome.parts)
+const renderSquares = mapWithIndex((part, i) => (
+  <Square genome={part} key={i} />
+))
 
-  return (
-    <svg height="100" width="100" onClick={onClick}>
-      <title>{JSON.stringify(genome, null, 2)}</title>
+const Creature = ({ genome, onClick }) => (
+  <svg height="100" width="100" onClick={onClick}>
+    <title>{JSON.stringify(genome, null, 2)}</title>
+    <g height="100" width="100">
+      <Square genome={genome} />
       <g height="100" width="100">
-        <Square genome={genome} />
-        {squares}
+        {renderSquares(genome.parts)}
       </g>
-    </svg>
-  )
-}
+    </g>
+  </svg>
+)
 
 export default Creature
