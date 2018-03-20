@@ -1,6 +1,5 @@
 import React from "react"
 import map from "lodash/fp/map"
-import styled from "styled-components"
 import Creature from "./Creature"
 
 const mapWithIndex = map.convert({ cap: false })
