@@ -14,7 +14,7 @@
             "position": {"$ref": "#/definitions/float"},
             "width": {"$ref": "#/definitions/float"},
             "distanceBetweenEyes": {"$ref": "#/definitions/float"},
-            "eyeCount": { "$ref" "#/definitions/float"}
+            "eyeCount": { "$ref": "#/definitions/float"}
           },
           "required": ["position", "width", "distanceBetweenEyes", "eyeCount"]
         }
