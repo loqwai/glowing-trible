@@ -35,6 +35,7 @@ const Creature = ({ genome, onClick }) => {
     <svg height="100" width="100" onClick={onClick}>
       <title>{JSON.stringify(genome, null, 2)}</title>
       <g height="100" width="100">
+        <Square genome={genome} />
         {squares}
       </g>
     </svg>
