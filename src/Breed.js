@@ -13,7 +13,7 @@ const Breed = (genomes) => {
   const mutationRate = favoriteParent.mutationRate || 0
 
   eachWithKey((value, key) => {
-    if(randomWithFloat(0,1) < mutationRate) {
+    if(randomWithFloat(0,1, true) < mutationRate) {      
       child[key] = randomWithFloat(0,1, true)
       return
     }
