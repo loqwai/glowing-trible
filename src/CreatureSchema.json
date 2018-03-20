@@ -1,0 +1,42 @@
+{
+  "title": "A registration form",
+  "description": "A simple form example.",
+  "type": "object",
+  "additionalProperties": false,
+  "definitions": {
+    "float": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "color": {
+      "type": "object",
+      "properties": {
+        "h": { "$ref": "#/definitions/float"},
+        "s": { "$ref": "#/definitions/float"},
+        "l": { "$ref": "#/definitions/float"}
+      },
+      "required": ["h",  "s", "l"]
+    }
+  },
+  "properties": {
+    "head": {
+      "type": "object",
+      "title": "head",
+      "properties": {
+        "color": { "$ref": "#/definitions/color"},
+        "shape": {"$ref": "#/definitions/float"},
+        "eyeContainer": {
+          "type": "object",
+          "properties": {
+            "position": {"$ref": "#/definitions/float"},
+            "width": {"$ref": "#/definitions/float"}
+          },
+          "required": ["position", "width"]
+        }
+      },
+      "required": ["color", "shape", "eyeContainer"]
+    }
+  },
+  "required": ["head"]
+}
