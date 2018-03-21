@@ -5071,7 +5071,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return formatHSL; });
-var formatHSL=function formatHSL(_ref){var hue=_ref.hue,saturation=_ref.saturation,luminosity=_ref.luminosity;var h=parseInt(hue*360,10);var s=parseInt(saturation*100,10);var l=parseInt(luminosity*100,10);return"hsl("+h+", "+s+"%, "+l+"%)";};
+var formatHSL=function formatHSL(_ref){var hue=_ref.hue,saturation=_ref.saturation,luminosity=_ref.luminosity;var h=parseInt(hue*360,10);var s=parseInt(saturation*100,10);var l=parseInt(20+luminosity*60,10);return"hsl("+h+", "+s+"%, "+l+"%)";};
 
 /***/ }),
 /* 61 */
@@ -65257,4 +65257,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.95250497.js.map
+//# sourceMappingURL=main.c8c42bdb.js.map
