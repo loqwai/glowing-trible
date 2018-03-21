@@ -5,15 +5,15 @@ import Mouth from './Mouth'
 import { formatHSL } from '../helpers/color'
 
 const CircleFace = ({ color }) => (
-  <ellipse cx="50" cy="20" rx="20" ry="20" fill={formatHSL(color)} />
+  <ellipse cx="50" cy="50" rx="50" ry="50" fill={formatHSL(color)} />
 )
 
 const FatFace = ({ color }) => (
-  <ellipse cx="50" cy="20" rx="20" ry="16" fill={formatHSL(color)} />
+  <ellipse cx="50" cy="50" rx="50" ry="40" fill={formatHSL(color)} />
 )
 
 const NarrowFace = ({ color }) => (
-  <ellipse cx="50" cy="20" rx="16" ry="20" fill={formatHSL(color)} />
+  <ellipse cx="50" cy="50" rx="40" ry="50" fill={formatHSL(color)} />
 )
 
 const faces = [CircleFace, FatFace, NarrowFace]
