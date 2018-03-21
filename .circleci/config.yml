@@ -64,9 +64,21 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code:
+          filters:
+            branches:
+              ignore:
+                - /gh-pages/
       - build:
           requires:
             - checkout_code
+          filters:
+            branches:
+              ignore:
+                - /gh-pages/
       - deploy:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - /master/
