@@ -14,7 +14,7 @@ const randomWithFloat = random.convert({ fixed: false })
 const eachWithKey = each.convert({ cap: false })
 
 const plus = (a, b) => a + b
-const minus = (a, b) => a + b
+const minus = (a, b) => a - b
 
 const mutateFloat = originalValue => {
   const mutationSelector = sample([plus, minus])
