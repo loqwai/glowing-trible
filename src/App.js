@@ -12,27 +12,25 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     paddingTop: theme.spacing.unit * 10,
+    display: 'flex',
+    flexDirection: 'column',
   },
 })
 
-class App extends Component {
-  render() {
-    return (
-      <div className={this.props.classes.root}>
-        <CssBaseline />
-        <Router>
-          <Route path="/" component={Pick} />
-        </Router>
-        <AppBar>
-          <Toolbar>
-            <Typography variant="title" color="inherit">
-              Glowing Trible
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
-    )
-  }
-}
+const App = ({ classes }) => (
+  <div className={classes.root}>
+    <CssBaseline />
+    <Router>
+      <Route path="/" component={Pick} />
+    </Router>
+    <AppBar>
+      <Toolbar>
+        <Typography variant="title" color="inherit">
+          Glowing Trible
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  </div>
+)
 
 export default withStyles(styles)(App)

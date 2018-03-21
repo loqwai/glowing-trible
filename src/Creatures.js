@@ -20,13 +20,17 @@ const styles = {
   },
 }
 
-const Creatures = ({ classes, creatures, title, onSelectParent }) => {
+const Creatures = props => {
+  const { classes, onSelectParent, onToggleAdd } = props
+  const { creatures, title } = props
+
   const renderCreatures = mapWithIndex((creature, i) => {
     return (
       <Creature
         genome={creature.genome}
         key={i}
         onClick={() => onSelectParent(creature)}
+        onToggleAdd={() => onToggleAdd(creature)}
       />
     )
   })

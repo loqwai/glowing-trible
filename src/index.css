@@ -1,5 +1,22 @@
+html {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 body {
   font-family: Roboto;
   display: flex;
-  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
 }

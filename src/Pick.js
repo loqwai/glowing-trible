@@ -4,15 +4,30 @@ import concat from 'lodash/fp/concat'
 import map from 'lodash/fp/map'
 import size from 'lodash/fp/size'
 import times from 'lodash/fp/times'
+import { withStyles } from 'material-ui/styles'
 
 import Breed from './Breed'
-import Creatures from './Creatures'
-import Generation from './Generation'
+import Generations from './Generations'
 import GenerateSuitors from './GenerateSuitors'
+import Inventory from './Inventory'
 
 import { numChildren, numSuitors } from './Configuration.json'
 
-const mapWithIndex = map.convert({ cap: false })
+const styles = {
+  root: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  Generations: {
+    flex: 1,
+    overflowY: 'scroll',
+  },
+  Inventory: {
+    maxHeight: '64px',
+    flexShrink: 0,
+  },
+}
 
 class Pick extends Component {
   constructor() {
@@ -60,26 +75,19 @@ class Pick extends Component {
 
   render() {
     const { generations } = this.state
+    const { classes } = this.props
 
-    return <div>{mapWithIndex(this.renderGeneration, generations)}</div>
-  }
-
-  renderGeneration({ children, suitors }, i) {
     return (
-      <Generation key={i}>
-        <Creatures
-          title="Children"
-          creatures={children}
+      <div className={classes.root}>
+        <Generations
+          className={classes.Generations}
+          generations={generations}
           onSelectParent={this.selectParent}
         />
-        <Creatures
-          title="Suitors"
-          creatures={suitors}
-          onSelectParent={this.selectParent}
-        />
-      </Generation>
+        <Inventory className={classes.Inventory} />
+      </div>
     )
   }
 }
 
-export default Pick
+export default withStyles(styles)(Pick)
