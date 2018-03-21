@@ -7,6 +7,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     maxWidth: theme.breakpoints.values.lg,
+    padding: theme.spacing.unit,
   },
 })
 

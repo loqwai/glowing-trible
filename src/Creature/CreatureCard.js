@@ -35,7 +35,7 @@ const AddIcon = ({ added }) => {
 }
 
 const CreatureCard = props => {
-  const { onAddToInventory, onClick } = props
+  const { onAddToInventory, onSelectParent } = props
   const { added, classes, genome } = props
 
   const onClickAdd = event => {
@@ -52,7 +52,7 @@ const CreatureCard = props => {
       <Creature
         className={classes.Creature}
         genome={genome}
-        onClick={onClick}
+        onClick={onSelectParent}
       />
 
       <Stats

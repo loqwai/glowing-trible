@@ -1,19 +1,10 @@
 import React from 'react'
 import noop from 'lodash/fp/noop'
-import Icon from 'material-ui/Icon'
-import IconButton from 'material-ui/IconButton'
-import { withStyles } from 'material-ui/styles'
 
 import Arms from './Arms'
 import Body from './Body'
 import Head from './Head'
 import Legs from './Legs'
-
-const AddIcon = ({ added }) => {
-  if (added) return null
-
-  return <Icon>add_circle_outline</Icon>
-}
 
 const Creature = ({ className, genome, onClick = noop }) => {
   const legHeight = genome.legs.power * 100

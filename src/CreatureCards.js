@@ -28,7 +28,7 @@ const Creatures = props => {
         genome={creature.genome}
         key={i}
         onAddToInventory={() => onAddToInventory(creature)}
-        onClick={() => onSelectParent(creature)}
+        onSelectParent={() => onSelectParent(creature)}
       />
     )
   })

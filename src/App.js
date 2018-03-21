@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import CssBaseline from 'material-ui/CssBaseline'
 import Toolbar from 'material-ui/Toolbar'
@@ -15,22 +15,27 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  AppBarHeader: {
+    ...theme.typography.title,
+    color: theme.palette.primary.contrastText,
+    textDecoration: 'none',
+  },
 })
 
 const App = ({ classes }) => (
-  <div className={classes.root}>
-    <CssBaseline />
-    <Router>
+  <Router>
+    <div className={classes.root}>
+      <CssBaseline />
       <Route path="/" component={Pick} />
-    </Router>
-    <AppBar>
-      <Toolbar>
-        <Typography variant="title" color="inherit">
-          Glowing Trible
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  </div>
+      <AppBar>
+        <Toolbar>
+          <Link to="/" className={classes.AppBarHeader}>
+            Glowing Trible
+          </Link>
+        </Toolbar>
+      </AppBar>
+    </div>
+  </Router>
 )
 
 export default withStyles(styles)(App)
