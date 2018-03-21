@@ -16,6 +16,7 @@ const styles = {
   },
   Creatures: {
     display: 'flex',
+    flexWrap: 'wrap',
   },
 }
 
