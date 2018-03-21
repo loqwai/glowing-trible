@@ -25,14 +25,14 @@ const styles = {
   },
 }
 
-const Creatures = ({ classes, genomes, title, onSelectParent }) => {
-  const renderCreatures = mapWithIndex((genome, i) => {
+const Creatures = ({ classes, creatures, title, onSelectParent }) => {
+  const renderCreatures = mapWithIndex((creature, i) => {
     return (
       <Creature
         className={classes.Creature}
-        genome={genome}
+        genome={creature.genome}
         key={i}
-        onClick={() => onSelectParent(genome)}
+        onClick={() => onSelectParent(creature)}
       />
     )
   })
@@ -40,7 +40,7 @@ const Creatures = ({ classes, genomes, title, onSelectParent }) => {
   return (
     <div className={classes.root}>
       <h3>{title}</h3>
-      <div className={classes.Creatures}>{renderCreatures(genomes)}</div>
+      <div className={classes.Creatures}>{renderCreatures(creatures)}</div>
     </div>
   )
 }

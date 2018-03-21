@@ -54,8 +54,13 @@ class App extends Component {
 
     if (size(parents) < 2) return this.setState({ parents })
 
+    const childrenGenomes = times(
+      () => Breed(map('genome', parents)),
+      numChildren,
+    )
+
     const generations = concat(this.state.generations, {
-      children: times(() => Breed(parents), numChildren),
+      children: map(genome => ({ genome, health: 0 }), childrenGenomes),
       suitors: await GenerateSuitors(numSuitors),
     })
 
@@ -88,12 +93,12 @@ class App extends Component {
       <Generation key={i}>
         <Creatures
           title="Children"
-          genomes={children}
+          creatures={children}
           onSelectParent={this.selectParent}
         />
         <Creatures
           title="Suitors"
-          genomes={suitors}
+          creatures={suitors}
           onSelectParent={this.selectParent}
         />
       </Generation>
