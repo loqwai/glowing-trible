@@ -9,8 +9,6 @@ const styles = {
   },
 }
 
-// const formatPercent = n => `${n}%`
-
 const Creature = ({ className, classes, genome, onClick }) => (
   <svg onClick={onClick} className={[className, classes.root].join(' ')}>
     <title>{JSON.stringify(genome, null, 2)}</title>
