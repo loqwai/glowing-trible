@@ -16,7 +16,7 @@ describe('When 2 creatures fight', () => {
     const {attacker, defender,  outcome} = Round(armlessCreature, armlessCreature)
 
     it('should reduce the health of the attacking armless creature by 10 each turn', () => {
-        expect(attacker.health).toBe(90)
+        expect(attacker.health).toBe(89)
     })
 
     it('should emit the correct outcome', () => {
@@ -27,9 +27,9 @@ describe('When 2 creatures fight', () => {
           legs: 0,
         }
         const {outcome} = Round(armlessCreature, armlessCreature)
-        expect(outcome.event).toBe('hit')
+        expect(outcome.action).toBe('hit')
         expect(outcome.defenderDamage).toBe(30)
-        expect(outcome.attackerDamage).toBe(10)
+        expect(outcome.attackerDamage).toBe(11)
     })
   })
 
@@ -41,7 +41,7 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
       const {attacker, defender} = Round(armlessCreature, armlessCreature)
-      expect(attacker.health).toBe(95)
+      expect(attacker.health).toBe(94)
   })
 
   it('should reduce the health of the ULTIMATE CREATURE by 30', () => {
@@ -52,7 +52,7 @@ describe('When 2 creatures fight', () => {
         legs: 1,
       }
       const {attacker, defender} = Round(ultimateCreature, ultimateCreature)
-      expect(attacker.health).toBe(70)
+      expect(attacker.health).toBe(69)
   })
 
   it('should let a strong creature hit a creature with a weak body for 10', () => {
@@ -114,9 +114,9 @@ describe('When 2 creatures fight', () => {
     })
 
     it('should emit the correct outcome', () => {
-        expect(outcome.event).toBe('starve')
+        expect(outcome.action).toBe('starve')
         expect(outcome.defenderDamage).toBe(0)
-        expect(outcome.attackerDamage).toBe(25)
+        expect(outcome.attackerDamage).toBe(26)
     })
   })
 
@@ -176,8 +176,8 @@ describe('When 2 creatures fight', () => {
     })
 
     it('the runner should run away sometimes', ()=> {
-      expect(some({event: 'hit'}, map('outcome', results))).toBeTruthy()
-      expect(some({event: 'miss'}, map('outcome', results))).toBeTruthy()
+      expect(some({action: 'hit'}, map('outcome', results))).toBeTruthy()
+      expect(some({action: 'miss'}, map('outcome', results))).toBeTruthy()
     })
   })
 

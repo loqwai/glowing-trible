@@ -7,20 +7,22 @@ const Round = (attacker, defender) =>  {
   const attackMultiplier = 30
   const bodyMultiplier = 2
   const legsDivider = 2
+
+  const log = []
   attacker = cloneDeep(attacker)
   defender = cloneDeep(defender)
 
-  const attackerDamage = (attacker.body + attacker.legs + attacker.arms) * energyDrainMultiplier
+  const attackerDamage = (attacker.body + attacker.legs + attacker.arms) * energyDrainMultiplier + 1
   const  outcome = {attackerDamage, defenderDamage: 0}
-
+  log.push({})
   attacker.health -= attackerDamage
   if(attacker.health <= 0) {
-    outcome.event = 'starve'
+    outcome.action = 'starve'
     return {attacker, defender, outcome}
   }
 
   if( (defender.legs / legsDivider) > randomWithFloat(0,1, true)) {
-    outcome.event = 'miss'
+    outcome.action = 'miss'
     return {attacker, defender, outcome}
   }
 
@@ -30,7 +32,7 @@ const Round = (attacker, defender) =>  {
   }
 
   defender.health -= defenderDamage
-  outcome.event = 'hit'
+  outcome.action = 'hit'
   outcome.defenderDamage = defenderDamage
   return {attacker, defender, outcome}
 }
