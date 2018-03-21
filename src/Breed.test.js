@@ -70,14 +70,14 @@ describe('when breeding two creatures together with an array containing objects'
 
 describe('when breeding two creatures together with nested properties', () => {
   const genome1  = {
-    mutationRate: 0,
+    mutationRate: 1,
     head: {
       bigness: 0.5,
       noseHairs: 0.1
     }
   }
   const genome2  = {
-    mutationRate: 0,
+    mutationRate: 1,
     head: {
       bigness: 0.9,
       noseHairs: 0.6

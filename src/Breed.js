@@ -44,8 +44,7 @@ const crossAndMutateFloat = ({ genomes, key, mutationRate }) => {
 }
 
 const crossAndMutateObject = ({ genomes, key, mutationRate }) => {
-  const favoriteParentGene = sample(map(key, genomes))
-  console.log(favoriteParentGene)
+  const favoriteParentGene = sample(map(key, genomes))  
   return Breed([favoriteParentGene])
 }
 
@@ -71,7 +70,7 @@ const Breed = genomes => {
       return
     }
     if (isObject(value)) {
-      child[key] = crossAndMutateObject({genomes, key, mutationRate})
+      return child[key] = crossAndMutateObject({genomes, key, mutationRate})
     }
     child[key] = crossAndMutateFloat({ genomes, key, mutationRate })
   }, favoriteParent)
