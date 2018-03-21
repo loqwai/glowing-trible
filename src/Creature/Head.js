@@ -16,14 +16,27 @@ const NarrowFace = ({ color, vOffset }) => (
   <ellipse cx="50" cy={vOffset + 50} rx="30" ry="40" fill={formatHSL(color)} />
 )
 
-const faces = [CircleFace, FatFace, NarrowFace]
-
-const Head = ({ color, eyes, mouth, shape, vOffset }) => {
-  const Face = faces[parseInt(shape * size(faces), 10) % size(faces)]
+const Face = ({ color, shape, vOffset }) => {
+  const width = 25 + shape * 50
+  const x = 50 - width / 2
 
   return (
+    <rect
+      x={x}
+      y={vOffset}
+      rx="20"
+      ry="20"
+      width={width}
+      height={80}
+      fill={formatHSL(color)}
+    />
+  )
+}
+
+const Head = ({ color, eyes, mouth, shape, vOffset }) => {
+  return (
     <g>
-      <Face color={color} vOffset={vOffset} />
+      <Face color={color} shape={shape} vOffset={vOffset} />
       <Eyes
         position={eyes.position}
         size={eyes.size}
