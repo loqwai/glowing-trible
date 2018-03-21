@@ -1,4 +1,4 @@
-import Fight from './Fight'
+import Round from './Round'
 import GenerateCreature from './GenerateCreature'
 
 describe('When 2 creatures fight', () => {
@@ -9,7 +9,7 @@ describe('When 2 creatures fight', () => {
         body: 1,
         legs: 0,
       }
-      const [attacker, defender] = Fight(armlessCreature, armlessCreature)
+      const [attacker, defender] = Round(armlessCreature, armlessCreature)
       expect(attacker.health).toBe(90)
   })
 
@@ -20,7 +20,7 @@ describe('When 2 creatures fight', () => {
         body: 0.5,
         legs: 0,
       }
-      const [attacker, defender] = Fight(armlessCreature, armlessCreature)
+      const [attacker, defender] = Round(armlessCreature, armlessCreature)
       expect(attacker.health).toBe(95)
   })
 
@@ -31,7 +31,7 @@ describe('When 2 creatures fight', () => {
         body: 1,
         legs: 1,
       }
-      const [attacker, defender] = Fight(ultimateCreature, ultimateCreature)
+      const [attacker, defender] = Round(ultimateCreature, ultimateCreature)
       expect(attacker.health).toBe(70)
   })
 
@@ -50,7 +50,7 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
 
-      const [attacker, defender] = Fight(ultimateCreature, pushupCreature)
+      const [attacker, defender] = Round(ultimateCreature, pushupCreature)
       expect(defender.health).toBe(90)
   })
 
@@ -69,8 +69,42 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
 
-      const [attacker, defender] = Fight(ultimateCreature, pushupCreature)
+      const [attacker, defender] = Round(ultimateCreature, pushupCreature)
       expect(defender.health).toBe(95)
+  })
+
+  it('If the attacker dies before it can attack, it shouldnt hurt the defender', () => {
+      const ultimateCreature = {
+        health: 10,
+        arms: 0.5,
+        body: 1,
+        legs: 1,
+      }
+
+      const pushupCreature = {
+        health: 100,
+        arms: 1,
+        body: 0,
+        legs: 0,
+      }
+
+      const [attacker, defender] = Round(ultimateCreature, pushupCreature)
+      expect(defender.health).toBe(100)
+  })
+
+  it('If a hard-hitting creature hits a tank, it should absorb less damage', ()=> {
+    const pushupCreature = {
+      health: 100,
+      arms: 1,
+      body: 0,
+      legs: 0,
+    }
+    const tankCreature = {
+      health: 100,
+      arms: 0,
+      body: 1,
+      legs: 0
+    }
   })
 
 })
