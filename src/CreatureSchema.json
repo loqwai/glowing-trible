@@ -26,16 +26,42 @@
           ]
         },
         "mouth": {
-          "position": { "$ref": "#/definitions/float" },
-          "expression": { "$ref": "#/definitions/float" },
-          "lips": { "$ref": "#/definitions/float" },
-          "width": { "$ref": "#/definitions/float" }
+          "type": "object",
+          "properties": {
+            "expression": { "$ref": "#/definitions/float" },
+            "lips": { "$ref": "#/definitions/float" },
+            "position": { "$ref": "#/definitions/float" },
+            "width": { "$ref": "#/definitions/float" }
+          },
+          "required": ["expression", "lips", "position", "width"]
         }
       },
       "required": ["color", "shape", "eyes", "mouth"]
+    },
+    "arms": {
+      "type": "object",
+      "properties": {
+        "power": { "$ref": "#/definitions/float" }
+      },
+      "required": ["strength"]
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "color": { "$ref": "#/definitions/float" },
+        "power": { "$ref": "#/definitions/float" }
+      },
+      "required": ["color", "strength"]
+    },
+    "legs": {
+      "type": "object",
+      "properties": {
+        "power": { "$ref": "#/definitions/float" }
+      },
+      "required": ["strength"]
     }
   },
-  "required": ["head"],
+  "required": ["head", "legs", "arms", "body"],
   "definitions": {
     "float": {
       "type": "number",
