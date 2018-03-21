@@ -16,6 +16,8 @@ const Creature = ({ className, classes, genome, onClick }) => (
   <svg onClick={onClick} className={[className, classes.root].join(' ')}>
     <title>{JSON.stringify(genome, null, 2)}</title>
 
+    <Legs power={genome.legs.power} />
+    <Arms power={genome.arms.power} />
     <Body power={genome.body.power} color={genome.body.color} />
     <Head
       color={genome.head.color}
@@ -23,8 +25,6 @@ const Creature = ({ className, classes, genome, onClick }) => (
       shape={genome.head.shape}
       mouth={genome.head.mouth}
     />
-    <Legs power={genome.legs.power} />
-    <Arms power={genome.arms.power} />
   </svg>
 )
 
