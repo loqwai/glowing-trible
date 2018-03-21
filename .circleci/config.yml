@@ -53,7 +53,7 @@ jobs:
       - run: mkdir -p ~/.ssh
       - add_ssh_keys:
           fingerprints:
-            - "f0:55:45:c4:53:bd:21:62:cd:c2:a6:b4:40:9c:dc:9b"
+            - "d7:52:f4:58:a8:6c:75:b6:28:3f:7c:7a:93:2f:9b:c8"
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: git config --global user.email "roy.v.water@gmail.com"
       - run: git config --global user.name "Roy Deploy Bot"
