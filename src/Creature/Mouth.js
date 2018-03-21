@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Mouth = ({ expression, position, width, lips }) => {
+const Mouth = ({ expression, lips, position, width, vOffset }) => {
   const xOffset = width * 25
   const x = parseInt(20 + xOffset, 10)
   const dx = parseInt(80 - xOffset, 10)
-  const y = parseInt(50 + position * 25, 10)
-  const curve = parseInt(50 + expression * 25, 10)
+  const y = parseInt(vOffset + 50 + position * 25, 10)
+  const curve = parseInt(vOffset + 50 + expression * 25, 10)
   const stroke = parseInt(5 + lips * 10, 10)
 
   return (

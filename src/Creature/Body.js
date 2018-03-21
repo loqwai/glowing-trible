@@ -1,14 +1,15 @@
 import React from 'react'
 import { formatHSL } from '../helpers/color'
 
-const Body = ({ color, power }) => {
+const Body = ({ color, power, vOffset }) => {
+  const y = vOffset + 40
   const width = power * 50
   const xOffset = width / 2
 
   return (
     <rect
       x={50 - xOffset}
-      y="40"
+      y={y}
       width={width}
       height="150"
       rx="10"

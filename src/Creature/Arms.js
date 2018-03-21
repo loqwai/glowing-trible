@@ -1,14 +1,15 @@
 import React from 'react'
 import { formatHSL } from '../helpers/color'
 
-const Arms = ({ color, power }) => {
-  const y2 = 100 + power * 100
+const Arms = ({ color, power, vOffset }) => {
+  const y1 = vOffset + 100
+  const y2 = vOffset + 100 + power * 100
 
   return (
     <g>
       <line
         x1="40"
-        y1="100"
+        y1={y1}
         x2="5"
         y2={y2}
         stroke={formatHSL(color)}
@@ -17,7 +18,7 @@ const Arms = ({ color, power }) => {
       />
       <line
         x1="60"
-        y1="100"
+        y1={y1}
         x2="95"
         y2={y2}
         stroke={formatHSL(color)}
