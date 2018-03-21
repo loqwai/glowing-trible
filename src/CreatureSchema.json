@@ -43,22 +43,22 @@
       "properties": {
         "power": { "$ref": "#/definitions/float" }
       },
-      "required": ["strength"]
+      "required": ["power"]
     },
     "body": {
       "type": "object",
       "properties": {
-        "color": { "$ref": "#/definitions/float" },
+        "color": { "$ref": "#/definitions/color" },
         "power": { "$ref": "#/definitions/float" }
       },
-      "required": ["color", "strength"]
+      "required": ["color", "power"]
     },
     "legs": {
       "type": "object",
       "properties": {
         "power": { "$ref": "#/definitions/float" }
       },
-      "required": ["strength"]
+      "required": ["power"]
     }
   },
   "required": ["head", "legs", "arms", "body"],

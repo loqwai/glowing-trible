@@ -6,7 +6,7 @@ const Body = ({ color, power }) => {
     <rect
       x="20%"
       y="20%"
-      width="50%"
+      width="60%"
       height="75%"
       rx="5"
       ry="5"
