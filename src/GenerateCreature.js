@@ -1,22 +1,8 @@
-import each from "lodash/fp/each"
-import random from "lodash/fp/random"
-import times from "lodash/fp/times"
-const randomWithFloat = random.convert({ fixed: false })
+import jsf    from "json-schema-faker"
+import CreatureSchema from './CreatureSchema'
 
-const GenerateCreature = properties => {
-  const child = {}
-  each(property => {
-    child[property] = randomWithFloat(0.0, 1.0, true)
-  }, properties)
-
-  if (random(0, 2) !== 0) return child
-
-  child.parts = []
-  times(() => {
-    child.parts.push(GenerateCreature(properties))
-  }, random(0, 4))
-
-  return child
+const GenerateCreature = async () => {  
+  return jsf.resolve(CreatureSchema)
 }
 
 export default GenerateCreature
