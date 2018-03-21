@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,mBACA,oBACA,aACA,qBACI,sBAAwB","file":"static/css/main.3c8d1840.css","sourcesContent":["body {\n  font-family: Roboto;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: center;\n      justify-content: center;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
