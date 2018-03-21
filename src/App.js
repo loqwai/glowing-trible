@@ -15,7 +15,7 @@ import Creatures from './Creatures'
 import Generation from './Generation'
 import GenerateSuitors from './GenerateSuitors'
 
-import { numChildren, numSuitors } from './Configuration'
+import { numChildren, numSuitors } from './Configuration.json'
 
 const mapWithIndex = map.convert({ cap: false })
 
