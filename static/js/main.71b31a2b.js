@@ -32996,7 +32996,7 @@ module.exports = cloneDeep;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Creature__ = __webpack_require__(572);
-var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({cap:false});var styles={root:{backgroundColor:'#f5f5f5',margin:'1em 0 1em 1em',padding:'1em','&:last-child':{'margin-right':'1em'}},Creatures:{display:'flex'}};var Creatures=function Creatures(_ref){var classes=_ref.classes,creatures=_ref.creatures,title=_ref.title,onSelectParent=_ref.onSelectParent;var renderCreatures=mapWithIndex(function(creature,i){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Creature__["a" /* default */],{genome:creature.genome,key:i,onClick:function onClick(){return onSelectParent(creature);}});});return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.root},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3',null,title),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.Creatures},renderCreatures(creatures)));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(Creatures));
+var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({cap:false});var styles={root:{backgroundColor:'#f5f5f5',margin:'1em 0 1em 1em',padding:'1em','&:last-child':{'margin-right':'1em'}},Creatures:{display:'flex',flexWrap:'wrap'}};var Creatures=function Creatures(_ref){var classes=_ref.classes,creatures=_ref.creatures,title=_ref.title,onSelectParent=_ref.onSelectParent;var renderCreatures=mapWithIndex(function(creature,i){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Creature__["a" /* default */],{genome:creature.genome,key:i,onClick:function onClick(){return onSelectParent(creature);}});});return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.root},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3',null,title),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.Creatures},renderCreatures(creatures)));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(Creatures));
 
 /***/ }),
 /* 572 */
@@ -65257,4 +65257,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.c8c42bdb.js.map
+//# sourceMappingURL=main.71b31a2b.js.map
