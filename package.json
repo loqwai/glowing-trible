@@ -6,6 +6,7 @@
   "dependencies": {
     "gh-pages": "^1.1.0",
     "jest-enzyme": "^6.0.0",
+    "json-schema-faker": "^0.5.0-rc13",
     "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.38",
     "material-ui-icons": "^1.0.0-beta.36",

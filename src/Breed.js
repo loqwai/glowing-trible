@@ -5,6 +5,7 @@ import each from "lodash/fp/each"
 import random from "lodash/fp/random"
 import clamp from "lodash/fp/clamp"
 import isArray from "lodash/fp/isArray"
+import isObject from "lodash/fp/isObject"
 import compact from "lodash/fp/compact"
 import zipAll from "lodash/fp/zipAll"
 import difference from "lodash/fp/difference"
@@ -14,7 +15,7 @@ const randomWithFloat = random.convert({ fixed: false })
 const eachWithKey = each.convert({ cap: false })
 
 const plus = (a, b) => a + b
-const minus = (a, b) => a + b
+const minus = (a, b) => a - b
 
 const mutateFloat = originalValue => {
   const mutationSelector = sample([plus, minus])
@@ -42,6 +43,10 @@ const crossAndMutateFloat = ({ genomes, key, mutationRate }) => {
   return childValue
 }
 
+const crossAndMutateObject = ({ genomes, key, mutationRate }) => {
+  return Breed(map(key, genomes), mutationRate)
+}
+
 const crossAndMutateArray = ({ genomes, key, mutationRate }) => {
   const genomeParts = map(key, genomes)
   const zippedParts = zipAll(genomeParts)
@@ -52,16 +57,19 @@ const crossAndMutateArray = ({ genomes, key, mutationRate }) => {
   return newParts
 }
 
-const Breed = genomes => {
+const Breed = (genomes, defaultMutationRate=0) => {
   genomes = compact(genomes)
   const child = {}
   const favoriteParent = sample(genomes)
-  const mutationRate = favoriteParent.mutationRate || 0
+  const mutationRate = favoriteParent.mutationRate || defaultMutationRate
 
   eachWithKey((value, key) => {
     if (isArray(value)) {
       child[key] = crossAndMutateArray({ genomes, key, mutationRate })
       return
+    }
+    if (isObject(value)) {
+      return child[key] = crossAndMutateObject({genomes, key, mutationRate})
     }
     child[key] = crossAndMutateFloat({ genomes, key, mutationRate })
   }, favoriteParent)

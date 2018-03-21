@@ -6,20 +6,33 @@
       "type": "object",
       "title": "head",
       "properties": {
-        "color": { "$ref": "#/definitions/color"},
-        "shape": {"$ref": "#/definitions/float"},
-        "eyeContainer": {
+        "color": { "$ref": "#/definitions/color" },
+        "shape": { "$ref": "#/definitions/float" },
+        "eyes": {
           "type": "object",
           "properties": {
-            "position": {"$ref": "#/definitions/float"},
-            "width": {"$ref": "#/definitions/float"},
-            "distanceBetweenEyes": {"$ref": "#/definitions/float"},
-            "eyeCount": { "$ref": "#/definitions/float"}
+            "position": { "$ref": "#/definitions/float" },
+            "size": { "$ref": "#/definitions/float" },
+            "distanceBetweenEyes": { "$ref": "#/definitions/float" },
+            "count": { "$ref": "#/definitions/float" },
+            "color": { "$ref": "#/definitions/color" }
           },
-          "required": ["position", "width", "distanceBetweenEyes", "eyeCount"]
+          "required": [
+            "position",
+            "size",
+            "distanceBetweenEyes",
+            "count",
+            "color"
+          ]
+        },
+        "mouth": {
+          "position": { "$ref": "#/definitions/float" },
+          "expression": { "$ref": "#/definitions/float" },
+          "lips": { "$ref": "#/definitions/float" },
+          "width": { "$ref": "#/definitions/float" }
         }
       },
-      "required": ["color", "shape", "eyeContainer"]
+      "required": ["color", "shape", "eyes", "mouth"]
     }
   },
   "required": ["head"],
@@ -32,11 +45,11 @@
     "color": {
       "type": "object",
       "properties": {
-        "h": { "$ref": "#/definitions/float"},
-        "s": { "$ref": "#/definitions/float"},
-        "l": { "$ref": "#/definitions/float"}
+        "hue": { "$ref": "#/definitions/float" },
+        "saturation": { "$ref": "#/definitions/float" },
+        "luminosity": { "$ref": "#/definitions/float" }
       },
-      "required": ["h",  "s", "l"]
+      "required": ["hue", "saturation", "luminosity"]
     }
   }
 }
