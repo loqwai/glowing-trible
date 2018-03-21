@@ -1,6 +1,7 @@
 import Breed from './Breed'
 import times from 'lodash/fp/times'
 import some from 'lodash/fp/some'
+import first from 'lodash/fp/first'
 import reject from 'lodash/fp/reject'
 import GenerateCreature from './GenerateCreature'
 
@@ -70,24 +71,30 @@ describe('when breeding two creatures together with an array containing objects'
 
 describe('when breeding two creatures together with nested properties', () => {
   const genome1  = {
-    mutationRate: 1,
+    mutationRate: 0,
     head: {
       bigness: 0.5,
       noseHairs: 0.1
     }
   }
   const genome2  = {
-    mutationRate: 1,
+    mutationRate: 0,
     head: {
       bigness: 0.9,
       noseHairs: 0.6
     }
   }
 
-  const child =  Breed([genome1, genome2])
+  const children =  times(()=> Breed([genome1, genome2]), 1000)
+  const child =  first(children)
 
   it('should create a creature subproperties', () => {
     expect(child.head.bigness).toBeDefined()
+  })
+
+  it('should create at least creature with mixed subproperties', () => {
+    const someMixedCreatures = some(({head}) => (head.bigness === 0.5) && (head.noseHairs === 0.6), children)
+    expect(someMixedCreatures).toBe(true)
   })
 })
 
