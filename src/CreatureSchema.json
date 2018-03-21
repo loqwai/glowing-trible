@@ -6,15 +6,15 @@
       "type": "object",
       "title": "head",
       "properties": {
-        "color": { "$ref": "#/definitions/color"},
-        "shape": {"$ref": "#/definitions/float"},
+        "color": { "$ref": "#/definitions/color" },
+        "shape": { "$ref": "#/definitions/float" },
         "eyes": {
           "type": "object",
           "properties": {
-            "position": {"$ref": "#/definitions/float"},
-            "width": {"$ref": "#/definitions/float"},
-            "distanceBetweenEyes": {"$ref": "#/definitions/float"},
-            "count": { "$ref": "#/definitions/float"}
+            "position": { "$ref": "#/definitions/float" },
+            "width": { "$ref": "#/definitions/float" },
+            "distanceBetweenEyes": { "$ref": "#/definitions/float" },
+            "count": { "$ref": "#/definitions/float" }
           },
           "required": ["position", "width", "distanceBetweenEyes", "count"]
         }
@@ -32,11 +32,11 @@
     "color": {
       "type": "object",
       "properties": {
-        "h": { "$ref": "#/definitions/float"},
-        "s": { "$ref": "#/definitions/float"},
-        "l": { "$ref": "#/definitions/float"}
+        "hue": { "$ref": "#/definitions/float" },
+        "saturation": { "$ref": "#/definitions/float" },
+        "luminosity": { "$ref": "#/definitions/float" }
       },
-      "required": ["h",  "s", "l"]
+      "required": ["hue", "saturation", "luminosity"]
     }
   }
 }

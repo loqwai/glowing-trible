@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Creature from './Creature'
 
 const mapWithIndex = map.convert({ cap: false })
+
 const styles = {
   root: {
     backgroundColor: '#f5f5f5',

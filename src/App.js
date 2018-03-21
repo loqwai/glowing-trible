@@ -17,6 +17,8 @@ import GenerateSuitors from './GenerateSuitors'
 
 import { numChildren, numSuitors } from './Configuration'
 
+const mapWithIndex = map.convert({ cap: false })
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -76,14 +78,14 @@ class App extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        {map(this.renderGeneration, generations)}
+        {mapWithIndex(this.renderGeneration, generations)}
       </div>
     )
   }
 
-  renderGeneration({ children, suitors, number }) {
+  renderGeneration({ children, suitors }, i) {
     return (
-      <Generation key={number}>
+      <Generation key={i}>
         <Creatures
           title="Children"
           genomes={children}
