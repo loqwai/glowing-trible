@@ -2,26 +2,38 @@ import React from 'react'
 import map from 'lodash/fp/map'
 import { withStyles } from 'material-ui/styles'
 import Generation from './Generation'
-import Creatures from './Creatures'
+import CreatureCards from './CreatureCards'
 
 const mapWithIndex = map.convert({ cap: false })
 
 const styles = {
-  root: {},
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 }
 
-const Generations = ({ className, classes, generations, onSelectParent }) => {
+const Generations = ({
+  className,
+  classes,
+  generations,
+  onSelectParent,
+  onAddToInventory,
+}) => {
   const renderGeneration = ({ children, suitors }, i) => (
     <Generation key={i}>
-      <Creatures
-        title="Children"
+      <CreatureCards
         creatures={children}
+        onAddToInventory={onAddToInventory}
         onSelectParent={onSelectParent}
+        title="Children"
       />
-      <Creatures
-        title="Suitors"
+      <CreatureCards
         creatures={suitors}
+        onAddToInventory={onAddToInventory}
         onSelectParent={onSelectParent}
+        title="Suitors"
       />
     </Generation>
   )
