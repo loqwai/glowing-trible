@@ -5,6 +5,7 @@ import Arms from './Arms'
 import Body from './Body'
 import Head from './Head'
 import Legs from './Legs'
+import Stats from './Stats'
 
 const styles = {
   root: {
@@ -18,7 +19,7 @@ const Creature = ({ className, classes, genome, onClick }) => {
   const y = 300 - creatureHeight
 
   return (
-    <svg onClick={onClick} className={[className, classes.root].join(' ')}>
+    <svg onClick={onClick} className={classes} width="100" height="350">
       <title>{JSON.stringify(genome, null, 2)}</title>
 
       <svg y={y} height={creatureHeight}>
@@ -30,6 +31,13 @@ const Creature = ({ className, classes, genome, onClick }) => {
           eyes={genome.head.eyes}
           shape={genome.head.shape}
           mouth={genome.head.mouth}
+        />
+      </svg>
+      <svg y="300" height="50">
+        <Stats
+          arms={genome.arms.power}
+          body={genome.body.power}
+          legs={genome.legs.power}
         />
       </svg>
     </svg>
