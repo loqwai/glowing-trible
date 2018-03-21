@@ -99,12 +99,15 @@ describe('When 2 creatures fight', () => {
       body: 0,
       legs: 0,
     }
+
     const tankCreature = {
       health: 100,
       arms: 0,
       body: 1,
-      legs: 0
+      legs: 0,
     }
+    const [attacker, defender] = Round(pushupCreature, tankCreature)
+    expect(defender.health).toBe(95)
   })
 
 })
