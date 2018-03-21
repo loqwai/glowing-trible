@@ -24,9 +24,15 @@
             "count",
             "color"
           ]
+        },
+        "mouth": {
+          "position": { "$ref": "#/definitions/float" },
+          "expression": { "$ref": "#/definitions/float" },
+          "lips": { "$ref": "#/definitions/float" },
+          "width": { "$ref": "#/definitions/float" }
         }
       },
-      "required": ["color", "shape", "eyes"]
+      "required": ["color", "shape", "eyes", "mouth"]
     }
   },
   "required": ["head"],

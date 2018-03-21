@@ -4,7 +4,7 @@ import { formatHSL } from '../helpers/color'
 const formatPercent = n => `${n}%`
 
 const eyeOffset = distance => distance * 30 + 20
-const formatCY = position => formatPercent(position * 70)
+const formatCY = position => formatPercent(position * 50)
 const formatLeftOffset = distance => formatPercent(50 - eyeOffset(distance))
 const formatRightOffset = distance => formatPercent(50 + eyeOffset(distance))
 const formatR = size => formatPercent(size * 15 + 5)

@@ -1,6 +1,7 @@
 import React from 'react'
 import size from 'lodash/fp/size'
 import Eyes from './Eyes'
+import Mouth from './Mouth'
 import { formatHSL } from '../helpers/color'
 
 const CircleFace = ({ color }) => (
@@ -17,7 +18,7 @@ const NarrowFace = ({ color }) => (
 
 const faces = [CircleFace, FatFace, NarrowFace]
 
-const Head = ({ color, eyes, shape }) => {
+const Head = ({ color, eyes, mouth, shape }) => {
   const Face = faces[parseInt(shape * size(faces), 10) % size(faces)]
 
   return (
@@ -29,6 +30,12 @@ const Head = ({ color, eyes, shape }) => {
         distanceBetweenEyes={eyes.distanceBetweenEyes}
         count={eyes.count}
         color={eyes.color}
+      />
+      <Mouth
+        position={mouth.position}
+        expression={mouth.expression}
+        lips={mouth.lips}
+        width={mouth.width}
       />
     </g>
   )
