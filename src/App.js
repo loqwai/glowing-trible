@@ -15,7 +15,7 @@ import Creatures from './Creatures'
 import Generation from './Generation'
 import GenerateSuitors from './GenerateSuitors'
 
-import { numChildren, numSuitors, properties } from './Configuration'
+import { numChildren, numSuitors } from './Configuration'
 
 const styles = theme => ({
   root: {
@@ -31,25 +31,30 @@ class App extends Component {
 
     this.state = {
       parents: [],
-      generations: [
-        {
-          children: GenerateSuitors(properties, numChildren),
-          suitors: GenerateSuitors(properties, numSuitors),
-          number: 0,
-        },
-      ],
+      generations: [],
     }
+    this.initialize()
   }
 
-  selectParent(parent) {
+  async initialize() {
+    const [children, suitors] = await Promise.all([
+      GenerateSuitors(numChildren),
+      GenerateSuitors(numSuitors),
+    ])
+
+    this.setState({
+      generations: [{ children, suitors }],
+    })
+  }
+
+  async selectParent(parent) {
     const parents = concat(this.state.parents, parent)
 
     if (size(parents) < 2) return this.setState({ parents })
 
     const generations = concat(this.state.generations, {
       children: times(() => Breed(parents), numChildren),
-      suitors: GenerateSuitors(properties, numSuitors),
-      number: size(this.state.generations),
+      suitors: await GenerateSuitors(numSuitors),
     })
 
     this.setState({
