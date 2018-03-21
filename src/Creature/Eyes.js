@@ -2,7 +2,7 @@ import React from 'react'
 import { formatHSL } from '../helpers/color'
 
 const eyeOffset = distance => distance * 30 + 10
-const formatCY = position => position * 50
+const formatCY = position => 10 + position * 40
 const formatLeftOffset = distance => 50 - eyeOffset(distance)
 const formatRightOffset = distance => 50 + eyeOffset(distance)
 const formatR = size => size * 15 + 5

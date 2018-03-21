@@ -41,9 +41,10 @@
     "arms": {
       "type": "object",
       "properties": {
+        "color": { "$ref": "#/definitions/color" },
         "power": { "$ref": "#/definitions/float" }
       },
-      "required": ["power"]
+      "required": ["color", "power"]
     },
     "body": {
       "type": "object",
@@ -56,9 +57,10 @@
     "legs": {
       "type": "object",
       "properties": {
+        "color": { "$ref": "#/definitions/color" },
         "power": { "$ref": "#/definitions/float" }
       },
-      "required": ["power"]
+      "required": ["color", "power"]
     }
   },
   "required": ["head", "legs", "arms", "body"],

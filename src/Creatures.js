@@ -17,6 +17,8 @@ const styles = {
   Creature: {
     width: '100px',
     height: '300px',
+    display: 'flex',
+    alignItems: 'bottom',
   },
   Creatures: {
     display: 'flex',
