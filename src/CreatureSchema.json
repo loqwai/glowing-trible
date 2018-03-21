@@ -12,11 +12,18 @@
           "type": "object",
           "properties": {
             "position": { "$ref": "#/definitions/float" },
-            "width": { "$ref": "#/definitions/float" },
+            "size": { "$ref": "#/definitions/float" },
             "distanceBetweenEyes": { "$ref": "#/definitions/float" },
-            "count": { "$ref": "#/definitions/float" }
+            "count": { "$ref": "#/definitions/float" },
+            "color": { "$ref": "#/definitions/color" }
           },
-          "required": ["position", "width", "distanceBetweenEyes", "count"]
+          "required": [
+            "position",
+            "size",
+            "distanceBetweenEyes",
+            "count",
+            "color"
+          ]
         }
       },
       "required": ["color", "shape", "eyes"]

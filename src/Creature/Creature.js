@@ -17,7 +17,7 @@ const Creature = ({ className, classes, genome, onClick }) => (
 
     <Head
       color={genome.head.color}
-      eye={genome.head.eyes}
+      eyes={genome.head.eyes}
       shape={genome.head.shape}
     />
   </svg>
