@@ -1,6 +1,7 @@
 import times from 'lodash/fp/times'
 import map from 'lodash/fp/map'
 import mean from 'lodash/fp/mean'
+import some from 'lodash/fp/some'
 import Round from './Round'
 import GenerateCreature from './GenerateCreature'
 
@@ -92,23 +93,31 @@ describe('When 2 creatures fight', () => {
       expect(defender.health).toBe(85)
   })
 
-  it('If the attacker dies before it can attack, it shouldnt hurt the defender', () => {
-      const ultimateCreature = {
-        health: 10,
-        arms: 0.5,
-        body: 1,
-        legs: 1,
-      }
+  describe('If the attacker dies before it can attack', () =>{
+    const ultimateCreature = {
+      health: 10,
+      arms: 0.5,
+      body: 1,
+      legs: 1,
+    }
 
-      const pushupCreature = {
-        health: 100,
-        arms: 1,
-        body: 0,
-        legs: 0,
-      }
+    const pushupCreature = {
+      health: 100,
+      arms: 1,
+      body: 0,
+      legs: 0,
+    }
 
-      const {attacker, defender} = Round(ultimateCreature, pushupCreature)
-      expect(defender.health).toBe(100)
+    const {attacker, defender, outcome} = Round(ultimateCreature, pushupCreature)
+    it('shouldnt hurt the defender', () => {
+        expect(defender.health).toBe(100)
+    })
+
+    it('should emit the correct outcome', () => {
+        expect(outcome.event).toBe('starve')
+        expect(outcome.defenderDamage).toBe(0)
+        expect(outcome.attackerDamage).toBe(25)
+    })
   })
 
   it('If a hard-hitting creature hits a tank, it should absorb less damage', ()=> {
@@ -147,15 +156,13 @@ describe('When 2 creatures fight', () => {
     expect(defender.health).toBe(100)
   })
 
-
-  it('If a hard-hitting creature is up against a runner, the runner should be hit 50% of the time', ()=> {
+  describe('when a hard-hitting creature is up against a runner', () => {
     const pushupCreature = {
       health: 100,
       arms: 1,
       body: 0,
       legs: 0,
     }
-
     const runnerCreature = {
       health: 100,
       arms: 0,
@@ -163,8 +170,15 @@ describe('When 2 creatures fight', () => {
       legs: 1,
     }
     const results =  times(()=> Round(pushupCreature, runnerCreature), 1000)
-    const averageDefenderHealth = mean(map('defender.health',results))
-    expect(averageDefenderHealth).toBeGreaterThan(80)
+    it('the runner should be hit 50% of the time', ()=> {
+      const averageDefenderHealth = mean(map('defender.health',results))
+      expect(averageDefenderHealth).toBeGreaterThan(80)
+    })
+
+    it('the runner should run away sometimes', ()=> {
+      expect(some({event: 'hit'}, map('outcome', results))).toBeTruthy()
+      expect(some({event: 'miss'}, map('outcome', results))).toBeTruthy()
+    })
   })
 
 })
