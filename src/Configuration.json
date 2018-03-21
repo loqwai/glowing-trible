@@ -1,5 +1,5 @@
 {
-  "mutationRate": 0,
+  "mutationRate": 0.15,
   "numChildren": 5,
   "numSuitors": 3
 }
