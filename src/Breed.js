@@ -5,6 +5,7 @@ import each from "lodash/fp/each"
 import random from "lodash/fp/random"
 import clamp from "lodash/fp/clamp"
 import isArray from "lodash/fp/isArray"
+import isObject from "lodash/fp/isObject"
 import compact from "lodash/fp/compact"
 import zipAll from "lodash/fp/zipAll"
 import difference from "lodash/fp/difference"
@@ -42,6 +43,12 @@ const crossAndMutateFloat = ({ genomes, key, mutationRate }) => {
   return childValue
 }
 
+const crossAndMutateObject = ({ genomes, key, mutationRate }) => {
+  const favoriteParentGene = sample(map(key, genomes))
+  console.log(favoriteParentGene)
+  return Breed([favoriteParentGene])
+}
+
 const crossAndMutateArray = ({ genomes, key, mutationRate }) => {
   const genomeParts = map(key, genomes)
   const zippedParts = zipAll(genomeParts)
@@ -62,6 +69,9 @@ const Breed = genomes => {
     if (isArray(value)) {
       child[key] = crossAndMutateArray({ genomes, key, mutationRate })
       return
+    }
+    if (isObject(value)) {
+      child[key] = crossAndMutateObject({genomes, key, mutationRate})
     }
     child[key] = crossAndMutateFloat({ genomes, key, mutationRate })
   }, favoriteParent)

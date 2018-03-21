@@ -48,7 +48,7 @@ describe('when breeding two creatures together', () => {
 
 })
 
-describe('when breeding two creatures together with nested properties', () => {
+describe('when breeding two creatures together with an array containing objects', () => {
   const genome1  = {
     mutationRate: 0.1,
     parts: [
@@ -65,6 +65,29 @@ describe('when breeding two creatures together with nested properties', () => {
 
   it('should sometimes create a creature with 1 part', () => {
       expect(some(({parts}) => parts.length == 1, children)).toBe(true)
+  })
+})
+
+describe('when breeding two creatures together with nested properties', () => {
+  const genome1  = {
+    mutationRate: 0,
+    head: {
+      bigness: 0.5,
+      noseHairs: 0.1
+    }
+  }
+  const genome2  = {
+    mutationRate: 0,
+    head: {
+      bigness: 0.9,
+      noseHairs: 0.6
+    }
+  }
+
+  const child =  Breed([genome1, genome2])
+
+  it('should create a creature subproperties', () => {
+    expect(child.head.bigness).toBeDefined()
   })
 })
 
