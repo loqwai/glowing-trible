@@ -12,14 +12,16 @@ const Fight = (creature1, creature2) => {
   log.push(logEntry)
   while(logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
     logEntry = Round(attacker, defender)
-    attacker = logEntry.defender
-    defender = logEntry.attacker
     const eatsEntry = cloneDeep(logEntry)
     eatsEntry.outcome.action = 'eats'
+    eatsEntry.defender = defender
     eatsEntry.outcome.defenderDamage = 0
     log.push(eatsEntry)
     logEntry.outcome.attackerDamage = 0
     log.push(logEntry)
+
+    attacker = logEntry.defender
+    defender = logEntry.attacker
   }
   const outcome = cloneDeep(logEntry.outcome)
   outcome.action = "dies"

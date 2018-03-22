@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/fp/cloneDeep'
 
 const randomWithFloat = random.convert({ fixed: false })
 const Round = (attacker, defender) =>  {
-  const energyDrainMultiplier = 10
+  const energyDrainMultiplier = 15
   const attackMultiplier = 30
   const bodyMultiplier = 2
   const legsDivider = 2

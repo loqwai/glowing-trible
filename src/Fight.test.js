@@ -8,8 +8,8 @@ import Fight from './Fight'
 describe('When 2 creatures fight', () => {
   const weakCreature = {
     health: 100,
-    arms: 0,
-    body: 0,
+    arms: 1,
+    body: 1,
     legs: 0,
   }
 
@@ -23,6 +23,7 @@ describe('When 2 creatures fight', () => {
   const fightLog  = Fight(weakCreature, pushupCreature)
   const firstEntry = first(fightLog)
   const lastEntry = last(fightLog)
+  console.log(JSON.stringify(fightLog, null, 2))
   it('should return an array of actions occuring in a fight', () => {
     expect(isArray(fightLog)).toBeTruthy()
   })
