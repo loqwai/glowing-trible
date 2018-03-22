@@ -28,11 +28,10 @@ describe('When 2 creatures fight', () => {
   })
 
   it('should return an array with the first item being an "eats" event', () => {
-    expect(firstEntry.outcome.action).toBe('eats')
+    expect(firstEntry.outcome.action).toBe('start')
   })
 
   it('should return an array with the last item being a "dies" event', () => {
-    console.log(lastEntry)
     expect(lastEntry.outcome.action).toBe('dies')
   })
 
