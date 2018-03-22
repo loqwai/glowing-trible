@@ -9,8 +9,6 @@ const Fight = (creature1, creature2) => {
     outcome: {attackerDamage: 0, defenderDamage: 0, action: 'start'}
   }
   log.push(logEntry)
-  let i = 0
-  console.log(JSON.stringify(logEntry))
   while(logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
     logEntry = Round(attacker, defender)
     attacker = logEntry.defender

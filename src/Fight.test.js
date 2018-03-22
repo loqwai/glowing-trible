@@ -21,7 +21,6 @@ describe('When 2 creatures fight', () => {
   }
 
   const fightLog  = Fight(weakCreature, pushupCreature)
-  console.log(JSON.stringify(fightLog))
   const firstEntry = first(fightLog)
   const lastEntry = last(fightLog)
   it('should return an array of actions occuring in a fight', () => {
@@ -33,6 +32,7 @@ describe('When 2 creatures fight', () => {
   })
 
   it('should return an array with the last item being a "dies" event', () => {
+    console.log(lastEntry)
     expect(lastEntry.outcome.action).toBe('dies')
   })
 
