@@ -17,12 +17,12 @@ const Round = (attacker, defender) =>  {
   log.push({})
   attacker.health -= attackerDamage
   if(attacker.health <= 0) {
-    outcome.action = 'starve'
+      outcome.action = 'starves'
     return {attacker, defender, outcome}
   }
 
   if( (defender.legs / legsDivider) > randomWithFloat(0,1, true)) {
-    outcome.action = 'miss'
+    outcome.action = 'misses'
     return {attacker, defender, outcome}
   }
 
@@ -32,7 +32,7 @@ const Round = (attacker, defender) =>  {
   }
 
   defender.health -= defenderDamage
-  outcome.action = 'hit'
+  outcome.action = 'hits'
   outcome.defenderDamage = defenderDamage
   return {attacker, defender, outcome}
 }

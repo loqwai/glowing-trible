@@ -27,7 +27,7 @@ describe('When 2 creatures fight', () => {
           legs: 0,
         }
         const {outcome} = Round(armlessCreature, armlessCreature)
-        expect(outcome.action).toBe('hit')
+        expect(outcome.action).toBe('hits')
         expect(outcome.defenderDamage).toBe(30)
         expect(outcome.attackerDamage).toBe(11)
     })
@@ -55,7 +55,7 @@ describe('When 2 creatures fight', () => {
       expect(attacker.health).toBe(69)
   })
 
-  it('should let a strong creature hit a creature with a weak body for 10', () => {
+  it('should let a strong creature hits a creature with a weak body for 10', () => {
       const ultimateCreature = {
         health: 100,
         arms: 1,
@@ -74,7 +74,7 @@ describe('When 2 creatures fight', () => {
       expect(defender.health).toBe(70)
   })
 
-  it('should let a kinda strong creature hit a creature with a weak body for 5', () => {
+  it('should let a kinda strong creature hits a creature with a weak body for 5', () => {
       const ultimateCreature = {
         health: 100,
         arms: 0.5,
@@ -114,7 +114,7 @@ describe('When 2 creatures fight', () => {
     })
 
     it('should emit the correct outcome', () => {
-        expect(outcome.action).toBe('starve')
+        expect(outcome.action).toBe('starves')
         expect(outcome.defenderDamage).toBe(0)
         expect(outcome.attackerDamage).toBe(26)
     })
@@ -176,8 +176,8 @@ describe('When 2 creatures fight', () => {
     })
 
     it('the runner should run away sometimes', ()=> {
-      expect(some({action: 'hit'}, map('outcome', results))).toBeTruthy()
-      expect(some({action: 'miss'}, map('outcome', results))).toBeTruthy()
+      expect(some({action: 'hits'}, map('outcome', results))).toBeTruthy()
+      expect(some({action: 'misses'}, map('outcome', results))).toBeTruthy()
     })
   })
 
