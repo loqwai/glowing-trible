@@ -28,7 +28,7 @@ describe('When 2 creatures fight', () => {
         }
         const {outcome} = Round(armlessCreature, armlessCreature)
         expect(outcome.action).toBe('hits')
-        expect(outcome.defenderDamage).toBe(30)
+        expect(outcome.defenderDamage).toBe(100)
         expect(outcome.attackerDamage).toBeGreaterThan(0)
     })
   })
@@ -71,7 +71,7 @@ describe('When 2 creatures fight', () => {
       }
 
       const {attacker, defender} = Round(ultimateCreature, pushupCreature)
-      expect(defender.health).toBe(70)
+      expect(defender.health).toBe(0)
   })
 
   it('should let a kinda strong creature hits a creature with a weak body for 5', () => {
@@ -90,7 +90,7 @@ describe('When 2 creatures fight', () => {
       }
 
       const {attacker, defender} = Round(ultimateCreature, pushupCreature)
-      expect(defender.health).toBe(85)
+      expect(defender.health).toBe(50)
   })
 
   describe('If the attacker dies before it can attack', () =>{

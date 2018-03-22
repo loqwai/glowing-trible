@@ -9,15 +9,15 @@ describe('When 2 creatures fight', () => {
   const weakCreature = {
     health: 100,
     arms: 1,
-    body: 1,
+    body: 0,
     legs: 0,
   }
 
   const pushupCreature = {
     health: 100,
-    arms: 0.5,
-    body: 0,
-    legs: 1,
+    arms: 0.1,
+    body: 1,
+    legs: 0,
   }
 
   const fightLog  = Fight(weakCreature, pushupCreature)

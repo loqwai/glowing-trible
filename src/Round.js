@@ -1,11 +1,10 @@
 import random from "lodash/fp/random"
 import cloneDeep from 'lodash/fp/cloneDeep'
-
 const randomWithFloat = random.convert({ fixed: false })
 const Round = (attacker, defender) =>  {
   const energyDrainMultiplier = 15
-  const attackMultiplier = 50
-  const bodyMultiplier = 2
+  const attackMultiplier = 100
+  const bodyDivisor = 2 //make smaller for the body to soak more
   const legsDivider = 2
 
   const log = []
@@ -27,8 +26,9 @@ const Round = (attacker, defender) =>  {
   }
 
   let defenderDamage = attacker.arms * attackMultiplier
-  if(defender.body > 0) {
-      defenderDamage /= ((defender.body+1) * bodyMultiplier)
+  const damageSoaker  =  1 - (defender.body / bodyDivisor)
+  if (damageSoaker > 0) {
+    defenderDamage *=  damageSoaker
   }
 
   defender.health -= defenderDamage
