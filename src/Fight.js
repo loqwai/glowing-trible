@@ -24,8 +24,13 @@ const Fight = (creature1, creature2) => {
     defender = logEntry.attacker
   }
   const outcome = cloneDeep(logEntry.outcome)
+
+  if(outcome.action === 'starves') {
+    return log
+  }
+
   outcome.action = "dies"
-  log.push({attacker: defender, defender: attacker, outcome})
+  log.push({attacker, defender, outcome})
   return log
 }
 export default Fight
