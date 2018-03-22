@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
+import Arena from './Arena'
 import Dating from './Dating'
 import Pick from './Pick'
 
@@ -27,6 +28,7 @@ const App = ({ classes }) => (
     <div className={classes.root}>
       <CssBaseline />
       <Switch>
+        <Route path="/arena" component={Arena} />
         <Route path="/dating" component={Dating} />
         <Route path="/" component={Pick} />
       </Switch>
