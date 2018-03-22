@@ -24,7 +24,7 @@ const styles = theme => ({
 })
 
 const App = ({ classes }) => (
-  <Router basename="glowing-tribble">
+  <Router basename="glowing-trible">
     <div className={classes.root}>
       <CssBaseline />
       <Switch>
