@@ -30,7 +30,7 @@ const Fight = (creature1, creature2) => {
   }
 
   outcome.action = "dies"
-  log.push({attacker, defender, outcome})
+  log.push({defender: attacker, attacker: defender, outcome})
   return log
 }
 export default Fight
