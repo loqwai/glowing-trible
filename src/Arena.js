@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import bindAll from 'lodash/fp/bindAll'
 import isNil from 'lodash/fp/isNil'
 import map from 'lodash/fp/map'
+import Button from 'material-ui/Button'
 import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
@@ -27,6 +29,10 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  Button: {
+    width: '100%',
+    marginBottom: 2 * theme.spacing.unit,
+  },
   Card: {
     flex: 1,
     display: 'flex',
@@ -43,15 +49,17 @@ const styles = theme => ({
 class Arena extends Component {
   constructor() {
     super()
+    bindAll(Object.getOwnPropertyNames(Arena.prototype), this)
+    this.initialize()
+  }
+
+  async initialize() {
     this.state = {
       leftCreature: null,
       rightCreature: null,
       log: null,
     }
-    this.initialize()
-  }
 
-  async initialize() {
     const creatures = await GenerateSuitors(2)
     const fighters = mapWithIndex(creatureToFighter, creatures)
 
@@ -88,6 +96,10 @@ class Arena extends Component {
           </div>
           <Log log={this.state.log} />
         </Card>
+
+        <Button className={classes.Button} onClick={this.initialize}>
+          Reset
+        </Button>
       </div>
     )
   }
