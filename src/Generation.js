@@ -1,23 +1,18 @@
 import React from 'react'
-import Card from 'material-ui/Card'
 import { withStyles } from 'material-ui/styles'
 
-const styles = {
+const styles = theme => ({
   root: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  Card: {
+    flexShrink: 0,
     display: 'flex',
     justifyContent: 'space-between',
-    maxWidth: '912px',
+    maxWidth: theme.breakpoints.values.lg,
+    padding: theme.spacing.unit,
   },
-}
+})
 
 const Generation = ({ children, classes }) => (
-  <div className={classes.root}>
-    <Card className={classes.Card}>{children}</Card>
-  </div>
+  <div className={classes.root}>{children}</div>
 )
 
 export default withStyles(styles)(Generation)

@@ -1,36 +1,34 @@
 import React from 'react'
 import map from 'lodash/fp/map'
 import { withStyles } from 'material-ui/styles'
-import Creature from './Creature'
+import CreatureCard from './Creature/CreatureCard'
 
 const mapWithIndex = map.convert({ cap: false })
 
-const styles = {
+const styles = theme => ({
   root: {
-    backgroundColor: '#f5f5f5',
-    margin: '1em 0 1em 1em',
-    padding: '1em',
+    marginRight: 8 * theme.spacing.unit,
     '&:last-child': {
-      'margin-right': '1em',
+      marginRight: 0,
     },
   },
   Creatures: {
     display: 'flex',
     flexWrap: 'wrap',
   },
-}
+})
 
 const Creatures = props => {
-  const { classes, onSelectParent, onToggleAdd } = props
+  const { classes, onAddToInventory, onSelectParent } = props
   const { creatures, title } = props
 
   const renderCreatures = mapWithIndex((creature, i) => {
     return (
-      <Creature
+      <CreatureCard
         genome={creature.genome}
         key={i}
-        onClick={() => onSelectParent(creature)}
-        onToggleAdd={() => onToggleAdd(creature)}
+        onAddToInventory={() => onAddToInventory(creature)}
+        onSelectParent={() => onSelectParent(creature)}
       />
     )
   })

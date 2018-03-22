@@ -37,6 +37,7 @@ class Pick extends Component {
     this.state = {
       parents: [],
       generations: [],
+      inventory: [],
     }
     this.initialize()
   }
@@ -49,6 +50,12 @@ class Pick extends Component {
 
     this.setState({
       generations: [{ children, suitors }],
+    })
+  }
+
+  async addToInventory(creature) {
+    this.setState({
+      inventory: concat(this.state.inventory, creature),
     })
   }
 
@@ -74,7 +81,7 @@ class Pick extends Component {
   }
 
   render() {
-    const { generations } = this.state
+    const { generations, inventory } = this.state
     const { classes } = this.props
 
     return (
@@ -82,9 +89,10 @@ class Pick extends Component {
         <Generations
           className={classes.Generations}
           generations={generations}
+          onAddToInventory={this.addToInventory}
           onSelectParent={this.selectParent}
         />
-        <Inventory className={classes.Inventory} />
+        <Inventory className={classes.Inventory} creatures={inventory} />
       </div>
     )
   }
