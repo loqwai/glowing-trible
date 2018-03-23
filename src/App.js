@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import Arena from './Arena'
 import Dating from './Dating'
+import Drawing from './Drawing'
 import Pick from './Pick'
 
 const styles = theme => ({
@@ -30,6 +31,7 @@ const App = ({ classes }) => (
       <Switch>
         <Route path="/arena" component={Arena} />
         <Route path="/dating" component={Dating} />
+        <Route path="/drawing" component={Drawing} />
         <Route path="/" component={Pick} />
       </Switch>
       <AppBar>
