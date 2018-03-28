@@ -11,7 +11,9 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/rgba"
-          }
+          },
+          "minItems":4,
+          "maxItems":4
          },
         "shape": { "$ref": "#/definitions/float" },
         "eyes": {
