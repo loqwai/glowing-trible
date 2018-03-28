@@ -295,7 +295,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.sheetsManager = undefined;
 
-var _keys = __webpack_require__(62);
+var _keys = __webpack_require__(63);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -3584,7 +3584,7 @@ exports.toFileSystemPath = function toFileSystemPath (path, keepFileProtocol) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(20);
-var createDesc = __webpack_require__(60);
+var createDesc = __webpack_require__(61);
 module.exports = __webpack_require__(24) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -4021,7 +4021,7 @@ var _typeof2 = __webpack_require__(121);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _keys = __webpack_require__(62);
+var _keys = __webpack_require__(63);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -4168,7 +4168,7 @@ module.exports = isArrayLike;
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(69);
+var isSymbol = __webpack_require__(70);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -4543,6 +4543,34 @@ module.exports = keys;
 
 /***/ }),
 /* 55 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DataView = __webpack_require__(532),
@@ -4606,7 +4634,7 @@ module.exports = getTag;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 /**
@@ -4633,7 +4661,7 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4699,7 +4727,7 @@ module.exports.extend         = extend;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4707,7 +4735,7 @@ module.exports.extend         = extend;
 
 /*eslint-disable max-len*/
 
-var common        = __webpack_require__(57);
+var common        = __webpack_require__(58);
 var YAMLException = __webpack_require__(73);
 var Type          = __webpack_require__(12);
 
@@ -4814,7 +4842,7 @@ module.exports = Schema;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4944,7 +4972,7 @@ function forEach(xs, f) {
 }
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -4958,7 +4986,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -4971,20 +4999,20 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(334), __esModule: true };
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5237,7 +5265,7 @@ var RuleList = function () {
 exports['default'] = RuleList;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5304,7 +5332,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5375,7 +5403,7 @@ var createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports) {
 
 /**
@@ -5403,7 +5431,7 @@ module.exports = arrayEach;
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -5434,7 +5462,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(35),
@@ -5466,34 +5494,6 @@ function isSymbol(value) {
 }
 
 module.exports = isSymbol;
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
 
 
 /***/ }),
@@ -6063,7 +6063,7 @@ module.exports = YAMLException;
 
 
 
-var Schema = __webpack_require__(58);
+var Schema = __webpack_require__(59);
 
 
 module.exports = new Schema({
@@ -6865,7 +6865,7 @@ var deepmerge_1 = deepmerge;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(67);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -7590,7 +7590,7 @@ module.exports = {
 
 
 
-var Schema = __webpack_require__(58);
+var Schema = __webpack_require__(59);
 
 
 module.exports = Schema.DEFAULT = new Schema({
@@ -8997,7 +8997,7 @@ var $export = __webpack_require__(14);
 var redefine = __webpack_require__(183);
 var hide = __webpack_require__(34);
 var has = __webpack_require__(41);
-var Iterators = __webpack_require__(63);
+var Iterators = __webpack_require__(64);
 var $iterCreate = __webpack_require__(341);
 var setToStringTag = __webpack_require__(83);
 var getPrototypeOf = __webpack_require__(182);
@@ -9826,7 +9826,7 @@ var _valueEqual = __webpack_require__(211);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(65);
+var _PathUtils = __webpack_require__(66);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10437,7 +10437,7 @@ module.exports = getHolder;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(22),
-    isSymbol = __webpack_require__(69);
+    isSymbol = __webpack_require__(70);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -10680,7 +10680,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55)(module)))
 
 /***/ }),
 /* 153 */
@@ -10750,7 +10750,7 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55)(module)))
 
 /***/ }),
 /* 155 */
@@ -10817,7 +10817,7 @@ module.exports = isPrototype;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(158),
-    arrayEach = __webpack_require__(67),
+    arrayEach = __webpack_require__(68),
     assignValue = __webpack_require__(148),
     baseAssign = __webpack_require__(236),
     baseAssignIn = __webpack_require__(525),
@@ -10827,7 +10827,7 @@ var Stack = __webpack_require__(158),
     copySymbolsIn = __webpack_require__(530),
     getAllKeys = __webpack_require__(244),
     getAllKeysIn = __webpack_require__(531),
-    getTag = __webpack_require__(55),
+    getTag = __webpack_require__(56),
     initCloneArray = __webpack_require__(535),
     initCloneByTag = __webpack_require__(536),
     initCloneObject = __webpack_require__(541),
@@ -11175,7 +11175,7 @@ module.exports = castPath;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(69);
+    isSymbol = __webpack_require__(70);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -11395,7 +11395,7 @@ module.exports = func;
 
 
 
-var Schema = __webpack_require__(58);
+var Schema = __webpack_require__(59);
 
 
 module.exports = new Schema({
@@ -11760,7 +11760,7 @@ module.exports = __webpack_require__(34);
 __webpack_require__(344);
 var global = __webpack_require__(23);
 var hide = __webpack_require__(34);
-var Iterators = __webpack_require__(63);
+var Iterators = __webpack_require__(64);
 var TO_STRING_TAG = __webpack_require__(19)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
@@ -11816,7 +11816,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE = __webpack_require__(81);
-var createDesc = __webpack_require__(60);
+var createDesc = __webpack_require__(61);
 var toIObject = __webpack_require__(48);
 var toPrimitive = __webpack_require__(112);
 var has = __webpack_require__(41);
@@ -11886,7 +11886,7 @@ module.exports = function (iterator, fn, value, entries) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(63);
+var Iterators = __webpack_require__(64);
 var ITERATOR = __webpack_require__(19)('iterator');
 var ArrayProto = Array.prototype;
 
@@ -11901,7 +11901,7 @@ module.exports = function (it) {
 
 var classof = __webpack_require__(195);
 var ITERATOR = __webpack_require__(19)('iterator');
-var Iterators = __webpack_require__(63);
+var Iterators = __webpack_require__(64);
 module.exports = __webpack_require__(13).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
@@ -12058,7 +12058,7 @@ Object.defineProperty(exports, 'SheetsManager', {
   }
 });
 
-var _RuleList = __webpack_require__(64);
+var _RuleList = __webpack_require__(65);
 
 Object.defineProperty(exports, 'RuleList', {
   enumerable: true,
@@ -12329,7 +12329,7 @@ var _linkRule = __webpack_require__(203);
 
 var _linkRule2 = _interopRequireDefault(_linkRule);
 
-var _RuleList = __webpack_require__(64);
+var _RuleList = __webpack_require__(65);
 
 var _RuleList2 = _interopRequireDefault(_RuleList);
 
@@ -12729,7 +12729,7 @@ var _defineProperty2 = __webpack_require__(7);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _keys = __webpack_require__(62);
+var _keys = __webpack_require__(63);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -13919,7 +13919,7 @@ var baseTimes = __webpack_require__(150),
     isArguments = __webpack_require__(151),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(152),
-    isIndex = __webpack_require__(68),
+    isIndex = __webpack_require__(69),
     isTypedArray = __webpack_require__(238);
 
 /** Used for built-in method references. */
@@ -16518,7 +16518,7 @@ module.exports = {
 
 
 
-var Schema = __webpack_require__(58);
+var Schema = __webpack_require__(59);
 
 
 module.exports = new Schema({
@@ -16544,7 +16544,7 @@ module.exports = new Schema({
 
 
 
-var Schema = __webpack_require__(58);
+var Schema = __webpack_require__(59);
 
 
 module.exports = new Schema({
@@ -16963,7 +16963,7 @@ exports = module.exports = __webpack_require__(291);
 exports.Stream = exports;
 exports.Readable = exports;
 exports.Writable = __webpack_require__(295);
-exports.Duplex = __webpack_require__(59);
+exports.Duplex = __webpack_require__(60);
 exports.Transform = __webpack_require__(297);
 exports.PassThrough = __webpack_require__(726);
 
@@ -17074,7 +17074,7 @@ function prependListener(emitter, event, fn) {
 }
 
 function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(59);
+  Duplex = Duplex || __webpack_require__(60);
 
   options = options || {};
 
@@ -17151,7 +17151,7 @@ function ReadableState(options, stream) {
 }
 
 function Readable(options) {
-  Duplex = Duplex || __webpack_require__(59);
+  Duplex = Duplex || __webpack_require__(60);
 
   if (!(this instanceof Readable)) return new Readable(options);
 
@@ -18490,7 +18490,7 @@ util.inherits(Writable, Stream);
 function nop() {}
 
 function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(59);
+  Duplex = Duplex || __webpack_require__(60);
 
   options = options || {};
 
@@ -18640,7 +18640,7 @@ if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.protot
 }
 
 function Writable(options) {
-  Duplex = Duplex || __webpack_require__(59);
+  Duplex = Duplex || __webpack_require__(60);
 
   // Writable ctor is applied to Duplexes, too.
   // `realHasInstance` is necessary because using plain `instanceof`
@@ -19443,7 +19443,7 @@ function simpleEnd(buf) {
 
 module.exports = Transform;
 
-var Duplex = __webpack_require__(59);
+var Duplex = __webpack_require__(60);
 
 /*<replacement>*/
 var util = __webpack_require__(75);
@@ -20803,7 +20803,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App__ = __webpack_require__(320);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__registerServiceWorker__ = __webpack_require__(799);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__registerServiceWorker__ = __webpack_require__(800);
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__App__["a" /* default */],null),document.getElementById('root'));Object(__WEBPACK_IMPORTED_MODULE_4__registerServiceWorker__["a" /* default */])();
 
 /***/ }),
@@ -21456,7 +21456,7 @@ module.exports = focusNode;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Arena__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Dating__ = __webpack_require__(752);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Drawing__ = __webpack_require__(753);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Pick__ = __webpack_require__(754);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Pick__ = __webpack_require__(755);
 var styles=function styles(theme){return{root:{flexGrow:1,paddingTop:theme.spacing.unit*10,display:'flex',flexDirection:'column'},AppBarHeader:Object.assign({},theme.typography.title,{color:theme.palette.primary.contrastText,textDecoration:'none'})};};var App=function App(_ref){var classes=_ref.classes;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* BrowserRouter */],{basename:'glowing-trible'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.root},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_CssBaseline___default.a,null),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["d" /* Switch */],null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */],{path:'/arena',component:__WEBPACK_IMPORTED_MODULE_6__Arena__["a" /* default */]}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */],{path:'/dating',component:__WEBPACK_IMPORTED_MODULE_7__Dating__["a" /* default */]}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */],{path:'/drawing',component:__WEBPACK_IMPORTED_MODULE_8__Drawing__["a" /* default */]}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["c" /* Route */],{path:'/',component:__WEBPACK_IMPORTED_MODULE_9__Pick__["a" /* default */]})),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_AppBar___default.a,null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_Toolbar___default.a,null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],{to:'/',className:classes.AppBarHeader},'Glowing Trible')))));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_material_ui_styles__["withStyles"])(styles)(App));
 
 /***/ }),
@@ -21662,7 +21662,7 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(326) });
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(61);
+var getKeys = __webpack_require__(62);
 var gOPS = __webpack_require__(120);
 var pIE = __webpack_require__(81);
 var toObject = __webpack_require__(49);
@@ -21915,7 +21915,7 @@ module.exports = __webpack_require__(13).Object.keys;
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(49);
-var $keys = __webpack_require__(61);
+var $keys = __webpack_require__(62);
 
 __webpack_require__(181)('keys', function () {
   return function keys(it) {
@@ -21992,7 +21992,7 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 var create = __webpack_require__(82);
-var descriptor = __webpack_require__(60);
+var descriptor = __webpack_require__(61);
 var setToStringTag = __webpack_require__(83);
 var IteratorPrototype = {};
 
@@ -22011,7 +22011,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(20);
 var anObject = __webpack_require__(39);
-var getKeys = __webpack_require__(61);
+var getKeys = __webpack_require__(62);
 
 module.exports = __webpack_require__(24) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -22040,7 +22040,7 @@ module.exports = document && document.documentElement;
 
 var addToUnscopables = __webpack_require__(345);
 var step = __webpack_require__(185);
-var Iterators = __webpack_require__(63);
+var Iterators = __webpack_require__(64);
 var toIObject = __webpack_require__(48);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -22123,12 +22123,12 @@ var anObject = __webpack_require__(39);
 var isObject = __webpack_require__(26);
 var toIObject = __webpack_require__(48);
 var toPrimitive = __webpack_require__(112);
-var createDesc = __webpack_require__(60);
+var createDesc = __webpack_require__(61);
 var _create = __webpack_require__(82);
 var gOPNExt = __webpack_require__(350);
 var $GOPD = __webpack_require__(188);
 var $DP = __webpack_require__(20);
-var $keys = __webpack_require__(61);
+var $keys = __webpack_require__(62);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -22343,7 +22343,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(61);
+var getKeys = __webpack_require__(62);
 var gOPS = __webpack_require__(120);
 var pIE = __webpack_require__(81);
 module.exports = function (it) {
@@ -23839,7 +23839,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _RuleList = __webpack_require__(64);
+var _RuleList = __webpack_require__(65);
 
 var _RuleList2 = _interopRequireDefault(_RuleList);
 
@@ -23907,7 +23907,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _RuleList = __webpack_require__(64);
+var _RuleList = __webpack_require__(65);
 
 var _RuleList2 = _interopRequireDefault(_RuleList);
 
@@ -24177,7 +24177,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _RuleList = __webpack_require__(64);
+var _RuleList = __webpack_require__(65);
 
 var _RuleList2 = _interopRequireDefault(_RuleList);
 
@@ -26424,7 +26424,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.isNumber = exports.isString = exports.formatMs = exports.duration = exports.easing = undefined;
 
-var _keys = __webpack_require__(62);
+var _keys = __webpack_require__(63);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -26609,7 +26609,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keys = __webpack_require__(62);
+var _keys = __webpack_require__(63);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -27590,7 +27590,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(135);
 
-var _PathUtils = __webpack_require__(65);
+var _PathUtils = __webpack_require__(66);
 
 var _createTransitionManager = __webpack_require__(136);
 
@@ -27967,7 +27967,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(135);
 
-var _PathUtils = __webpack_require__(65);
+var _PathUtils = __webpack_require__(66);
 
 var _createTransitionManager = __webpack_require__(136);
 
@@ -28371,7 +28371,7 @@ var _warning = __webpack_require__(2);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(65);
+var _PathUtils = __webpack_require__(66);
 
 var _LocationUtils = __webpack_require__(135);
 
@@ -29287,7 +29287,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(89);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(67);
 /* unused harmony reexport parsePath */
 /* unused harmony reexport createPath */
 
@@ -29310,7 +29310,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(216);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -29614,7 +29614,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(216);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -29932,7 +29932,7 @@ var createHashHistory = function createHashHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(140);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -30117,7 +30117,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(138);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -32228,7 +32228,7 @@ module.exports = {
   'assign': __webpack_require__(236),
   'clone': __webpack_require__(502),
   'curry': __webpack_require__(546),
-  'forEach': __webpack_require__(67),
+  'forEach': __webpack_require__(68),
   'isArray': __webpack_require__(11),
   'isError': __webpack_require__(547),
   'isFunction': __webpack_require__(141),
@@ -32958,7 +32958,7 @@ module.exports = constant;
 /* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(67),
+var arrayEach = __webpack_require__(68),
     arrayIncludes = __webpack_require__(234);
 
 /** Used to compose bitmasks for function metadata. */
@@ -33114,7 +33114,7 @@ module.exports = strictIndexOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyArray = __webpack_require__(53),
-    isIndex = __webpack_require__(68);
+    isIndex = __webpack_require__(69);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMin = Math.min;
@@ -34169,7 +34169,7 @@ function cloneBuffer(buffer, isDeep) {
 
 module.exports = cloneBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55)(module)))
 
 /***/ }),
 /* 529 */
@@ -34544,7 +34544,7 @@ module.exports = isMap;
 /* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getTag = __webpack_require__(55),
+var getTag = __webpack_require__(56),
     isObjectLike = __webpack_require__(18);
 
 /** `Object#toString` result references. */
@@ -34601,7 +34601,7 @@ module.exports = isSet;
 /* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getTag = __webpack_require__(55),
+var getTag = __webpack_require__(56),
     isObjectLike = __webpack_require__(18);
 
 /** `Object#toString` result references. */
@@ -34798,7 +34798,7 @@ module.exports = isPlainObject;
 /* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getTag = __webpack_require__(55),
+var getTag = __webpack_require__(56),
     isObjectLike = __webpack_require__(18);
 
 /** `Object#toString` result references. */
@@ -34991,7 +34991,7 @@ var Stack = __webpack_require__(158),
     equalArrays = __webpack_require__(249),
     equalByTag = __webpack_require__(557),
     equalObjects = __webpack_require__(560),
-    getTag = __webpack_require__(55),
+    getTag = __webpack_require__(56),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(152),
     isTypedArray = __webpack_require__(238);
@@ -35631,9 +35631,9 @@ module.exports = memoize;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(52),
-    arrayMap = __webpack_require__(56),
+    arrayMap = __webpack_require__(57),
     isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(69);
+    isSymbol = __webpack_require__(70);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -35735,7 +35735,7 @@ module.exports = baseHasIn;
 var castPath = __webpack_require__(164),
     isArguments = __webpack_require__(151),
     isArray = __webpack_require__(11),
-    isIndex = __webpack_require__(68),
+    isIndex = __webpack_require__(69),
     isLength = __webpack_require__(153),
     toKey = __webpack_require__(45);
 
@@ -35930,10 +35930,10 @@ module.exports = isFlattenable;
 /* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(56),
+var arrayMap = __webpack_require__(57),
     copyArray = __webpack_require__(53),
     isArray = __webpack_require__(11),
-    isSymbol = __webpack_require__(69),
+    isSymbol = __webpack_require__(70),
     stringToPath = __webpack_require__(255),
     toKey = __webpack_require__(45),
     toString = __webpack_require__(166);
@@ -35969,7 +35969,7 @@ module.exports = toPath;
 /* 576 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(67),
+var arrayEach = __webpack_require__(68),
     baseAssignValue = __webpack_require__(149),
     bind = __webpack_require__(577),
     flatRest = __webpack_require__(256),
@@ -36121,7 +36121,7 @@ module.exports = isNil;
 /* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(56),
+var arrayMap = __webpack_require__(57),
     baseIteratee = __webpack_require__(247),
     baseMap = __webpack_require__(581),
     isArray = __webpack_require__(11);
@@ -37709,7 +37709,7 @@ $export($export.S + $export.F * !__webpack_require__(599)(function (iter) { Arra
 "use strict";
 
 var $defineProperty = __webpack_require__(20);
-var createDesc = __webpack_require__(60);
+var createDesc = __webpack_require__(61);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -40366,7 +40366,7 @@ module.exports = baseShuffle;
 /* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(56);
+var arrayMap = __webpack_require__(57);
 
 /**
  * The base implementation of `_.values` and `_.valuesIn` which creates an
@@ -40528,7 +40528,7 @@ module.exports = random;
 
 var eq = __webpack_require__(97),
     isArrayLike = __webpack_require__(44),
-    isIndex = __webpack_require__(68),
+    isIndex = __webpack_require__(69),
     isObject = __webpack_require__(22);
 
 /**
@@ -40616,7 +40616,7 @@ module.exports = set;
 
 var assignValue = __webpack_require__(148),
     castPath = __webpack_require__(164),
-    isIndex = __webpack_require__(68),
+    isIndex = __webpack_require__(69),
     isObject = __webpack_require__(22),
     toKey = __webpack_require__(45);
 
@@ -45922,7 +45922,7 @@ if (typeof module !== 'undefined' && __webpack_require__.c[__webpack_require__.s
 }
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(70)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16), __webpack_require__(55)(module)))
 
 /***/ }),
 /* 660 */
@@ -58073,7 +58073,7 @@ function deprecated(name) {
 
 
 module.exports.Type                = __webpack_require__(12);
-module.exports.Schema              = __webpack_require__(58);
+module.exports.Schema              = __webpack_require__(59);
 module.exports.FAILSAFE_SCHEMA     = __webpack_require__(173);
 module.exports.JSON_SCHEMA         = __webpack_require__(286);
 module.exports.CORE_SCHEMA         = __webpack_require__(285);
@@ -58108,7 +58108,7 @@ module.exports.addConstructor = deprecated('addConstructor');
 
 /*eslint-disable max-len,no-use-before-define*/
 
-var common              = __webpack_require__(57);
+var common              = __webpack_require__(58);
 var YAMLException       = __webpack_require__(73);
 var Mark                = __webpack_require__(686);
 var DEFAULT_SAFE_SCHEMA = __webpack_require__(74);
@@ -59712,7 +59712,7 @@ module.exports.safeLoad    = safeLoad;
 
 
 
-var common = __webpack_require__(57);
+var common = __webpack_require__(58);
 
 
 function Mark(name, buffer, position, line, column) {
@@ -59922,7 +59922,7 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
 "use strict";
 
 
-var common = __webpack_require__(57);
+var common = __webpack_require__(58);
 var Type   = __webpack_require__(12);
 
 function isHexCode(c) {
@@ -60102,7 +60102,7 @@ module.exports = new Type('tag:yaml.org,2002:int', {
 "use strict";
 
 
-var common = __webpack_require__(57);
+var common = __webpack_require__(58);
 var Type   = __webpack_require__(12);
 
 var YAML_FLOAT_PATTERN = new RegExp(
@@ -67533,7 +67533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /*eslint-disable no-use-before-define*/
 
-var common              = __webpack_require__(57);
+var common              = __webpack_require__(58);
 var YAMLException       = __webpack_require__(73);
 var DEFAULT_FULL_SCHEMA = __webpack_require__(106);
 var DEFAULT_SAFE_SCHEMA = __webpack_require__(74);
@@ -69142,7 +69142,7 @@ module.exports = {
 
 }(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70)(module), __webpack_require__(10)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55)(module), __webpack_require__(10)))
 
 /***/ }),
 /* 711 */
@@ -73316,10 +73316,2775 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var Drawing=function(_Component){_inherits(Drawing,_Component);function Drawing(){_classCallCheck(this,Drawing);return _possibleConstructorReturn(this,(Drawing.__proto__||Object.getPrototypeOf(Drawing)).apply(this,arguments));}_createClass(Drawing,[{key:"render",value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div",null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1",null,"Drawing"),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("svg",null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("g",{id:"layer1",transform:"translate(0,-244.08332)"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"matrix(2.0000001,0,0,3.0000026,-117.7396,-97.906354)",d:"m 125.6106,49.454076 -3.74177,6.708602 -5.45216,0.06648 -3.96875,-6.614586 -2e-5,-2.645831 3.80825,-3.90227 5.45216,-0.06648 3.90227,3.808254 z",id:"path3869"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{d:"",id:"path4740",transform:"scale(0.26458333)"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("g",{id:"g4874",transform:"translate(-47.697562,266.79944)"},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4738",d:"m 241.09229,28.001598 c -2.31194,-2.451405 -4.26009,-4.614883 -4.32921,-4.80773 -0.13192,-0.368038 6.0729,-0.130444 10.48481,0.401483 2.39475,0.288727 2.23066,0.183669 11.98205,7.671553 0.29948,0.229963 0.44628,0.516337 0.32623,0.636387 -0.12005,0.120051 -3.37774,0.294128 -7.23931,0.38684 l -7.02103,0.168566 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4744",d:"m 304.23409,32.05861 -1.79673,-0.197984 0.95354,-0.886901 c 0.78116,-0.726569 8.49768,-6.367055 9.73262,-7.114168 0.19091,-0.115502 2.54343,-0.377547 5.22781,-0.582323 2.68438,-0.204775 5.40292,-0.456502 6.04119,-0.559394 l 1.16049,-0.187075 -1.65838,1.966704 c -0.91211,1.081687 -2.8658,3.294737 -4.34153,4.917889 l -2.68316,2.951186 -5.41956,-0.05497 c -2.98075,-0.03024 -6.22808,-0.144068 -7.21629,-0.252959 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4746",d:"m 273.54848,70.057402 c -0.54797,-0.973891 -3.08665,-5.640981 -5.6415,-10.37131 l -4.64518,-8.600598 1.43048,-14.951584 1.43047,-14.951581 7.38522,-25.8257927 c 4.06187,-14.2041863 7.45987,-25.9004483 7.55112,-25.9916943 0.24188,-0.241885 -0.0753,-1.300378 7.81297,26.0697203 l 7.2905,25.2958777 1.42987,15.300252 1.42988,15.300256 -5.63909,9.995622 -5.6391,9.995626 -1.98683,0.168639 c -1.09276,0.09275 -2.58185,0.02978 -3.3091,-0.139933 -0.87392,-0.203946 -1.96722,-0.175355 -3.22444,0.08432 -1.04621,0.216091 -2.52696,0.392892 -3.29057,0.392892 -1.3235,0 -1.43493,-0.08274 -2.3847,-1.770712 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4748",d:"m 298.63168,17.433224 c -0.2417,-1.150312 -0.4397,-5.47276 -0.89182,-19.4690739 -0.1528,-4.7303292 -0.57931,-13.0745421 -0.94779,-18.5426951 -0.36849,-5.468154 -0.61193,-10.00014 -0.54099,-10.071081 0.21337,-0.213368 17.70579,34.9714329 17.70579,35.6139752 0,0.4878563 -6.25157,6.1300508 -14.0024,12.6375138 l -1.09431,0.91876 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4750",d:"m 294.5873,6.3681895 c -0.34965,-1.0018821 -11.64376,-40.1728065 -11.73389,-40.6962265 -0.12561,-0.72942 1.20426,-1.000892 6.3435,-1.294913 l 4.07734,-0.23327 0.22443,4.177927 c 0.12344,2.297859 0.44928,7.972308 0.7241,12.609885 0.85896,14.495079 1.22004,25.2258895 0.86091,25.5850235 -0.21458,0.2145732 -0.38778,0.1627841 -0.49639,-0.148426 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4752",d:"m 305.74936,-17.568399 c -4.76103,-9.656362 -8.65641,-17.781282 -8.65641,-18.055379 0,-0.274097 0.18972,-0.564793 0.4216,-0.645991 0.65752,-0.230247 18.9016,-1.194407 19.08728,-1.008722 0.3464,0.3464 -1.71468,36.78573347 -2.10262,37.17367106 -0.0514,0.05139447 -3.98882,-7.80721716 -8.74985,-17.46357906 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4754",d:"m 266.58738,7.0706661 c 0.10297,-1.3912733 0.322,-3.5920147 0.48674,-4.8905364 0.16474,-1.29852171 0.61781,-9.722049 1.00682,-18.7189497 0.38902,-8.9969 0.78971,-17.024567 0.89044,-17.839259 l 0.18314,-1.481259 3.26063,0.226327 c 5.86883,0.407367 6.80205,0.574737 6.80205,1.219929 0,0.723899 -11.99587,42.408842 -12.4718,43.3387791 -0.25112,0.4906692 -0.2942,-0.015019 -0.15802,-1.855031 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4756",d:"m 257.60175,13.704449 c -3.0771,-2.628316 -6.54361,-5.6183895 -7.70337,-6.6446095 l -2.10863,-1.8658577 8.88383,-17.3135778 c 8.59765,-16.755826 8.8871,-17.264661 8.98508,-15.795121 0.0557,0.835151 -0.21586,7.644594 -0.60343,15.132095 -0.38756,7.4875011 -0.79812,17.597739 -0.91234,22.4671955 -0.14287,6.0906065 -0.32295,8.8449865 -0.57705,8.8260925 -0.20315,-0.01511 -2.88699,-2.177904 -5.96409,-4.806217 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4758",d:"m 247.50649,-1.7828911 c -0.015,-3.2956364 -1.72141,-28.6971419 -2.14676,-31.9571259 -0.25414,-1.947782 -0.40256,-3.60693 -0.32982,-3.686994 0.16089,-0.1771 20.08905,1.003097 20.43607,1.210277 0.2455,0.146572 -17.46676,35.86727593 -17.78494,35.86727593 -0.0924,0 -0.17095,-0.64504488 -0.17455,-1.43343303 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4760",d:"m 229.3,7.8940773 c 0,-0.1166848 1.62148,-2.5124854 3.60329,-5.3240002 1.98181,-2.81151435 3.8045,-5.7189456 4.05043,-6.4609581 0.7534,-2.2731314 4.84113,-18.293095 5.36079,-21.009115 0.26905,-1.406195 0.52886,-2.596397 0.57736,-2.644894 0.0485,-0.0485 0.50841,6.08858 1.02202,13.637948 0.51362,7.5493676 1.02139,14.65618981 1.12838,15.792938 l 0.19453,2.0668149 -1.64443,0.545655 c -0.90444,0.3001103 -4.20198,1.0803697 -7.32787,1.7339083 -3.12589,0.6535409 -5.97168,1.3425163 -6.32397,1.5310583 C 229.58824,7.9519745 229.3,8.0107655 229.3,7.8940773 Z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4762",d:"m 233.28877,-12.011816 c -1.394,-2.582604 -5.05942,-9.400676 -8.14539,-15.151273 l -5.61084,-10.455629 -11.30444,-14.334331 c -10.11063,-12.820542 -12.29954,-15.828414 -10.88523,-14.957818 0.23188,0.142736 7.25149,4.818783 15.59913,10.391215 8.34764,5.572433 17.30238,11.290201 19.89942,12.70615 2.59704,1.41595 5.67049,3.130692 6.82989,3.810539 l 2.10799,1.236085 v 2.116108 c 0,1.360829 -0.67248,5.056785 -1.88411,10.355155 -1.03627,4.531473 -2.37636,10.655632 -2.97799,13.609243 l -1.09389,5.3701998 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4764",d:"m 197.50596,32.162315 c 0.91422,-1.464449 4.17538,-6.684682 7.24703,-11.600514 5.77331,-9.239559 9.38101,-15.3199021 9.35387,-15.7648363 -0.009,-0.1407362 -5.78679,-4.35381859 -12.84046,-9.3624024 -13.76542,-9.7743883 -13.78892,-9.7960583 -13.78892,-12.7152863 0,-1.185483 3.69303,-43.771124 4.25717,-49.090975 0.12295,-1.159395 0.31575,-2.104403 0.42845,-2.100019 0.30443,0.01184 14.76383,18.342523 21.81975,27.661635 1.91893,2.534435 5.18885,8.034628 11.39667,19.169874 8.04967,14.4390386 8.69664,15.7214722 8.58623,17.0197781 -0.10088,1.1864002 -1.76614,3.8968468 -10.74021,17.4811889 l -10.62082,16.077081 -6.18558,2.276484 c -3.40207,1.252065 -6.43758,2.271344 -6.74557,2.265068 -0.30799,-0.0063 -0.79761,0.194285 -1.08804,0.445699 -0.29042,0.251411 -1.02614,0.556732 -1.63492,0.678486 l -1.10688,0.221376 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4766",d:"m 229.55487,36.865739 -1.93744,-0.884344 0.70015,-1.132869 c 0.82247,-1.330772 0.70118,-1.379377 -0.99954,-0.400565 l -1.27241,0.732304 -5.2027,-2.695981 c -2.92529,-1.515852 -5.24752,-2.928547 -5.30509,-3.227272 -0.0997,-0.51756 10.58459,-17.12826 11.01582,-17.126069 0.2344,0.0012 2.82072,4.474045 4.23237,7.31956 0.78328,1.578879 0.90443,2.359623 1.20373,7.757403 0.45981,8.292426 0.44353,10.556589 -0.0759,10.548635 -0.23187,-0.0036 -1.29344,-0.404412 -2.35903,-0.890802 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4768",d:"m 230.91259,14.743749 c -1.30539,-2.210774 -2.11631,-3.921227 -1.94301,-4.098309 0.16359,-0.16716 0.94991,-0.423038 1.74736,-0.568618 0.79746,-0.14558 3.69858,-0.8209593 6.44693,-1.5008429 2.74836,-0.6798836 5.08761,-1.1455547 5.19834,-1.0348247 0.11073,0.11073 -0.19821,0.7711013 -0.68654,1.4674917 -1.5454,2.2038629 -7.80742,9.4913089 -8.17252,9.5107969 -0.19256,0.01028 -1.35831,-1.688784 -2.59056,-3.775694 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4770",d:"m 256.78818,26.566859 c -8.19372,-6.200816 -7.50535,-5.882933 -13.32249,-6.152206 -2.6898,-0.124509 -5.4682,-0.332055 -6.17424,-0.461214 l -1.28371,-0.234834 1.11507,-1.544879 c 0.61328,-0.849684 2.92685,-3.613314 5.14127,-6.141401 l 4.0262,-4.5965212 1.33151,0.7449466 c 0.73233,0.4097207 2.56315,1.8325086 4.06848,3.1617506 1.50533,1.329242 4.63416,4.067335 6.95294,6.08465 l 4.21598,3.667846 0.0944,2.17867 c 0.0519,1.198269 -0.024,3.405746 -0.16864,4.905506 l -0.26303,2.726836 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4772",d:"m 239.41835,74.143435 c -1.20577,-0.564577 -6.12373,-2.769029 -10.92879,-4.898776 -4.80506,-2.129751 -15.12578,-6.728673 -22.93493,-10.219832 -13.35833,-5.971978 -19.60498,-8.637069 -21.95585,-9.367317 -2.16624,-0.672898 -1.79091,-1.160403 6.36909,-8.272614 4.08715,-3.562333 3.10874,-3.106044 16.16518,-7.538777 3.4897,-1.184772 6.67698,-2.154632 7.08284,-2.155242 0.40587,-6.11e-4 4.86603,2.060432 9.91148,4.580095 8.44398,4.216871 9.20047,4.666247 9.5122,5.650523 3.61511,11.414395 9.66083,30.164326 10.15964,31.508691 l 0.65701,1.770711 -0.92278,-0.01548 c -0.50753,-0.0085 -1.90932,-0.477401 -3.11509,-1.041982 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4774",d:"m 214.23659,87.096577 c -3.88864,-4.409338 -8.57857,-9.768636 -10.42207,-11.909551 -1.8435,-2.140915 -6.23656,-7.225387 -9.76235,-11.298826 -8.41881,-9.72649 -9.71892,-11.288657 -9.54209,-11.46549 0.0814,-0.08142 9.09209,3.843248 20.02371,8.721484 10.93162,4.878236 23.77966,10.605794 28.55122,12.727906 8.57857,3.815258 8.67564,3.869841 8.68491,4.883308 0.009,0.934613 -0.73639,1.633005 -8.45431,7.92604 -4.65502,3.795616 -8.94267,7.147452 -9.52811,7.44852 -2.43157,1.250473 -1.90019,1.641786 -9.55091,-7.033391 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4776",d:"m 253.4154,109.10975 c -2.04053,-0.76858 -9.2878,-3.72707 -16.10504,-6.57441 -10.77592,-4.500767 -12.39289,-5.269404 -12.37898,-5.884411 0.0106,-0.470954 0.96022,-1.468394 2.84081,-2.984041 1.55365,-1.252146 2.92604,-2.276629 3.04976,-2.276629 0.12372,0 0.47694,-0.29029 0.78493,-0.645089 1.14133,-1.314792 13.25856,-10.830889 13.55675,-10.646599 0.17013,0.105146 0.67115,1.360757 1.11338,2.790246 0.44222,1.429488 3.11429,8.1898 5.93792,15.022915 2.82363,6.833118 5.08362,12.462458 5.0222,12.509648 -0.0614,0.0472 -1.7812,-0.54304 -3.82173,-1.31163 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4778",d:"m 259.90793,109.51588 c -0.30898,-0.47157 -2.93809,-6.65289 -5.84246,-13.736276 -3.63833,-8.873442 -5.17213,-12.987412 -4.9317,-13.227846 0.30934,-0.309341 1.55432,0.49105 4.95619,3.186326 1.24775,0.988583 5.22859,3.960343 6.37588,4.759688 0.75984,0.529399 2.06451,1.520375 2.89927,2.202169 3.32502,2.715711 2.52626,2.66862 10.04417,0.592149 l 6.65111,-1.837061 4.21598,0.77193 c 2.31879,0.424562 5.85276,1.259029 7.85326,1.854371 2.38027,0.708361 3.77899,0.973145 4.04734,0.766182 6.13497,-4.731564 14.88237,-11.278866 15.84055,-11.856416 0.69563,-0.419303 1.26479,-0.60646 1.26479,-0.415903 0,0.611689 -10.29202,26.282057 -10.99016,27.411677 -0.17863,0.28903 -1.99376,0.31807 -7.02036,0.11231 -9.18383,-0.37593 -14.9042,-0.38185 -25.68129,-0.0266 l -9.12078,0.30067 -0.56179,-0.8574 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4780",d:"m 256.74908,85.226112 c -8.59966,-6.397416 -9.131,-6.854523 -8.9008,-7.657214 0.42881,-1.49517 5.08846,-9.543141 6.74121,-11.643156 0.87596,-1.113019 2.68878,-4.108523 4.02848,-6.656676 1.3397,-2.548153 2.55436,-4.706273 2.69925,-4.795822 0.1449,-0.08955 0.58084,0.175036 0.96877,0.587967 0.6721,0.715415 6.04438,10.040146 8.88269,15.417789 l 1.33512,2.529588 -0.9436,0.413541 c -0.51898,0.227447 -1.74042,0.655599 -2.71431,0.951448 l -1.77072,0.537907 v 2.959299 c 0,2.530958 0.0976,3.04766 0.67456,3.569764 0.37101,0.335756 0.67456,0.814919 0.67456,1.064806 0,0.249888 0.93204,1.140471 2.0712,1.979074 1.13916,0.838603 2.94973,2.338089 4.02347,3.332192 l 1.95227,1.807458 -4.28628,1.220368 c -2.35745,0.671204 -4.73718,1.212465 -5.28827,1.202802 -0.76163,-0.01336 -3.19575,-1.649548 -10.1476,-6.821135 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4782",d:"m 244.98137,72.730653 c -0.11733,-0.589147 -0.88046,-3.120145 -1.69584,-5.624437 -2.95723,-9.082616 -7.91452,-25.453065 -7.91452,-26.136115 0,-0.987117 9.10621,-5.777948 10.02113,-5.272174 2.14411,1.185281 15.13889,15.952401 14.69681,16.701276 -0.12101,0.204975 -3.07754,4.949583 -6.57008,10.543571 -5.22138,8.363064 -6.52552,10.232048 -7.33712,10.514974 -0.93773,0.326894 -0.9977,0.290565 -1.20038,-0.727095 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4784",d:"m 256.5036,44.255607 c -1.93495,-2.179662 -4.43962,-5.025448 -5.56592,-6.32397 l -2.04781,-2.360949 5.29827,-0.390099 c 2.91405,-0.214555 5.84272,-0.404274 6.50817,-0.421598 l 1.2099,-0.0315 -0.12517,5.312134 c -0.16794,7.127577 -0.31193,8.179 -1.12013,8.179 -0.39154,0 -2.0023,-1.535485 -4.15731,-3.96302 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4786",d:"m 234.22228,34.137255 c 0.0693,-1.994158 0.21963,-4.897317 0.33399,-6.451464 l 0.20793,-2.825722 2.85765,2.825722 c 1.57171,1.554147 3.45943,3.536675 4.19495,4.405618 l 1.33729,1.579896 -3.80722,2.039907 c -2.09397,1.12195 -4.132,2.042581 -4.52894,2.045847 -0.70079,0.0058 -0.71806,-0.09919 -0.59565,-3.619804 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4788",d:"m 279.98638,88.177165 c -1.68233,-0.529805 -5.15053,-2.940521 -7.92246,-5.506834 l -1.98283,-1.835757 0.0991,-2.029321 0.0991,-2.029321 3.8675,-1.293435 c 4.57907,-1.53141 7.91668,-1.723849 11.52746,-0.664646 1.17893,0.345834 3.07703,0.896512 4.21799,1.223729 1.84976,0.53049 2.09638,0.704433 2.27663,1.60568 0.52227,2.611323 0.35859,2.970445 -2.58305,5.667281 -3.87311,3.550796 -6.39877,5.383748 -7.3638,5.344145 -0.4469,-0.01834 -1.45295,-0.235025 -2.23567,-0.481521 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4790",d:"m 293.21425,91.844209 c -3.04801,-0.881386 -7.61406,-2.564749 -7.43702,-2.741794 0.0955,-0.09547 0.46684,-0.340695 0.82527,-0.544944 1.30167,-0.741748 5.97314,-4.440798 6.69007,-5.297453 0.67739,-0.809414 1.73982,-4.151164 2.25063,-7.079085 l 0.2115,-1.212275 -2.8723,-0.758781 c -2.08564,-0.550967 -2.8723,-0.905966 -2.8723,-1.296192 0,-0.295576 1.65308,-3.506534 3.6735,-7.135461 5.5908,-10.041743 6.24726,-11.144811 6.63455,-11.148185 0.57425,-0.005 14.66544,22.152783 14.63621,23.014807 -0.008,0.232604 -1.63947,1.632974 -3.62574,3.111931 -1.98627,1.478958 -6.31684,4.704182 -9.62349,7.167165 -3.30665,2.462985 -6.19038,4.46235 -6.40829,4.443035 -0.21791,-0.01931 -1.15508,-0.254558 -2.08259,-0.522768 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4792",d:"m 305.54004,108.88471 c 1.80026,-4.58154 10.46692,-25.93252 11.11412,-27.38047 0.51625,-1.154998 0.83964,-1.530112 1.122,-1.301467 0.21818,0.176678 4.56076,3.759167 9.65019,7.961088 8.46699,6.990503 10.43758,8.774984 10.08237,9.130192 -0.0922,0.09225 -28.9893,11.948847 -32.24773,13.231397 -0.29477,0.11602 -0.20588,-0.40661 0.27905,-1.64074 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4794",d:"m 339.25275,95.379189 c -6.20779,-5.043738 -18.88759,-16.01316 -18.88759,-16.339836 0,-1.216384 2.22962,-2.386144 16.52664,-8.670616 8.25489,-3.628562 20.81429,-9.16872 27.90978,-12.311462 7.0955,-3.142743 12.89879,-5.541735 12.89622,-5.331094 -0.003,0.21064 -1.08536,1.597185 -2.4062,3.08121 -1.32083,1.484025 -8.25884,9.452226 -15.4178,17.707114 -7.15896,8.254888 -14.45019,16.602528 -16.20275,18.550311 -1.75255,1.947782 -3.2739,3.644481 -3.38078,3.770441 -0.10688,0.12596 -0.57377,-0.07927 -1.03752,-0.456068 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4796",d:"m 319.35332,74.420738 c 0,-0.429088 1.96064,-6.993369 4.35697,-14.58729 4.52999,-14.355448 5.85082,-18.261136 6.32434,-18.701144 0.34147,-0.317297 10.4284,-5.658149 15.23407,-8.06617 l 3.48637,-1.746946 2.24736,0.747127 c 1.23605,0.410919 5.99021,2.140147 10.5648,3.842727 9.2666,3.448865 8.63212,3.051428 15.85392,9.930911 2.3515,2.240031 2.89957,2.932597 2.56364,3.239512 -0.4509,0.411948 -1.21392,0.733143 -7.17285,3.019418 -3.33563,1.279788 -13.78097,5.859857 -42.97018,18.841547 -5.26879,2.343255 -9.7841,4.260467 -10.03403,4.260467 -0.25006,0 -0.45441,-0.35084 -0.45441,-0.780159 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4798",d:"m 312.8642,69.720124 c -1.57014,-2.64342 -4.31504,-7.118806 -6.09978,-9.945304 -3.63758,-5.760852 -4.6123,-7.54147 -4.6123,-8.425742 0,-0.34134 3.32158,-3.922934 7.59768,-8.192437 l 7.59768,-7.585953 4.87754,2.529588 c 2.68265,1.391274 4.87938,2.695547 4.88162,2.898385 0.002,0.202838 -0.30557,1.265265 -0.68404,2.360949 -0.37847,1.095683 -2.67192,8.290825 -5.09656,15.989204 -4.48684,14.246007 -4.81332,15.177526 -5.3195,15.177526 -0.15815,0 -1.5722,-2.162797 -3.14234,-4.806216 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4800",d:"m 301.02018,47.71755 c -0.11944,-0.31126 -0.2176,-2.033324 -0.21812,-3.826807 -5.2e-4,-1.793483 -0.16533,-4.601177 -0.36624,-6.239319 -0.2009,-1.638142 -0.30436,-3.039367 -0.22989,-3.113833 0.15664,-0.156637 13.07248,1.085412 13.26245,1.27538 0.0696,0.06958 -2.65394,2.903908 -6.05226,6.298508 -4.79115,4.785896 -6.22755,6.044904 -6.39594,5.606071 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4802",d:"m 299.67038,29.07808 c -0.11498,-0.695637 -0.21073,-2.634983 -0.21277,-4.309658 l -0.004,-3.044863 3.93085,-3.700704 c 5.72937,-5.393916 12.05214,-10.963552 12.33663,-10.8671595 0.36468,0.1235621 10.71479,12.1110235 10.71479,12.4098285 0,0.140347 -1.78336,0.356836 -3.96302,0.481086 -2.17966,0.124251 -5.17723,0.338941 -6.66125,0.47709 l -2.69823,0.251179 -6.30738,4.783997 c -3.46906,2.631199 -6.44676,4.783998 -6.61712,4.783998 -0.17035,0 -0.40381,-0.569158 -0.51879,-1.264794 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4804",d:"m 327.02796,16.771779 c -5.34835,-6.160592 -7.38619,-8.8577616 -6.78519,-8.980504 0.33014,-0.067423 3.44079,0.5275178 6.91257,1.3220903 l 6.31232,1.4446767 -1.70456,3.399807 c -0.93751,1.869894 -1.97382,3.743264 -2.30292,4.163044 l -0.59837,0.763236 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4806",d:"m 330.15937,29.628809 0.0118,-8.134188 1.89476,-3.248957 c 1.04212,-1.786926 2.26368,-3.894001 2.71458,-4.682389 0.4509,-0.788388 0.92067,-1.426134 1.04394,-1.417213 0.32762,0.02371 11.18567,17.037594 11.18567,17.52724 0,0.13775 -0.49327,0.433179 -1.09616,0.656507 -0.60288,0.223328 -1.32381,0.54481 -1.60207,0.714404 -1.74643,1.064432 -13.23875,6.718785 -13.65575,6.718785 -0.43959,0 -0.50703,-1.104096 -0.4968,-8.134189 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4808",d:"m 323.70669,35.988033 c -1.40846,-0.786049 -2.90586,-1.683453 -3.32756,-1.994233 l -0.76671,-0.565053 1.61693,-2.133174 c 0.88932,-1.173245 2.46261,-3.111321 3.4962,-4.306835 l 1.87926,-2.173661 0.40684,2.848218 c 0.31153,2.180984 0.31639,3.658091 0.0208,6.305321 -0.21233,1.901407 -0.4713,3.455189 -0.57548,3.45285 -0.10418,-0.0023 -1.34179,-0.647385 -2.75025,-1.433433 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4810",d:"M 329.47167,7.215797 C 328.63691,6.960086 325.55041,6.1875836 322.6128,5.4991209 l -5.34113,-1.2517453 0.19898,-1.5395405 c 0.37698,-2.91694759 0.81648,-14.0371821 0.86731,-21.9448821 0.028,-4.359323 0.16821,-8.226207 0.31154,-8.593076 0.25963,-0.664526 0.26189,-0.664526 0.60055,0 0.18697,0.366869 1.45325,5.827394 2.81396,12.134499 l 2.47401,11.4674647 3.98458,5.6024463 c 2.19152,3.0813455 3.98458,5.7753562 3.98458,5.9866915 0,0.4945613 -1.12231,0.4408835 -3.03551,-0.1451815 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4812",d:"m 359.99464,32.723556 c -10.4913,-3.789902 -9.53254,-3.269097 -11.69503,-6.352779 -1.05307,-1.501668 -4.08102,-5.965241 -6.72878,-9.919054 -2.64775,-3.953809 -6.90017,-10.2571442 -9.44982,-14.0074065 l -4.63572,-6.818659 8.67023,-15.9476315 c 9.63763,-17.726998 8.31848,-15.757995 24.32886,-36.314132 3.81211,-4.89447 7.42585,-9.56156 8.03054,-10.37131 1.69111,-2.264595 2.0052,-2.012656 2.26425,1.816191 0.61242,9.051514 3.31599,40.043989 3.90575,44.773704 l 0.67291,5.396454 -0.93567,0.844046 c -0.51461,0.464223 -6.17191,4.5469877 -12.57176,9.0728115 -12.62785,8.9301025 -13.39906,9.5335542 -13.33284,10.4324888 0.0244,0.33086 3.23262,5.8288887 7.12944,12.2178417 6.93053,11.362837 10.07581,16.794162 9.85397,17.016014 -0.0608,0.06083 -2.53867,-0.766536 -5.50633,-1.838579 z"}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path",{transform:"scale(0.26458333)",id:"path4814",d:"m 326.30086,-8.444139 c -0.10092,-0.2782546 -1.33191,-5.818052 -2.73554,-12.310661 -1.40363,-6.492608 -2.84965,-12.906807 -3.21338,-14.253774 -0.36374,-1.346967 -0.66134,-2.721328 -0.66134,-3.054134 0,-0.629772 2.81541,-2.352124 7.08285,-4.332999 2.45689,-1.140449 7.06311,-3.983291 18.21303,-11.240615 16.27625,-10.593982 18.93103,-12.23661 19.25422,-11.913421 0.2047,0.204698 -1.35912,2.404013 -4.28898,6.031913 -2.53612,3.140362 -5.61278,6.987508 -6.837,8.549211 -10.19246,13.002157 -9.9046,12.597255 -12.82549,18.040141 -0.50709,0.944926 -2.33247,4.346608 -4.0564,7.559292 l -3.13441,5.841247 -0.97018,-0.929492 c -1.10995,-1.063399 -1.18845,-0.946616 -0.43116,0.641442 l 0.53902,1.130335 -2.3655,4.699158 c -2.72448,5.4123025 -3.29542,6.2987308 -3.56974,5.542357 z"})))));}}]);return Drawing;}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);/* harmony default export */ __webpack_exports__["a"] = (Drawing);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chroma_js__ = __webpack_require__(754);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_chroma_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_chroma_js__);
+var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var Drawing=function(_Component){_inherits(Drawing,_Component);function Drawing(){_classCallCheck(this,Drawing);return _possibleConstructorReturn(this,(Drawing.__proto__||Object.getPrototypeOf(Drawing)).apply(this,arguments));}_createClass(Drawing,[{key:'render',value:function render(){var polygonCount=47;var colorNum=0;var scale=__WEBPACK_IMPORTED_MODULE_1_chroma_js___default.a.scale(['#69D2E7','#A7DBD8','#E0E4CC','#F38630','#FA6900','#69D2E7','#A7DBD8']);return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h1',null,'Drawing'),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('svg',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('g',{transform:'scale(0.5) translate(-145,75)'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 273.54848,70.057402 267.90698,59.686091999999995 263.2618,51.085494 264.69228,36.13391 266.12275,21.182329 273.50797,-4.643463700000002 281.05909,-30.635158 288.87206000000003,-4.5654377 296.16256000000004,20.730439999999998 297.59243000000004,36.030692 299.02231000000006,51.330948 293.38322000000005,61.326570000000004 287.74412000000007,71.322196 285.75729000000007,71.490835 282.44819000000007,71.350902 279.22375000000005,71.43522200000001 275.93318000000005,71.82811400000001 273.54848000000004,70.05740200000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 298.63168,17.433224 297.73986,-2.0358499000000023 296.79207,-20.578545000000002 296.25108,-30.649626 313.95687,4.964349199999997 299.95446999999996,17.601862999999998 298.86015999999995,18.520622999999997'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 294.5873,6.3681895 282.85341000000005,-34.328037 289.19691000000006,-35.62295 293.27425000000005,-35.85622 293.49868000000004,-31.678293 294.22278000000006,-19.068407999999998 295.08369000000005,6.5166155 294.5873,6.368189500000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 305.74936,-17.568399 297.09295000000003,-35.623778 297.51455000000004,-36.269769000000004 316.60183000000006,-37.278491 314.49921000000006,-0.10481994000000583 305.7493600000001,-17.568399000000007'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 266.58738,7.0706661 267.07412,2.1801297 268.08094,-16.53882 268.97138,-34.378079 269.15452,-35.859338 272.41515,-35.633011 279.2172,-34.413082 266.7454,8.9256971 266.58738,7.0706661'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 257.60175,13.704449 249.89837999999997,7.0598395 247.78974999999997,5.1939817999999995 256.67357999999996,-12.119596000000001 265.65865999999994,-27.914717000000003 265.05522999999994,-12.782622000000003 264.14288999999997,9.684573499999996 263.56584,18.510665999999993 257.60175,13.704448999999993'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 247.50649,-1.7828911 245.35973,-33.740017 245.02991,-37.427011 265.46598,-36.216734 247.68104,-0.3494580700000043 247.50648999999999,-1.7828911000000043'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 229.3,7.8940773 232.90329,2.5700771 236.95372,-3.8908810000000003 242.31451,-24.899996 242.89187,-27.544890000000002 243.91389,-13.906942000000003 245.04227,1.885995999999997 245.2368,3.9528108999999967 243.59237,4.498465899999997 236.2645,6.232374199999997 229.94053,7.763432499999997 229.3,7.8940773'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 233.28877,-12.011816 225.14338,-27.163089 219.53254,-37.618718 208.2281,-51.953049 197.34287,-66.910867 212.942,-56.519651999999994 232.84142,-43.81350199999999 239.67131,-40.002962999999994 241.7793,-38.76687799999999 241.7793,-36.650769999999994 239.89519,-26.295614999999994 236.9172,-12.686371999999995 235.82331000000002,-7.316172199999995'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 197.50596,32.162315 204.75298999999998,20.561801 214.10685999999998,4.796964699999998 201.26639999999998,-4.565437700000002 187.47747999999999,-17.280724000000003 191.73465,-66.371699 192.1631,-68.47171800000001 213.98284999999998,-40.810083000000006 225.37951999999999,-21.640209000000006 233.96574999999999,-4.620430900000006 223.22554,12.860757999999993 212.60472,28.937838999999993 206.41914,31.214322999999993 199.67357,33.47939099999999 198.58553,33.92508999999999 196.95061,34.60357599999999 195.84373000000002,34.82495199999999'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 229.55487,36.865739 227.61742999999998,35.981395 228.31758,34.848526 227.31804,34.447961 226.04563,35.180265 220.84293,32.484283999999995 215.53784,29.257011999999996 226.55365999999998,12.130942999999995 230.78602999999998,19.450502999999994 231.98976,27.207905999999994 231.91386,37.756541 229.55483,36.865739'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 230.91259,14.743749000000001 228.96958,10.64544 230.71694,10.076822 237.16387,8.5759791 242.36221,7.5411544 241.67567,9.0086461 233.50315,18.519443000000003 230.91259,14.743749000000003'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 256.78818,26.566859 243.46569000000002,20.414653 237.29145000000003,19.953439000000003 236.00774,19.718605000000004 237.12281000000002,18.173726000000002 242.26408,12.032325000000002 246.29028,7.435803800000002 247.62179,8.180750400000003 251.69027,11.342501000000002 258.64321,17.427151000000002 262.85919,21.094997000000003 262.95359,23.273667000000003 262.78495000000004,28.179173000000002 262.52192,30.906009'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 239.41835,74.143435 228.48956,69.244659 205.55463,59.024827 183.59878,49.65751 189.96787,41.384896 206.13305,33.846119 213.21589,31.690877 223.12737,36.270972 232.63957000000002,41.921495 242.79921000000002,73.43018599999999 243.45622000000003,75.200897 242.53344000000004,75.185417 239.41835000000003,74.143435'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 214.23659,87.096577 203.81452000000002,75.187026 194.05217000000002,63.888200000000005 184.51008000000002,52.42271 204.53379,61.144194 233.08501,73.8721 241.76992,78.755408 233.31561000000002,86.681448 223.78750000000002,94.129968 214.23659000000004,87.09657700000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 253.4154,109.10975 237.31036,102.53534 224.93138,96.650929 227.77219,93.666888 230.82195,91.390259 231.60688,90.74517 245.16362999999998,80.098571 246.27701,82.888817 252.21492999999998,97.911732 257.23713,110.42138 253.41539999999998,109.10975'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 259.90793,109.51588 254.06547000000003,95.77960399999999 249.13377000000003,82.55175799999999 254.08996000000002,85.73808399999999 260.46584,90.49777199999998 263.36511,92.69994099999998 273.40928,93.29208999999999 280.06039000000004,91.45502899999998 284.27637000000004,92.22695899999998 292.12963,94.08132999999998 296.17697000000004,94.84751199999998 312.01752000000005,82.99109599999998 313.28231000000005,82.57519299999998 302.29215000000005,109.98686999999998 295.27179000000007,110.09917999999998 269.5905000000001,110.07257999999997 260.46972000000005,110.37324999999997 259.9079300000001,109.51584999999997'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 256.74908,85.226112 247.84828,77.568898 254.58948999999998,65.925742 258.61796999999996,59.269066 261.31721999999996,54.473244 262.28598999999997,55.061211 271.16868,70.479 272.5038,73.008588 271.5602,73.422129 268.84589,74.373577 267.07517,74.911484 267.07517,77.870783 267.74973,81.44054700000001 268.42429,82.50535300000001 270.49548999999996,84.48442700000001 274.51895999999994,87.81661900000002 276.47122999999993,89.62407700000001 272.18494999999996,90.84444500000001 266.89667999999995,92.04724700000001 256.74907999999994,85.22611200000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 244.98137,72.730653 243.28553,67.106216 235.37100999999998,40.970101 245.39213999999998,35.697927 260.08894999999995,52.399203 253.51886999999996,62.942774 246.18174999999997,73.457748 244.98136999999997,72.73065299999999'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 256.5036,44.255607 250.93768,37.931636999999995 248.88987,35.570688 254.18814,35.180589 260.69631,34.758990999999995 261.90621,34.72749099999999 261.78103999999996,40.039624999999994 260.66090999999994,48.218624999999996 256.50359999999995,44.255604999999996'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 234.22228,34.137255 234.55627,27.685791000000002 234.76420000000002,24.860069000000003 237.62185000000002,27.685791000000002 241.81680000000003,32.091409 243.15409000000002,33.671305 239.34687000000002,35.711211999999996 234.81793000000002,37.757059 234.22228,34.137254999999996'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 279.98638,88.177165 272.06392,82.670331 270.08109,80.834574 270.18019000000004,78.80525300000001 270.27929000000006,76.77593200000001 274.14679000000007,75.48249700000001 285.6742500000001,74.817851 289.8922400000001,76.04158000000001 292.1688700000001,77.64726000000002 289.58582000000007,83.31454100000002 282.22202000000004,88.65868600000002 279.98635,88.17716500000002'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 293.21425,91.844209 285.77723,89.10241500000001 286.60249999999996,88.557471 293.29256999999996,83.260018 295.54319999999996,76.180933 295.75469999999996,74.96865799999999 292.88239999999996,74.20987699999999 290.01009999999997,72.91368499999999 293.68359999999996,65.77822399999998 300.31814999999995,54.63003899999998 314.95435999999995,77.64484599999999 311.32861999999994,80.75677699999999 301.70512999999994,87.92394199999998 295.2968399999999,92.36697699999998 293.21424999999994,91.84420899999998'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 305.54004,108.88471 316.65416,81.50424 317.77616,80.202773 327.42635,88.163861 337.50872000000004,97.29405299999999 305.26099000000005,110.52544999999999 305.54004000000003,108.88471'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 339.25275,95.379189 320.36516,79.03935299999999 336.8918,70.368737 364.80158,58.057275 377.69780000000003,52.726181 375.2916,55.807390999999996 359.8738,73.514505 343.67105000000004,92.06481600000001 340.29027,95.83525700000001 339.25275000000005,95.37918900000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 319.35332,74.420738 323.71029,59.833448000000004 330.03463,41.132304000000005 345.26869999999997,33.066134000000005 348.75507,31.319188000000004 351.00243,32.066315 361.56723,35.909042 377.42115,45.839953 379.98479000000003,49.079465 372.81194000000005,52.098883 329.84176,70.94042999999999 319.80773000000005,75.200897 319.35332000000005,74.420738'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 312.8642,69.720124 306.76442,59.77482 302.15211999999997,51.349078 309.7498,43.156641 317.34748,35.570688000000004 322.22502000000003,38.100276 327.10664,40.998661 326.42260000000005,43.359609999999996 321.32604000000003,59.348814 316.00654000000003,74.52634 312.86420000000004,69.720124'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 301.02018,47.71755 300.80206,43.890743 300.43582,37.651424 300.20592999999997,34.537591 313.46837999999997,35.812971 307.41612,42.111478999999996 301.02018,47.717549999999996'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 299.67038,29.07808 299.45761000000005,24.768422 299.45361,21.723559 303.38446000000005,18.022855 315.72109000000006,7.1556955 326.43588000000005,19.565524 322.4728600000001,20.04661 315.8116100000001,20.5237 313.11338000000006,20.774879000000002 306.80600000000004,25.558876 300.18888000000004,30.342874000000002 299.67009,29.078080000000003'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 327.02796,16.771779 320.24277,7.791274999999999 327.15534,9.113365299999998 333.46766,10.558041999999999 331.7631,13.957849 329.46018000000004,18.120893 328.86181000000005,18.884128999999998'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 330.15937,29.628809 330.17117,21.494621000000002 332.06593000000004,18.245664 334.78051000000005,13.563275 335.82445000000007,12.146062 347.0101200000001,29.673302 345.9139600000001,30.329809 344.31189000000006,31.044213 330.65614000000005,37.762997999999996 330.15934000000004,29.628808999999997'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 323.70669,35.988033 320.37913,33.9938 319.61242,33.428747 321.22935,31.295573 324.72555,26.988738 326.60481,24.815077000000002 327.01165,27.663295 327.03245,33.968616000000004 326.45696999999996,37.421466 323.70671999999996,35.988033'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 329.47167,7.215797 322.6128,5.4991209 317.27167,4.2473756 317.47065,2.7078350999999996 318.33795999999995,-19.237047 318.64949999999993,-27.830123 319.25004999999993,-27.830123 322.06400999999994,-15.695624 324.53801999999996,-4.2281593 328.52259999999995,1.3742870000000007 332.50717999999995,7.360978500000001 329.47166999999996,7.215797000000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 359.99464,32.723556 348.29961000000003,26.370777000000004 341.57083,16.451723000000005 332.12101,2.4443165000000047 327.48529,-4.374342499999996 336.15552,-20.321973999999997 360.48438000000004,-56.636106 368.51492,-67.00741599999999 370.77917,-65.19122499999999 374.68492000000003,-20.417520999999986 375.35783000000004,-15.021066999999986 374.42216,-14.177020999999986 361.85040000000004,-5.104209499999985 348.51756000000006,5.328279300000014 355.64700000000005,17.546121000000014 365.50097000000005,34.56213500000001 359.99464000000006,32.72355600000001'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:scale(colorNum++/polygonCount),points:' 326.30086,-8.444139 323.56532,-20.7548 320.35194,-35.008573999999996 319.6906,-38.06270799999999 326.77345,-42.395706999999994 344.98648000000003,-53.63632199999999 364.2407,-65.54974299999999 359.95172,-59.51782999999999 353.11472000000003,-50.96861899999999 340.28923000000003,-32.92847799999999 336.23283000000004,-25.369185999999992 333.09842000000003,-19.527938999999993 332.12824,-20.457430999999993 331.69708,-19.81598899999999 332.2361,-18.685653999999992 329.8706,-13.986495999999992 326.30086,-8.444138999999993'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('g',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:'#E0E4CC',points:' 241.09229,28.001598 236.76308,23.193868000000002 247.24789,23.595351 259.22994,31.266904 259.55617,31.903291 252.31686000000002,32.290131 245.29583000000002,32.458697'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon',{fill:'#E0E4CC',points:' 304.23409,32.05861 302.43735999999996,31.860626 303.39089999999993,30.973724999999998 313.1235199999999,23.859557 318.3513299999999,23.277234 324.3925199999999,22.71784 325.55300999999986,22.530765 323.89462999999984,24.497469 319.55309999999986,29.415357999999998 316.8699399999999,32.366544 311.4503799999999,32.311574 304.23408999999987,32.058615'})))));}}]);return Drawing;}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);/* harmony default export */ __webpack_exports__["a"] = (Drawing);
 
 /***/ }),
 /* 754 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+/**
+ * @license
+ *
+ * chroma.js - JavaScript library for color conversions
+ * 
+ * Copyright (c) 2011-2017, Gregor Aisch
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 
+ * 3. The name Gregor Aisch may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL GREGOR AISCH OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+(function() {
+  var Color, DEG2RAD, LAB_CONSTANTS, PI, PITHIRD, RAD2DEG, TWOPI, _average_lrgb, _guess_formats, _guess_formats_sorted, _input, _interpolators, abs, atan2, bezier, blend, blend_f, brewer, burn, chroma, clip_rgb, cmyk2rgb, colors, cos, css2rgb, darken, dodge, each, floor, hcg2rgb, hex2rgb, hsi2rgb, hsl2css, hsl2rgb, hsv2rgb, interpolate, interpolate_hsx, interpolate_lab, interpolate_lrgb, interpolate_num, interpolate_rgb, lab2lch, lab2rgb, lab_xyz, lch2lab, lch2rgb, lighten, limit, log, luminance_x, m, max, multiply, normal, num2rgb, overlay, pow, rgb2cmyk, rgb2css, rgb2hcg, rgb2hex, rgb2hsi, rgb2hsl, rgb2hsv, rgb2lab, rgb2lch, rgb2luminance, rgb2num, rgb2temperature, rgb2xyz, rgb_xyz, rnd, root, round, screen, sin, sqrt, temperature2rgb, type, unpack, w3cx11, xyz_lab, xyz_rgb,
+    slice = [].slice;
+
+  type = (function() {
+
+    /*
+    for browser-safe type checking+
+    ported from jQuery's $.type
+     */
+    var classToType, len, name, o, ref;
+    classToType = {};
+    ref = "Boolean Number String Function Array Date RegExp Undefined Null".split(" ");
+    for (o = 0, len = ref.length; o < len; o++) {
+      name = ref[o];
+      classToType["[object " + name + "]"] = name.toLowerCase();
+    }
+    return function(obj) {
+      var strType;
+      strType = Object.prototype.toString.call(obj);
+      return classToType[strType] || "object";
+    };
+  })();
+
+  limit = function(x, min, max) {
+    if (min == null) {
+      min = 0;
+    }
+    if (max == null) {
+      max = 1;
+    }
+    if (x < min) {
+      x = min;
+    }
+    if (x > max) {
+      x = max;
+    }
+    return x;
+  };
+
+  unpack = function(args) {
+    if (args.length >= 3) {
+      return [].slice.call(args);
+    } else {
+      return args[0];
+    }
+  };
+
+  clip_rgb = function(rgb) {
+    var i, o;
+    rgb._clipped = false;
+    rgb._unclipped = rgb.slice(0);
+    for (i = o = 0; o < 3; i = ++o) {
+      if (i < 3) {
+        if (rgb[i] < 0 || rgb[i] > 255) {
+          rgb._clipped = true;
+        }
+        if (rgb[i] < 0) {
+          rgb[i] = 0;
+        }
+        if (rgb[i] > 255) {
+          rgb[i] = 255;
+        }
+      } else if (i === 3) {
+        if (rgb[i] < 0) {
+          rgb[i] = 0;
+        }
+        if (rgb[i] > 1) {
+          rgb[i] = 1;
+        }
+      }
+    }
+    if (!rgb._clipped) {
+      delete rgb._unclipped;
+    }
+    return rgb;
+  };
+
+  PI = Math.PI, round = Math.round, cos = Math.cos, floor = Math.floor, pow = Math.pow, log = Math.log, sin = Math.sin, sqrt = Math.sqrt, atan2 = Math.atan2, max = Math.max, abs = Math.abs;
+
+  TWOPI = PI * 2;
+
+  PITHIRD = PI / 3;
+
+  DEG2RAD = PI / 180;
+
+  RAD2DEG = 180 / PI;
+
+  chroma = function() {
+    if (arguments[0] instanceof Color) {
+      return arguments[0];
+    }
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, arguments, function(){});
+  };
+
+  chroma["default"] = chroma;
+
+  _interpolators = [];
+
+  if ((typeof module !== "undefined" && module !== null) && (module.exports != null)) {
+    module.exports = chroma;
+  }
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+      return chroma;
+    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {
+    root = typeof exports !== "undefined" && exports !== null ? exports : this;
+    root.chroma = chroma;
+  }
+
+  chroma.version = '1.3.5';
+
+  _input = {};
+
+  _guess_formats = [];
+
+  _guess_formats_sorted = false;
+
+  Color = (function() {
+    function Color() {
+      var arg, args, chk, len, len1, me, mode, o, w;
+      me = this;
+      args = [];
+      for (o = 0, len = arguments.length; o < len; o++) {
+        arg = arguments[o];
+        if (arg != null) {
+          args.push(arg);
+        }
+      }
+      if (args.length > 1) {
+        mode = args[args.length - 1];
+      }
+      if (_input[mode] != null) {
+        me._rgb = clip_rgb(_input[mode](unpack(args.slice(0, -1))));
+      } else {
+        if (!_guess_formats_sorted) {
+          _guess_formats = _guess_formats.sort(function(a, b) {
+            return b.p - a.p;
+          });
+          _guess_formats_sorted = true;
+        }
+        for (w = 0, len1 = _guess_formats.length; w < len1; w++) {
+          chk = _guess_formats[w];
+          mode = chk.test.apply(chk, args);
+          if (mode) {
+            break;
+          }
+        }
+        if (mode) {
+          me._rgb = clip_rgb(_input[mode].apply(_input, args));
+        }
+      }
+      if (me._rgb == null) {
+        console.warn('unknown format: ' + args);
+      }
+      if (me._rgb == null) {
+        me._rgb = [0, 0, 0];
+      }
+      if (me._rgb.length === 3) {
+        me._rgb.push(1);
+      }
+    }
+
+    Color.prototype.toString = function() {
+      return this.hex();
+    };
+
+    Color.prototype.clone = function() {
+      return chroma(me._rgb);
+    };
+
+    return Color;
+
+  })();
+
+  chroma._input = _input;
+
+
+  /**
+  	ColorBrewer colors for chroma.js
+  
+  	Copyright (c) 2002 Cynthia Brewer, Mark Harrower, and The 
+  	Pennsylvania State University.
+  
+  	Licensed under the Apache License, Version 2.0 (the "License"); 
+  	you may not use this file except in compliance with the License.
+  	You may obtain a copy of the License at	
+  	http://www.apache.org/licenses/LICENSE-2.0
+  
+  	Unless required by applicable law or agreed to in writing, software distributed
+  	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+  	CONDITIONS OF ANY KIND, either express or implied. See the License for the
+  	specific language governing permissions and limitations under the License.
+  
+      @preserve
+   */
+
+  chroma.brewer = brewer = {
+    OrRd: ['#fff7ec', '#fee8c8', '#fdd49e', '#fdbb84', '#fc8d59', '#ef6548', '#d7301f', '#b30000', '#7f0000'],
+    PuBu: ['#fff7fb', '#ece7f2', '#d0d1e6', '#a6bddb', '#74a9cf', '#3690c0', '#0570b0', '#045a8d', '#023858'],
+    BuPu: ['#f7fcfd', '#e0ecf4', '#bfd3e6', '#9ebcda', '#8c96c6', '#8c6bb1', '#88419d', '#810f7c', '#4d004b'],
+    Oranges: ['#fff5eb', '#fee6ce', '#fdd0a2', '#fdae6b', '#fd8d3c', '#f16913', '#d94801', '#a63603', '#7f2704'],
+    BuGn: ['#f7fcfd', '#e5f5f9', '#ccece6', '#99d8c9', '#66c2a4', '#41ae76', '#238b45', '#006d2c', '#00441b'],
+    YlOrBr: ['#ffffe5', '#fff7bc', '#fee391', '#fec44f', '#fe9929', '#ec7014', '#cc4c02', '#993404', '#662506'],
+    YlGn: ['#ffffe5', '#f7fcb9', '#d9f0a3', '#addd8e', '#78c679', '#41ab5d', '#238443', '#006837', '#004529'],
+    Reds: ['#fff5f0', '#fee0d2', '#fcbba1', '#fc9272', '#fb6a4a', '#ef3b2c', '#cb181d', '#a50f15', '#67000d'],
+    RdPu: ['#fff7f3', '#fde0dd', '#fcc5c0', '#fa9fb5', '#f768a1', '#dd3497', '#ae017e', '#7a0177', '#49006a'],
+    Greens: ['#f7fcf5', '#e5f5e0', '#c7e9c0', '#a1d99b', '#74c476', '#41ab5d', '#238b45', '#006d2c', '#00441b'],
+    YlGnBu: ['#ffffd9', '#edf8b1', '#c7e9b4', '#7fcdbb', '#41b6c4', '#1d91c0', '#225ea8', '#253494', '#081d58'],
+    Purples: ['#fcfbfd', '#efedf5', '#dadaeb', '#bcbddc', '#9e9ac8', '#807dba', '#6a51a3', '#54278f', '#3f007d'],
+    GnBu: ['#f7fcf0', '#e0f3db', '#ccebc5', '#a8ddb5', '#7bccc4', '#4eb3d3', '#2b8cbe', '#0868ac', '#084081'],
+    Greys: ['#ffffff', '#f0f0f0', '#d9d9d9', '#bdbdbd', '#969696', '#737373', '#525252', '#252525', '#000000'],
+    YlOrRd: ['#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#fc4e2a', '#e31a1c', '#bd0026', '#800026'],
+    PuRd: ['#f7f4f9', '#e7e1ef', '#d4b9da', '#c994c7', '#df65b0', '#e7298a', '#ce1256', '#980043', '#67001f'],
+    Blues: ['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'],
+    PuBuGn: ['#fff7fb', '#ece2f0', '#d0d1e6', '#a6bddb', '#67a9cf', '#3690c0', '#02818a', '#016c59', '#014636'],
+    Viridis: ['#440154', '#482777', '#3f4a8a', '#31678e', '#26838f', '#1f9d8a', '#6cce5a', '#b6de2b', '#fee825'],
+    Spectral: ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b', '#ffffbf', '#e6f598', '#abdda4', '#66c2a5', '#3288bd', '#5e4fa2'],
+    RdYlGn: ['#a50026', '#d73027', '#f46d43', '#fdae61', '#fee08b', '#ffffbf', '#d9ef8b', '#a6d96a', '#66bd63', '#1a9850', '#006837'],
+    RdBu: ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#f7f7f7', '#d1e5f0', '#92c5de', '#4393c3', '#2166ac', '#053061'],
+    PiYG: ['#8e0152', '#c51b7d', '#de77ae', '#f1b6da', '#fde0ef', '#f7f7f7', '#e6f5d0', '#b8e186', '#7fbc41', '#4d9221', '#276419'],
+    PRGn: ['#40004b', '#762a83', '#9970ab', '#c2a5cf', '#e7d4e8', '#f7f7f7', '#d9f0d3', '#a6dba0', '#5aae61', '#1b7837', '#00441b'],
+    RdYlBu: ['#a50026', '#d73027', '#f46d43', '#fdae61', '#fee090', '#ffffbf', '#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695'],
+    BrBG: ['#543005', '#8c510a', '#bf812d', '#dfc27d', '#f6e8c3', '#f5f5f5', '#c7eae5', '#80cdc1', '#35978f', '#01665e', '#003c30'],
+    RdGy: ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#ffffff', '#e0e0e0', '#bababa', '#878787', '#4d4d4d', '#1a1a1a'],
+    PuOr: ['#7f3b08', '#b35806', '#e08214', '#fdb863', '#fee0b6', '#f7f7f7', '#d8daeb', '#b2abd2', '#8073ac', '#542788', '#2d004b'],
+    Set2: ['#66c2a5', '#fc8d62', '#8da0cb', '#e78ac3', '#a6d854', '#ffd92f', '#e5c494', '#b3b3b3'],
+    Accent: ['#7fc97f', '#beaed4', '#fdc086', '#ffff99', '#386cb0', '#f0027f', '#bf5b17', '#666666'],
+    Set1: ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628', '#f781bf', '#999999'],
+    Set3: ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd', '#ccebc5', '#ffed6f'],
+    Dark2: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666'],
+    Paired: ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c', '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a', '#ffff99', '#b15928'],
+    Pastel2: ['#b3e2cd', '#fdcdac', '#cbd5e8', '#f4cae4', '#e6f5c9', '#fff2ae', '#f1e2cc', '#cccccc'],
+    Pastel1: ['#fbb4ae', '#b3cde3', '#ccebc5', '#decbe4', '#fed9a6', '#ffffcc', '#e5d8bd', '#fddaec', '#f2f2f2']
+  };
+
+  (function() {
+    var key, results;
+    results = [];
+    for (key in brewer) {
+      results.push(brewer[key.toLowerCase()] = brewer[key]);
+    }
+    return results;
+  })();
+
+
+  /**
+  	X11 color names
+  
+  	http://www.w3.org/TR/css3-color/#svg-color
+   */
+
+  w3cx11 = {
+    aliceblue: '#f0f8ff',
+    antiquewhite: '#faebd7',
+    aqua: '#00ffff',
+    aquamarine: '#7fffd4',
+    azure: '#f0ffff',
+    beige: '#f5f5dc',
+    bisque: '#ffe4c4',
+    black: '#000000',
+    blanchedalmond: '#ffebcd',
+    blue: '#0000ff',
+    blueviolet: '#8a2be2',
+    brown: '#a52a2a',
+    burlywood: '#deb887',
+    cadetblue: '#5f9ea0',
+    chartreuse: '#7fff00',
+    chocolate: '#d2691e',
+    coral: '#ff7f50',
+    cornflower: '#6495ed',
+    cornflowerblue: '#6495ed',
+    cornsilk: '#fff8dc',
+    crimson: '#dc143c',
+    cyan: '#00ffff',
+    darkblue: '#00008b',
+    darkcyan: '#008b8b',
+    darkgoldenrod: '#b8860b',
+    darkgray: '#a9a9a9',
+    darkgreen: '#006400',
+    darkgrey: '#a9a9a9',
+    darkkhaki: '#bdb76b',
+    darkmagenta: '#8b008b',
+    darkolivegreen: '#556b2f',
+    darkorange: '#ff8c00',
+    darkorchid: '#9932cc',
+    darkred: '#8b0000',
+    darksalmon: '#e9967a',
+    darkseagreen: '#8fbc8f',
+    darkslateblue: '#483d8b',
+    darkslategray: '#2f4f4f',
+    darkslategrey: '#2f4f4f',
+    darkturquoise: '#00ced1',
+    darkviolet: '#9400d3',
+    deeppink: '#ff1493',
+    deepskyblue: '#00bfff',
+    dimgray: '#696969',
+    dimgrey: '#696969',
+    dodgerblue: '#1e90ff',
+    firebrick: '#b22222',
+    floralwhite: '#fffaf0',
+    forestgreen: '#228b22',
+    fuchsia: '#ff00ff',
+    gainsboro: '#dcdcdc',
+    ghostwhite: '#f8f8ff',
+    gold: '#ffd700',
+    goldenrod: '#daa520',
+    gray: '#808080',
+    green: '#008000',
+    greenyellow: '#adff2f',
+    grey: '#808080',
+    honeydew: '#f0fff0',
+    hotpink: '#ff69b4',
+    indianred: '#cd5c5c',
+    indigo: '#4b0082',
+    ivory: '#fffff0',
+    khaki: '#f0e68c',
+    laserlemon: '#ffff54',
+    lavender: '#e6e6fa',
+    lavenderblush: '#fff0f5',
+    lawngreen: '#7cfc00',
+    lemonchiffon: '#fffacd',
+    lightblue: '#add8e6',
+    lightcoral: '#f08080',
+    lightcyan: '#e0ffff',
+    lightgoldenrod: '#fafad2',
+    lightgoldenrodyellow: '#fafad2',
+    lightgray: '#d3d3d3',
+    lightgreen: '#90ee90',
+    lightgrey: '#d3d3d3',
+    lightpink: '#ffb6c1',
+    lightsalmon: '#ffa07a',
+    lightseagreen: '#20b2aa',
+    lightskyblue: '#87cefa',
+    lightslategray: '#778899',
+    lightslategrey: '#778899',
+    lightsteelblue: '#b0c4de',
+    lightyellow: '#ffffe0',
+    lime: '#00ff00',
+    limegreen: '#32cd32',
+    linen: '#faf0e6',
+    magenta: '#ff00ff',
+    maroon: '#800000',
+    maroon2: '#7f0000',
+    maroon3: '#b03060',
+    mediumaquamarine: '#66cdaa',
+    mediumblue: '#0000cd',
+    mediumorchid: '#ba55d3',
+    mediumpurple: '#9370db',
+    mediumseagreen: '#3cb371',
+    mediumslateblue: '#7b68ee',
+    mediumspringgreen: '#00fa9a',
+    mediumturquoise: '#48d1cc',
+    mediumvioletred: '#c71585',
+    midnightblue: '#191970',
+    mintcream: '#f5fffa',
+    mistyrose: '#ffe4e1',
+    moccasin: '#ffe4b5',
+    navajowhite: '#ffdead',
+    navy: '#000080',
+    oldlace: '#fdf5e6',
+    olive: '#808000',
+    olivedrab: '#6b8e23',
+    orange: '#ffa500',
+    orangered: '#ff4500',
+    orchid: '#da70d6',
+    palegoldenrod: '#eee8aa',
+    palegreen: '#98fb98',
+    paleturquoise: '#afeeee',
+    palevioletred: '#db7093',
+    papayawhip: '#ffefd5',
+    peachpuff: '#ffdab9',
+    peru: '#cd853f',
+    pink: '#ffc0cb',
+    plum: '#dda0dd',
+    powderblue: '#b0e0e6',
+    purple: '#800080',
+    purple2: '#7f007f',
+    purple3: '#a020f0',
+    rebeccapurple: '#663399',
+    red: '#ff0000',
+    rosybrown: '#bc8f8f',
+    royalblue: '#4169e1',
+    saddlebrown: '#8b4513',
+    salmon: '#fa8072',
+    sandybrown: '#f4a460',
+    seagreen: '#2e8b57',
+    seashell: '#fff5ee',
+    sienna: '#a0522d',
+    silver: '#c0c0c0',
+    skyblue: '#87ceeb',
+    slateblue: '#6a5acd',
+    slategray: '#708090',
+    slategrey: '#708090',
+    snow: '#fffafa',
+    springgreen: '#00ff7f',
+    steelblue: '#4682b4',
+    tan: '#d2b48c',
+    teal: '#008080',
+    thistle: '#d8bfd8',
+    tomato: '#ff6347',
+    turquoise: '#40e0d0',
+    violet: '#ee82ee',
+    wheat: '#f5deb3',
+    white: '#ffffff',
+    whitesmoke: '#f5f5f5',
+    yellow: '#ffff00',
+    yellowgreen: '#9acd32'
+  };
+
+  chroma.colors = colors = w3cx11;
+
+  lab2rgb = function() {
+    var a, args, b, g, l, r, x, y, z;
+    args = unpack(arguments);
+    l = args[0], a = args[1], b = args[2];
+    y = (l + 16) / 116;
+    x = isNaN(a) ? y : y + a / 500;
+    z = isNaN(b) ? y : y - b / 200;
+    y = LAB_CONSTANTS.Yn * lab_xyz(y);
+    x = LAB_CONSTANTS.Xn * lab_xyz(x);
+    z = LAB_CONSTANTS.Zn * lab_xyz(z);
+    r = xyz_rgb(3.2404542 * x - 1.5371385 * y - 0.4985314 * z);
+    g = xyz_rgb(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z);
+    b = xyz_rgb(0.0556434 * x - 0.2040259 * y + 1.0572252 * z);
+    return [r, g, b, args.length > 3 ? args[3] : 1];
+  };
+
+  xyz_rgb = function(r) {
+    return 255 * (r <= 0.00304 ? 12.92 * r : 1.055 * pow(r, 1 / 2.4) - 0.055);
+  };
+
+  lab_xyz = function(t) {
+    if (t > LAB_CONSTANTS.t1) {
+      return t * t * t;
+    } else {
+      return LAB_CONSTANTS.t2 * (t - LAB_CONSTANTS.t0);
+    }
+  };
+
+  LAB_CONSTANTS = {
+    Kn: 18,
+    Xn: 0.950470,
+    Yn: 1,
+    Zn: 1.088830,
+    t0: 0.137931034,
+    t1: 0.206896552,
+    t2: 0.12841855,
+    t3: 0.008856452
+  };
+
+  rgb2lab = function() {
+    var b, g, r, ref, ref1, x, y, z;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    ref1 = rgb2xyz(r, g, b), x = ref1[0], y = ref1[1], z = ref1[2];
+    return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
+  };
+
+  rgb_xyz = function(r) {
+    if ((r /= 255) <= 0.04045) {
+      return r / 12.92;
+    } else {
+      return pow((r + 0.055) / 1.055, 2.4);
+    }
+  };
+
+  xyz_lab = function(t) {
+    if (t > LAB_CONSTANTS.t3) {
+      return pow(t, 1 / 3);
+    } else {
+      return t / LAB_CONSTANTS.t2 + LAB_CONSTANTS.t0;
+    }
+  };
+
+  rgb2xyz = function() {
+    var b, g, r, ref, x, y, z;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    r = rgb_xyz(r);
+    g = rgb_xyz(g);
+    b = rgb_xyz(b);
+    x = xyz_lab((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / LAB_CONSTANTS.Xn);
+    y = xyz_lab((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / LAB_CONSTANTS.Yn);
+    z = xyz_lab((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / LAB_CONSTANTS.Zn);
+    return [x, y, z];
+  };
+
+  chroma.lab = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['lab']), function(){});
+  };
+
+  _input.lab = lab2rgb;
+
+  Color.prototype.lab = function() {
+    return rgb2lab(this._rgb);
+  };
+
+  bezier = function(colors) {
+    var I, I0, I1, c, lab0, lab1, lab2, lab3, ref, ref1, ref2;
+    colors = (function() {
+      var len, o, results;
+      results = [];
+      for (o = 0, len = colors.length; o < len; o++) {
+        c = colors[o];
+        results.push(chroma(c));
+      }
+      return results;
+    })();
+    if (colors.length === 2) {
+      ref = (function() {
+        var len, o, results;
+        results = [];
+        for (o = 0, len = colors.length; o < len; o++) {
+          c = colors[o];
+          results.push(c.lab());
+        }
+        return results;
+      })(), lab0 = ref[0], lab1 = ref[1];
+      I = function(t) {
+        var i, lab;
+        lab = (function() {
+          var o, results;
+          results = [];
+          for (i = o = 0; o <= 2; i = ++o) {
+            results.push(lab0[i] + t * (lab1[i] - lab0[i]));
+          }
+          return results;
+        })();
+        return chroma.lab.apply(chroma, lab);
+      };
+    } else if (colors.length === 3) {
+      ref1 = (function() {
+        var len, o, results;
+        results = [];
+        for (o = 0, len = colors.length; o < len; o++) {
+          c = colors[o];
+          results.push(c.lab());
+        }
+        return results;
+      })(), lab0 = ref1[0], lab1 = ref1[1], lab2 = ref1[2];
+      I = function(t) {
+        var i, lab;
+        lab = (function() {
+          var o, results;
+          results = [];
+          for (i = o = 0; o <= 2; i = ++o) {
+            results.push((1 - t) * (1 - t) * lab0[i] + 2 * (1 - t) * t * lab1[i] + t * t * lab2[i]);
+          }
+          return results;
+        })();
+        return chroma.lab.apply(chroma, lab);
+      };
+    } else if (colors.length === 4) {
+      ref2 = (function() {
+        var len, o, results;
+        results = [];
+        for (o = 0, len = colors.length; o < len; o++) {
+          c = colors[o];
+          results.push(c.lab());
+        }
+        return results;
+      })(), lab0 = ref2[0], lab1 = ref2[1], lab2 = ref2[2], lab3 = ref2[3];
+      I = function(t) {
+        var i, lab;
+        lab = (function() {
+          var o, results;
+          results = [];
+          for (i = o = 0; o <= 2; i = ++o) {
+            results.push((1 - t) * (1 - t) * (1 - t) * lab0[i] + 3 * (1 - t) * (1 - t) * t * lab1[i] + 3 * (1 - t) * t * t * lab2[i] + t * t * t * lab3[i]);
+          }
+          return results;
+        })();
+        return chroma.lab.apply(chroma, lab);
+      };
+    } else if (colors.length === 5) {
+      I0 = bezier(colors.slice(0, 3));
+      I1 = bezier(colors.slice(2, 5));
+      I = function(t) {
+        if (t < 0.5) {
+          return I0(t * 2);
+        } else {
+          return I1((t - 0.5) * 2);
+        }
+      };
+    }
+    return I;
+  };
+
+  chroma.bezier = function(colors) {
+    var f;
+    f = bezier(colors);
+    f.scale = function() {
+      return chroma.scale(f);
+    };
+    return f;
+  };
+
+
+  /*
+      chroma.js
+  
+      Copyright (c) 2011-2013, Gregor Aisch
+      All rights reserved.
+  
+      Redistribution and use in source and binary forms, with or without
+      modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this
+        list of conditions and the following disclaimer.
+  
+      * Redistributions in binary form must reproduce the above copyright notice,
+        this list of conditions and the following disclaimer in the documentation
+        and/or other materials provided with the distribution.
+  
+      * The name Gregor Aisch may not be used to endorse or promote products
+        derived from this software without specific prior written permission.
+  
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+      AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+      IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+      DISCLAIMED. IN NO EVENT SHALL GREGOR AISCH OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+      INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+      BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+      DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+      OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+      EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  
+      @source: https://github.com/gka/chroma.js
+   */
+
+  chroma.cubehelix = function(start, rotations, hue, gamma, lightness) {
+    var dh, dl, f;
+    if (start == null) {
+      start = 300;
+    }
+    if (rotations == null) {
+      rotations = -1.5;
+    }
+    if (hue == null) {
+      hue = 1;
+    }
+    if (gamma == null) {
+      gamma = 1;
+    }
+    if (lightness == null) {
+      lightness = [0, 1];
+    }
+    dh = 0;
+    if (type(lightness) === 'array') {
+      dl = lightness[1] - lightness[0];
+    } else {
+      dl = 0;
+      lightness = [lightness, lightness];
+    }
+    f = function(fract) {
+      var a, amp, b, cos_a, g, h, l, r, sin_a;
+      a = TWOPI * ((start + 120) / 360 + rotations * fract);
+      l = pow(lightness[0] + dl * fract, gamma);
+      h = dh !== 0 ? hue[0] + fract * dh : hue;
+      amp = h * l * (1 - l) / 2;
+      cos_a = cos(a);
+      sin_a = sin(a);
+      r = l + amp * (-0.14861 * cos_a + 1.78277 * sin_a);
+      g = l + amp * (-0.29227 * cos_a - 0.90649 * sin_a);
+      b = l + amp * (+1.97294 * cos_a);
+      return chroma(clip_rgb([r * 255, g * 255, b * 255]));
+    };
+    f.start = function(s) {
+      if (s == null) {
+        return start;
+      }
+      start = s;
+      return f;
+    };
+    f.rotations = function(r) {
+      if (r == null) {
+        return rotations;
+      }
+      rotations = r;
+      return f;
+    };
+    f.gamma = function(g) {
+      if (g == null) {
+        return gamma;
+      }
+      gamma = g;
+      return f;
+    };
+    f.hue = function(h) {
+      if (h == null) {
+        return hue;
+      }
+      hue = h;
+      if (type(hue) === 'array') {
+        dh = hue[1] - hue[0];
+        if (dh === 0) {
+          hue = hue[1];
+        }
+      } else {
+        dh = 0;
+      }
+      return f;
+    };
+    f.lightness = function(h) {
+      if (h == null) {
+        return lightness;
+      }
+      if (type(h) === 'array') {
+        lightness = h;
+        dl = h[1] - h[0];
+      } else {
+        lightness = [h, h];
+        dl = 0;
+      }
+      return f;
+    };
+    f.scale = function() {
+      return chroma.scale(f);
+    };
+    f.hue(hue);
+    return f;
+  };
+
+  chroma.random = function() {
+    var code, digits, i, o;
+    digits = '0123456789abcdef';
+    code = '#';
+    for (i = o = 0; o < 6; i = ++o) {
+      code += digits.charAt(floor(Math.random() * 16));
+    }
+    return new Color(code);
+  };
+
+  _interpolators = [];
+
+  interpolate = function(col1, col2, f, m) {
+    var interpol, len, o, res;
+    if (f == null) {
+      f = 0.5;
+    }
+    if (m == null) {
+      m = 'rgb';
+    }
+
+    /*
+    interpolates between colors
+    f = 0 --> me
+    f = 1 --> col
+     */
+    if (type(col1) !== 'object') {
+      col1 = chroma(col1);
+    }
+    if (type(col2) !== 'object') {
+      col2 = chroma(col2);
+    }
+    for (o = 0, len = _interpolators.length; o < len; o++) {
+      interpol = _interpolators[o];
+      if (m === interpol[0]) {
+        res = interpol[1](col1, col2, f, m);
+        break;
+      }
+    }
+    if (res == null) {
+      throw "color mode " + m + " is not supported";
+    }
+    return res.alpha(col1.alpha() + f * (col2.alpha() - col1.alpha()));
+  };
+
+  chroma.interpolate = interpolate;
+
+  Color.prototype.interpolate = function(col2, f, m) {
+    return interpolate(this, col2, f, m);
+  };
+
+  chroma.mix = interpolate;
+
+  Color.prototype.mix = Color.prototype.interpolate;
+
+  _input.rgb = function() {
+    var k, ref, results, v;
+    ref = unpack(arguments);
+    results = [];
+    for (k in ref) {
+      v = ref[k];
+      results.push(v);
+    }
+    return results;
+  };
+
+  chroma.rgb = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['rgb']), function(){});
+  };
+
+  Color.prototype.rgb = function(round) {
+    if (round == null) {
+      round = true;
+    }
+    if (round) {
+      return this._rgb.map(Math.round).slice(0, 3);
+    } else {
+      return this._rgb.slice(0, 3);
+    }
+  };
+
+  Color.prototype.rgba = function(round) {
+    if (round == null) {
+      round = true;
+    }
+    if (!round) {
+      return this._rgb.slice(0);
+    }
+    return [Math.round(this._rgb[0]), Math.round(this._rgb[1]), Math.round(this._rgb[2]), this._rgb[3]];
+  };
+
+  _guess_formats.push({
+    p: 3,
+    test: function(n) {
+      var a;
+      a = unpack(arguments);
+      if (type(a) === 'array' && a.length === 3) {
+        return 'rgb';
+      }
+      if (a.length === 4 && type(a[3]) === "number" && a[3] >= 0 && a[3] <= 1) {
+        return 'rgb';
+      }
+    }
+  });
+
+  _input.lrgb = _input.rgb;
+
+  interpolate_lrgb = function(col1, col2, f, m) {
+    var xyz0, xyz1;
+    xyz0 = col1._rgb;
+    xyz1 = col2._rgb;
+    return new Color(sqrt(pow(xyz0[0], 2) * (1 - f) + pow(xyz1[0], 2) * f), sqrt(pow(xyz0[1], 2) * (1 - f) + pow(xyz1[1], 2) * f), sqrt(pow(xyz0[2], 2) * (1 - f) + pow(xyz1[2], 2) * f), m);
+  };
+
+  _average_lrgb = function(colors) {
+    var col, f, len, o, rgb, xyz;
+    f = 1 / colors.length;
+    xyz = [0, 0, 0, 0];
+    for (o = 0, len = colors.length; o < len; o++) {
+      col = colors[o];
+      rgb = col._rgb;
+      xyz[0] += pow(rgb[0], 2) * f;
+      xyz[1] += pow(rgb[1], 2) * f;
+      xyz[2] += pow(rgb[2], 2) * f;
+      xyz[3] += rgb[3] * f;
+    }
+    xyz[0] = sqrt(xyz[0]);
+    xyz[1] = sqrt(xyz[1]);
+    xyz[2] = sqrt(xyz[2]);
+    return new Color(xyz);
+  };
+
+  _interpolators.push(['lrgb', interpolate_lrgb]);
+
+  chroma.average = function(colors, mode) {
+    var A, alpha, c, cnt, dx, dy, first, i, l, len, o, xyz, xyz2;
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    l = colors.length;
+    colors = colors.map(function(c) {
+      return chroma(c);
+    });
+    first = colors.splice(0, 1)[0];
+    if (mode === 'lrgb') {
+      return _average_lrgb(colors);
+    }
+    xyz = first.get(mode);
+    cnt = [];
+    dx = 0;
+    dy = 0;
+    for (i in xyz) {
+      xyz[i] = xyz[i] || 0;
+      cnt.push(!isNaN(xyz[i]) ? 1 : 0);
+      if (mode.charAt(i) === 'h' && !isNaN(xyz[i])) {
+        A = xyz[i] / 180 * PI;
+        dx += cos(A);
+        dy += sin(A);
+      }
+    }
+    alpha = first.alpha();
+    for (o = 0, len = colors.length; o < len; o++) {
+      c = colors[o];
+      xyz2 = c.get(mode);
+      alpha += c.alpha();
+      for (i in xyz) {
+        if (!isNaN(xyz2[i])) {
+          xyz[i] += xyz2[i];
+          cnt[i] += 1;
+          if (mode.charAt(i) === 'h') {
+            A = xyz[i] / 180 * PI;
+            dx += cos(A);
+            dy += sin(A);
+          }
+        }
+      }
+    }
+    for (i in xyz) {
+      xyz[i] = xyz[i] / cnt[i];
+      if (mode.charAt(i) === 'h') {
+        A = atan2(dy / cnt[i], dx / cnt[i]) / PI * 180;
+        while (A < 0) {
+          A += 360;
+        }
+        while (A >= 360) {
+          A -= 360;
+        }
+        xyz[i] = A;
+      }
+    }
+    return chroma(xyz, mode).alpha(alpha / l);
+  };
+
+  hex2rgb = function(hex) {
+    var a, b, g, r, rgb, u;
+    if (hex.match(/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/)) {
+      if (hex.length === 4 || hex.length === 7) {
+        hex = hex.substr(1);
+      }
+      if (hex.length === 3) {
+        hex = hex.split("");
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+      }
+      u = parseInt(hex, 16);
+      r = u >> 16;
+      g = u >> 8 & 0xFF;
+      b = u & 0xFF;
+      return [r, g, b, 1];
+    }
+    if (hex.match(/^#?([A-Fa-f0-9]{8})$/)) {
+      if (hex.length === 9) {
+        hex = hex.substr(1);
+      }
+      u = parseInt(hex, 16);
+      r = u >> 24 & 0xFF;
+      g = u >> 16 & 0xFF;
+      b = u >> 8 & 0xFF;
+      a = round((u & 0xFF) / 0xFF * 100) / 100;
+      return [r, g, b, a];
+    }
+    if ((_input.css != null) && (rgb = _input.css(hex))) {
+      return rgb;
+    }
+    throw "unknown color: " + hex;
+  };
+
+  rgb2hex = function(channels, mode) {
+    var a, b, g, hxa, r, str, u;
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    r = channels[0], g = channels[1], b = channels[2], a = channels[3];
+    r = Math.round(r);
+    g = Math.round(g);
+    b = Math.round(b);
+    u = r << 16 | g << 8 | b;
+    str = "000000" + u.toString(16);
+    str = str.substr(str.length - 6);
+    hxa = '0' + round(a * 255).toString(16);
+    hxa = hxa.substr(hxa.length - 2);
+    return "#" + (function() {
+      switch (mode.toLowerCase()) {
+        case 'rgba':
+          return str + hxa;
+        case 'argb':
+          return hxa + str;
+        default:
+          return str;
+      }
+    })();
+  };
+
+  _input.hex = function(h) {
+    return hex2rgb(h);
+  };
+
+  chroma.hex = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['hex']), function(){});
+  };
+
+  Color.prototype.hex = function(mode) {
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    return rgb2hex(this._rgb, mode);
+  };
+
+  _guess_formats.push({
+    p: 4,
+    test: function(n) {
+      if (arguments.length === 1 && type(n) === "string") {
+        return 'hex';
+      }
+    }
+  });
+
+  hsl2rgb = function() {
+    var args, b, c, g, h, i, l, o, r, ref, s, t1, t2, t3;
+    args = unpack(arguments);
+    h = args[0], s = args[1], l = args[2];
+    if (s === 0) {
+      r = g = b = l * 255;
+    } else {
+      t3 = [0, 0, 0];
+      c = [0, 0, 0];
+      t2 = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      t1 = 2 * l - t2;
+      h /= 360;
+      t3[0] = h + 1 / 3;
+      t3[1] = h;
+      t3[2] = h - 1 / 3;
+      for (i = o = 0; o <= 2; i = ++o) {
+        if (t3[i] < 0) {
+          t3[i] += 1;
+        }
+        if (t3[i] > 1) {
+          t3[i] -= 1;
+        }
+        if (6 * t3[i] < 1) {
+          c[i] = t1 + (t2 - t1) * 6 * t3[i];
+        } else if (2 * t3[i] < 1) {
+          c[i] = t2;
+        } else if (3 * t3[i] < 2) {
+          c[i] = t1 + (t2 - t1) * ((2 / 3) - t3[i]) * 6;
+        } else {
+          c[i] = t1;
+        }
+      }
+      ref = [round(c[0] * 255), round(c[1] * 255), round(c[2] * 255)], r = ref[0], g = ref[1], b = ref[2];
+    }
+    if (args.length > 3) {
+      return [r, g, b, args[3]];
+    } else {
+      return [r, g, b];
+    }
+  };
+
+  rgb2hsl = function(r, g, b) {
+    var h, l, min, ref, s;
+    if (r !== void 0 && r.length >= 3) {
+      ref = r, r = ref[0], g = ref[1], b = ref[2];
+    }
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    min = Math.min(r, g, b);
+    max = Math.max(r, g, b);
+    l = (max + min) / 2;
+    if (max === min) {
+      s = 0;
+      h = Number.NaN;
+    } else {
+      s = l < 0.5 ? (max - min) / (max + min) : (max - min) / (2 - max - min);
+    }
+    if (r === max) {
+      h = (g - b) / (max - min);
+    } else if (g === max) {
+      h = 2 + (b - r) / (max - min);
+    } else if (b === max) {
+      h = 4 + (r - g) / (max - min);
+    }
+    h *= 60;
+    if (h < 0) {
+      h += 360;
+    }
+    return [h, s, l];
+  };
+
+  chroma.hsl = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['hsl']), function(){});
+  };
+
+  _input.hsl = hsl2rgb;
+
+  Color.prototype.hsl = function() {
+    return rgb2hsl(this._rgb);
+  };
+
+  hsv2rgb = function() {
+    var args, b, f, g, h, i, p, q, r, ref, ref1, ref2, ref3, ref4, ref5, s, t, v;
+    args = unpack(arguments);
+    h = args[0], s = args[1], v = args[2];
+    v *= 255;
+    if (s === 0) {
+      r = g = b = v;
+    } else {
+      if (h === 360) {
+        h = 0;
+      }
+      if (h > 360) {
+        h -= 360;
+      }
+      if (h < 0) {
+        h += 360;
+      }
+      h /= 60;
+      i = floor(h);
+      f = h - i;
+      p = v * (1 - s);
+      q = v * (1 - s * f);
+      t = v * (1 - s * (1 - f));
+      switch (i) {
+        case 0:
+          ref = [v, t, p], r = ref[0], g = ref[1], b = ref[2];
+          break;
+        case 1:
+          ref1 = [q, v, p], r = ref1[0], g = ref1[1], b = ref1[2];
+          break;
+        case 2:
+          ref2 = [p, v, t], r = ref2[0], g = ref2[1], b = ref2[2];
+          break;
+        case 3:
+          ref3 = [p, q, v], r = ref3[0], g = ref3[1], b = ref3[2];
+          break;
+        case 4:
+          ref4 = [t, p, v], r = ref4[0], g = ref4[1], b = ref4[2];
+          break;
+        case 5:
+          ref5 = [v, p, q], r = ref5[0], g = ref5[1], b = ref5[2];
+      }
+    }
+    return [r, g, b, args.length > 3 ? args[3] : 1];
+  };
+
+  rgb2hsv = function() {
+    var b, delta, g, h, min, r, ref, s, v;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    min = Math.min(r, g, b);
+    max = Math.max(r, g, b);
+    delta = max - min;
+    v = max / 255.0;
+    if (max === 0) {
+      h = Number.NaN;
+      s = 0;
+    } else {
+      s = delta / max;
+      if (r === max) {
+        h = (g - b) / delta;
+      }
+      if (g === max) {
+        h = 2 + (b - r) / delta;
+      }
+      if (b === max) {
+        h = 4 + (r - g) / delta;
+      }
+      h *= 60;
+      if (h < 0) {
+        h += 360;
+      }
+    }
+    return [h, s, v];
+  };
+
+  chroma.hsv = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['hsv']), function(){});
+  };
+
+  _input.hsv = hsv2rgb;
+
+  Color.prototype.hsv = function() {
+    return rgb2hsv(this._rgb);
+  };
+
+  num2rgb = function(num) {
+    var b, g, r;
+    if (type(num) === "number" && num >= 0 && num <= 0xFFFFFF) {
+      r = num >> 16;
+      g = (num >> 8) & 0xFF;
+      b = num & 0xFF;
+      return [r, g, b, 1];
+    }
+    console.warn("unknown num color: " + num);
+    return [0, 0, 0, 1];
+  };
+
+  rgb2num = function() {
+    var b, g, r, ref;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    return (r << 16) + (g << 8) + b;
+  };
+
+  chroma.num = function(num) {
+    return new Color(num, 'num');
+  };
+
+  Color.prototype.num = function(mode) {
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    return rgb2num(this._rgb, mode);
+  };
+
+  _input.num = num2rgb;
+
+  _guess_formats.push({
+    p: 1,
+    test: function(n) {
+      if (arguments.length === 1 && type(n) === "number" && n >= 0 && n <= 0xFFFFFF) {
+        return 'num';
+      }
+    }
+  });
+
+  hcg2rgb = function() {
+    var _c, _g, args, b, c, f, g, h, i, p, q, r, ref, ref1, ref2, ref3, ref4, ref5, t, v;
+    args = unpack(arguments);
+    h = args[0], c = args[1], _g = args[2];
+    c = c / 100;
+    g = g / 100 * 255;
+    _c = c * 255;
+    if (c === 0) {
+      r = g = b = _g;
+    } else {
+      if (h === 360) {
+        h = 0;
+      }
+      if (h > 360) {
+        h -= 360;
+      }
+      if (h < 0) {
+        h += 360;
+      }
+      h /= 60;
+      i = floor(h);
+      f = h - i;
+      p = _g * (1 - c);
+      q = p + _c * (1 - f);
+      t = p + _c * f;
+      v = p + _c;
+      switch (i) {
+        case 0:
+          ref = [v, t, p], r = ref[0], g = ref[1], b = ref[2];
+          break;
+        case 1:
+          ref1 = [q, v, p], r = ref1[0], g = ref1[1], b = ref1[2];
+          break;
+        case 2:
+          ref2 = [p, v, t], r = ref2[0], g = ref2[1], b = ref2[2];
+          break;
+        case 3:
+          ref3 = [p, q, v], r = ref3[0], g = ref3[1], b = ref3[2];
+          break;
+        case 4:
+          ref4 = [t, p, v], r = ref4[0], g = ref4[1], b = ref4[2];
+          break;
+        case 5:
+          ref5 = [v, p, q], r = ref5[0], g = ref5[1], b = ref5[2];
+      }
+    }
+    return [r, g, b, args.length > 3 ? args[3] : 1];
+  };
+
+  rgb2hcg = function() {
+    var _g, b, c, delta, g, h, min, r, ref;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    min = Math.min(r, g, b);
+    max = Math.max(r, g, b);
+    delta = max - min;
+    c = delta * 100 / 255;
+    _g = min / (255 - delta) * 100;
+    if (delta === 0) {
+      h = Number.NaN;
+    } else {
+      if (r === max) {
+        h = (g - b) / delta;
+      }
+      if (g === max) {
+        h = 2 + (b - r) / delta;
+      }
+      if (b === max) {
+        h = 4 + (r - g) / delta;
+      }
+      h *= 60;
+      if (h < 0) {
+        h += 360;
+      }
+    }
+    return [h, c, _g];
+  };
+
+  chroma.hcg = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['hcg']), function(){});
+  };
+
+  _input.hcg = hcg2rgb;
+
+  Color.prototype.hcg = function() {
+    return rgb2hcg(this._rgb);
+  };
+
+  css2rgb = function(css) {
+    var aa, ab, hsl, i, m, o, rgb, w;
+    css = css.toLowerCase();
+    if ((chroma.colors != null) && chroma.colors[css]) {
+      return hex2rgb(chroma.colors[css]);
+    }
+    if (m = css.match(/rgb\(\s*(\-?\d+),\s*(\-?\d+)\s*,\s*(\-?\d+)\s*\)/)) {
+      rgb = m.slice(1, 4);
+      for (i = o = 0; o <= 2; i = ++o) {
+        rgb[i] = +rgb[i];
+      }
+      rgb[3] = 1;
+    } else if (m = css.match(/rgba\(\s*(\-?\d+),\s*(\-?\d+)\s*,\s*(\-?\d+)\s*,\s*([01]|[01]?\.\d+)\)/)) {
+      rgb = m.slice(1, 5);
+      for (i = w = 0; w <= 3; i = ++w) {
+        rgb[i] = +rgb[i];
+      }
+    } else if (m = css.match(/rgb\(\s*(\-?\d+(?:\.\d+)?)%,\s*(\-?\d+(?:\.\d+)?)%\s*,\s*(\-?\d+(?:\.\d+)?)%\s*\)/)) {
+      rgb = m.slice(1, 4);
+      for (i = aa = 0; aa <= 2; i = ++aa) {
+        rgb[i] = round(rgb[i] * 2.55);
+      }
+      rgb[3] = 1;
+    } else if (m = css.match(/rgba\(\s*(\-?\d+(?:\.\d+)?)%,\s*(\-?\d+(?:\.\d+)?)%\s*,\s*(\-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)/)) {
+      rgb = m.slice(1, 5);
+      for (i = ab = 0; ab <= 2; i = ++ab) {
+        rgb[i] = round(rgb[i] * 2.55);
+      }
+      rgb[3] = +rgb[3];
+    } else if (m = css.match(/hsl\(\s*(\-?\d+(?:\.\d+)?),\s*(\-?\d+(?:\.\d+)?)%\s*,\s*(\-?\d+(?:\.\d+)?)%\s*\)/)) {
+      hsl = m.slice(1, 4);
+      hsl[1] *= 0.01;
+      hsl[2] *= 0.01;
+      rgb = hsl2rgb(hsl);
+      rgb[3] = 1;
+    } else if (m = css.match(/hsla\(\s*(\-?\d+(?:\.\d+)?),\s*(\-?\d+(?:\.\d+)?)%\s*,\s*(\-?\d+(?:\.\d+)?)%\s*,\s*([01]|[01]?\.\d+)\)/)) {
+      hsl = m.slice(1, 4);
+      hsl[1] *= 0.01;
+      hsl[2] *= 0.01;
+      rgb = hsl2rgb(hsl);
+      rgb[3] = +m[4];
+    }
+    return rgb;
+  };
+
+  rgb2css = function(rgba) {
+    var mode;
+    mode = rgba[3] < 1 ? 'rgba' : 'rgb';
+    if (mode === 'rgb') {
+      return mode + '(' + rgba.slice(0, 3).map(round).join(',') + ')';
+    } else if (mode === 'rgba') {
+      return mode + '(' + rgba.slice(0, 3).map(round).join(',') + ',' + rgba[3] + ')';
+    } else {
+
+    }
+  };
+
+  rnd = function(a) {
+    return round(a * 100) / 100;
+  };
+
+  hsl2css = function(hsl, alpha) {
+    var mode;
+    mode = alpha < 1 ? 'hsla' : 'hsl';
+    hsl[0] = rnd(hsl[0] || 0);
+    hsl[1] = rnd(hsl[1] * 100) + '%';
+    hsl[2] = rnd(hsl[2] * 100) + '%';
+    if (mode === 'hsla') {
+      hsl[3] = alpha;
+    }
+    return mode + '(' + hsl.join(',') + ')';
+  };
+
+  _input.css = function(h) {
+    return css2rgb(h);
+  };
+
+  chroma.css = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['css']), function(){});
+  };
+
+  Color.prototype.css = function(mode) {
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    if (mode.slice(0, 3) === 'rgb') {
+      return rgb2css(this._rgb);
+    } else if (mode.slice(0, 3) === 'hsl') {
+      return hsl2css(this.hsl(), this.alpha());
+    }
+  };
+
+  _input.named = function(name) {
+    return hex2rgb(w3cx11[name]);
+  };
+
+  _guess_formats.push({
+    p: 5,
+    test: function(n) {
+      if (arguments.length === 1 && (w3cx11[n] != null)) {
+        return 'named';
+      }
+    }
+  });
+
+  Color.prototype.name = function(n) {
+    var h, k;
+    if (arguments.length) {
+      if (w3cx11[n]) {
+        this._rgb = hex2rgb(w3cx11[n]);
+      }
+      this._rgb[3] = 1;
+      this;
+    }
+    h = this.hex();
+    for (k in w3cx11) {
+      if (h === w3cx11[k]) {
+        return k;
+      }
+    }
+    return h;
+  };
+
+  lch2lab = function() {
+
+    /*
+    Convert from a qualitative parameter h and a quantitative parameter l to a 24-bit pixel.
+    These formulas were invented by David Dalrymple to obtain maximum contrast without going
+    out of gamut if the parameters are in the range 0-1.
+    
+    A saturation multiplier was added by Gregor Aisch
+     */
+    var c, h, l, ref;
+    ref = unpack(arguments), l = ref[0], c = ref[1], h = ref[2];
+    h = h * DEG2RAD;
+    return [l, cos(h) * c, sin(h) * c];
+  };
+
+  lch2rgb = function() {
+    var L, a, args, b, c, g, h, l, r, ref, ref1;
+    args = unpack(arguments);
+    l = args[0], c = args[1], h = args[2];
+    ref = lch2lab(l, c, h), L = ref[0], a = ref[1], b = ref[2];
+    ref1 = lab2rgb(L, a, b), r = ref1[0], g = ref1[1], b = ref1[2];
+    return [r, g, b, args.length > 3 ? args[3] : 1];
+  };
+
+  lab2lch = function() {
+    var a, b, c, h, l, ref;
+    ref = unpack(arguments), l = ref[0], a = ref[1], b = ref[2];
+    c = sqrt(a * a + b * b);
+    h = (atan2(b, a) * RAD2DEG + 360) % 360;
+    if (round(c * 10000) === 0) {
+      h = Number.NaN;
+    }
+    return [l, c, h];
+  };
+
+  rgb2lch = function() {
+    var a, b, g, l, r, ref, ref1;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    ref1 = rgb2lab(r, g, b), l = ref1[0], a = ref1[1], b = ref1[2];
+    return lab2lch(l, a, b);
+  };
+
+  chroma.lch = function() {
+    var args;
+    args = unpack(arguments);
+    return new Color(args, 'lch');
+  };
+
+  chroma.hcl = function() {
+    var args;
+    args = unpack(arguments);
+    return new Color(args, 'hcl');
+  };
+
+  _input.lch = lch2rgb;
+
+  _input.hcl = function() {
+    var c, h, l, ref;
+    ref = unpack(arguments), h = ref[0], c = ref[1], l = ref[2];
+    return lch2rgb([l, c, h]);
+  };
+
+  Color.prototype.lch = function() {
+    return rgb2lch(this._rgb);
+  };
+
+  Color.prototype.hcl = function() {
+    return rgb2lch(this._rgb).reverse();
+  };
+
+  rgb2cmyk = function(mode) {
+    var b, c, f, g, k, m, r, ref, y;
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    r = r / 255;
+    g = g / 255;
+    b = b / 255;
+    k = 1 - Math.max(r, Math.max(g, b));
+    f = k < 1 ? 1 / (1 - k) : 0;
+    c = (1 - r - k) * f;
+    m = (1 - g - k) * f;
+    y = (1 - b - k) * f;
+    return [c, m, y, k];
+  };
+
+  cmyk2rgb = function() {
+    var alpha, args, b, c, g, k, m, r, y;
+    args = unpack(arguments);
+    c = args[0], m = args[1], y = args[2], k = args[3];
+    alpha = args.length > 4 ? args[4] : 1;
+    if (k === 1) {
+      return [0, 0, 0, alpha];
+    }
+    r = c >= 1 ? 0 : 255 * (1 - c) * (1 - k);
+    g = m >= 1 ? 0 : 255 * (1 - m) * (1 - k);
+    b = y >= 1 ? 0 : 255 * (1 - y) * (1 - k);
+    return [r, g, b, alpha];
+  };
+
+  _input.cmyk = function() {
+    return cmyk2rgb(unpack(arguments));
+  };
+
+  chroma.cmyk = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['cmyk']), function(){});
+  };
+
+  Color.prototype.cmyk = function() {
+    return rgb2cmyk(this._rgb);
+  };
+
+  _input.gl = function() {
+    var i, k, o, rgb, v;
+    rgb = (function() {
+      var ref, results;
+      ref = unpack(arguments);
+      results = [];
+      for (k in ref) {
+        v = ref[k];
+        results.push(v);
+      }
+      return results;
+    }).apply(this, arguments);
+    for (i = o = 0; o <= 2; i = ++o) {
+      rgb[i] *= 255;
+    }
+    return rgb;
+  };
+
+  chroma.gl = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['gl']), function(){});
+  };
+
+  Color.prototype.gl = function() {
+    var rgb;
+    rgb = this._rgb;
+    return [rgb[0] / 255, rgb[1] / 255, rgb[2] / 255, rgb[3]];
+  };
+
+  rgb2luminance = function(r, g, b) {
+    var ref;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    r = luminance_x(r);
+    g = luminance_x(g);
+    b = luminance_x(b);
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+
+  luminance_x = function(x) {
+    x /= 255;
+    if (x <= 0.03928) {
+      return x / 12.92;
+    } else {
+      return pow((x + 0.055) / 1.055, 2.4);
+    }
+  };
+
+  interpolate_rgb = function(col1, col2, f, m) {
+    var xyz0, xyz1;
+    xyz0 = col1._rgb;
+    xyz1 = col2._rgb;
+    return new Color(xyz0[0] + f * (xyz1[0] - xyz0[0]), xyz0[1] + f * (xyz1[1] - xyz0[1]), xyz0[2] + f * (xyz1[2] - xyz0[2]), m);
+  };
+
+  _interpolators.push(['rgb', interpolate_rgb]);
+
+  Color.prototype.luminance = function(lum, mode) {
+    var cur_lum, eps, max_iter, test;
+    if (mode == null) {
+      mode = 'rgb';
+    }
+    if (!arguments.length) {
+      return rgb2luminance(this._rgb);
+    }
+    if (lum === 0) {
+      this._rgb = [0, 0, 0, this._rgb[3]];
+    } else if (lum === 1) {
+      this._rgb = [255, 255, 255, this._rgb[3]];
+    } else {
+      eps = 1e-7;
+      max_iter = 20;
+      test = function(l, h) {
+        var lm, m;
+        m = l.interpolate(h, 0.5, mode);
+        lm = m.luminance();
+        if (Math.abs(lum - lm) < eps || !max_iter--) {
+          return m;
+        }
+        if (lm > lum) {
+          return test(l, m);
+        }
+        return test(m, h);
+      };
+      cur_lum = rgb2luminance(this._rgb);
+      this._rgb = (cur_lum > lum ? test(chroma('black'), this) : test(this, chroma('white'))).rgba();
+    }
+    return this;
+  };
+
+  temperature2rgb = function(kelvin) {
+    var b, g, r, temp;
+    temp = kelvin / 100;
+    if (temp < 66) {
+      r = 255;
+      g = -155.25485562709179 - 0.44596950469579133 * (g = temp - 2) + 104.49216199393888 * log(g);
+      b = temp < 20 ? 0 : -254.76935184120902 + 0.8274096064007395 * (b = temp - 10) + 115.67994401066147 * log(b);
+    } else {
+      r = 351.97690566805693 + 0.114206453784165 * (r = temp - 55) - 40.25366309332127 * log(r);
+      g = 325.4494125711974 + 0.07943456536662342 * (g = temp - 50) - 28.0852963507957 * log(g);
+      b = 255;
+    }
+    return [r, g, b];
+  };
+
+  rgb2temperature = function() {
+    var b, eps, g, maxTemp, minTemp, r, ref, rgb, temp;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    minTemp = 1000;
+    maxTemp = 40000;
+    eps = 0.4;
+    while (maxTemp - minTemp > eps) {
+      temp = (maxTemp + minTemp) * 0.5;
+      rgb = temperature2rgb(temp);
+      if ((rgb[2] / rgb[0]) >= (b / r)) {
+        maxTemp = temp;
+      } else {
+        minTemp = temp;
+      }
+    }
+    return round(temp);
+  };
+
+  chroma.temperature = chroma.kelvin = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['temperature']), function(){});
+  };
+
+  _input.temperature = _input.kelvin = _input.K = temperature2rgb;
+
+  Color.prototype.temperature = function() {
+    return rgb2temperature(this._rgb);
+  };
+
+  Color.prototype.kelvin = Color.prototype.temperature;
+
+  chroma.contrast = function(a, b) {
+    var l1, l2, ref, ref1;
+    if ((ref = type(a)) === 'string' || ref === 'number') {
+      a = new Color(a);
+    }
+    if ((ref1 = type(b)) === 'string' || ref1 === 'number') {
+      b = new Color(b);
+    }
+    l1 = a.luminance();
+    l2 = b.luminance();
+    if (l1 > l2) {
+      return (l1 + 0.05) / (l2 + 0.05);
+    } else {
+      return (l2 + 0.05) / (l1 + 0.05);
+    }
+  };
+
+  chroma.distance = function(a, b, mode) {
+    var d, i, l1, l2, ref, ref1, sum_sq;
+    if (mode == null) {
+      mode = 'lab';
+    }
+    if ((ref = type(a)) === 'string' || ref === 'number') {
+      a = new Color(a);
+    }
+    if ((ref1 = type(b)) === 'string' || ref1 === 'number') {
+      b = new Color(b);
+    }
+    l1 = a.get(mode);
+    l2 = b.get(mode);
+    sum_sq = 0;
+    for (i in l1) {
+      d = (l1[i] || 0) - (l2[i] || 0);
+      sum_sq += d * d;
+    }
+    return Math.sqrt(sum_sq);
+  };
+
+  chroma.deltaE = function(a, b, L, C) {
+    var L1, L2, a1, a2, b1, b2, c1, c2, c4, dH2, delA, delB, delC, delL, f, h1, ref, ref1, ref2, ref3, sc, sh, sl, t, v1, v2, v3;
+    if (L == null) {
+      L = 1;
+    }
+    if (C == null) {
+      C = 1;
+    }
+    if ((ref = type(a)) === 'string' || ref === 'number') {
+      a = new Color(a);
+    }
+    if ((ref1 = type(b)) === 'string' || ref1 === 'number') {
+      b = new Color(b);
+    }
+    ref2 = a.lab(), L1 = ref2[0], a1 = ref2[1], b1 = ref2[2];
+    ref3 = b.lab(), L2 = ref3[0], a2 = ref3[1], b2 = ref3[2];
+    c1 = sqrt(a1 * a1 + b1 * b1);
+    c2 = sqrt(a2 * a2 + b2 * b2);
+    sl = L1 < 16.0 ? 0.511 : (0.040975 * L1) / (1.0 + 0.01765 * L1);
+    sc = (0.0638 * c1) / (1.0 + 0.0131 * c1) + 0.638;
+    h1 = c1 < 0.000001 ? 0.0 : (atan2(b1, a1) * 180.0) / PI;
+    while (h1 < 0) {
+      h1 += 360;
+    }
+    while (h1 >= 360) {
+      h1 -= 360;
+    }
+    t = (h1 >= 164.0) && (h1 <= 345.0) ? 0.56 + abs(0.2 * cos((PI * (h1 + 168.0)) / 180.0)) : 0.36 + abs(0.4 * cos((PI * (h1 + 35.0)) / 180.0));
+    c4 = c1 * c1 * c1 * c1;
+    f = sqrt(c4 / (c4 + 1900.0));
+    sh = sc * (f * t + 1.0 - f);
+    delL = L1 - L2;
+    delC = c1 - c2;
+    delA = a1 - a2;
+    delB = b1 - b2;
+    dH2 = delA * delA + delB * delB - delC * delC;
+    v1 = delL / (L * sl);
+    v2 = delC / (C * sc);
+    v3 = sh;
+    return sqrt(v1 * v1 + v2 * v2 + (dH2 / (v3 * v3)));
+  };
+
+  Color.prototype.get = function(modechan) {
+    var channel, i, me, mode, ref, src;
+    me = this;
+    ref = modechan.split('.'), mode = ref[0], channel = ref[1];
+    src = me[mode]();
+    if (channel) {
+      i = mode.indexOf(channel);
+      if (i > -1) {
+        return src[i];
+      } else {
+        return console.warn('unknown channel ' + channel + ' in mode ' + mode);
+      }
+    } else {
+      return src;
+    }
+  };
+
+  Color.prototype.set = function(modechan, value) {
+    var channel, i, me, mode, ref, src;
+    me = this;
+    ref = modechan.split('.'), mode = ref[0], channel = ref[1];
+    if (channel) {
+      src = me[mode]();
+      i = mode.indexOf(channel);
+      if (i > -1) {
+        if (type(value) === 'string') {
+          switch (value.charAt(0)) {
+            case '+':
+              src[i] += +value;
+              break;
+            case '-':
+              src[i] += +value;
+              break;
+            case '*':
+              src[i] *= +(value.substr(1));
+              break;
+            case '/':
+              src[i] /= +(value.substr(1));
+              break;
+            default:
+              src[i] = +value;
+          }
+        } else {
+          src[i] = value;
+        }
+      } else {
+        console.warn('unknown channel ' + channel + ' in mode ' + mode);
+      }
+    } else {
+      src = value;
+    }
+    return chroma(src, mode).alpha(me.alpha());
+  };
+
+  Color.prototype.clipped = function() {
+    return this._rgb._clipped || false;
+  };
+
+  Color.prototype.alpha = function(a) {
+    if (arguments.length) {
+      return chroma.rgb([this._rgb[0], this._rgb[1], this._rgb[2], a]);
+    }
+    return this._rgb[3];
+  };
+
+  Color.prototype.darken = function(amount) {
+    var lab, me;
+    if (amount == null) {
+      amount = 1;
+    }
+    me = this;
+    lab = me.lab();
+    lab[0] -= LAB_CONSTANTS.Kn * amount;
+    return chroma.lab(lab).alpha(me.alpha());
+  };
+
+  Color.prototype.brighten = function(amount) {
+    if (amount == null) {
+      amount = 1;
+    }
+    return this.darken(-amount);
+  };
+
+  Color.prototype.darker = Color.prototype.darken;
+
+  Color.prototype.brighter = Color.prototype.brighten;
+
+  Color.prototype.saturate = function(amount) {
+    var lch, me;
+    if (amount == null) {
+      amount = 1;
+    }
+    me = this;
+    lch = me.lch();
+    lch[1] += amount * LAB_CONSTANTS.Kn;
+    if (lch[1] < 0) {
+      lch[1] = 0;
+    }
+    return chroma.lch(lch).alpha(me.alpha());
+  };
+
+  Color.prototype.desaturate = function(amount) {
+    if (amount == null) {
+      amount = 1;
+    }
+    return this.saturate(-amount);
+  };
+
+  Color.prototype.premultiply = function() {
+    var a, rgb;
+    rgb = this.rgb();
+    a = this.alpha();
+    return chroma(rgb[0] * a, rgb[1] * a, rgb[2] * a, a);
+  };
+
+  blend = function(bottom, top, mode) {
+    if (!blend[mode]) {
+      throw 'unknown blend mode ' + mode;
+    }
+    return blend[mode](bottom, top);
+  };
+
+  blend_f = function(f) {
+    return function(bottom, top) {
+      var c0, c1;
+      c0 = chroma(top).rgb();
+      c1 = chroma(bottom).rgb();
+      return chroma(f(c0, c1), 'rgb');
+    };
+  };
+
+  each = function(f) {
+    return function(c0, c1) {
+      var i, o, out;
+      out = [];
+      for (i = o = 0; o <= 3; i = ++o) {
+        out[i] = f(c0[i], c1[i]);
+      }
+      return out;
+    };
+  };
+
+  normal = function(a, b) {
+    return a;
+  };
+
+  multiply = function(a, b) {
+    return a * b / 255;
+  };
+
+  darken = function(a, b) {
+    if (a > b) {
+      return b;
+    } else {
+      return a;
+    }
+  };
+
+  lighten = function(a, b) {
+    if (a > b) {
+      return a;
+    } else {
+      return b;
+    }
+  };
+
+  screen = function(a, b) {
+    return 255 * (1 - (1 - a / 255) * (1 - b / 255));
+  };
+
+  overlay = function(a, b) {
+    if (b < 128) {
+      return 2 * a * b / 255;
+    } else {
+      return 255 * (1 - 2 * (1 - a / 255) * (1 - b / 255));
+    }
+  };
+
+  burn = function(a, b) {
+    return 255 * (1 - (1 - b / 255) / (a / 255));
+  };
+
+  dodge = function(a, b) {
+    if (a === 255) {
+      return 255;
+    }
+    a = 255 * (b / 255) / (1 - a / 255);
+    if (a > 255) {
+      return 255;
+    } else {
+      return a;
+    }
+  };
+
+  blend.normal = blend_f(each(normal));
+
+  blend.multiply = blend_f(each(multiply));
+
+  blend.screen = blend_f(each(screen));
+
+  blend.overlay = blend_f(each(overlay));
+
+  blend.darken = blend_f(each(darken));
+
+  blend.lighten = blend_f(each(lighten));
+
+  blend.dodge = blend_f(each(dodge));
+
+  blend.burn = blend_f(each(burn));
+
+  chroma.blend = blend;
+
+  chroma.analyze = function(data) {
+    var len, o, r, val;
+    r = {
+      min: Number.MAX_VALUE,
+      max: Number.MAX_VALUE * -1,
+      sum: 0,
+      values: [],
+      count: 0
+    };
+    for (o = 0, len = data.length; o < len; o++) {
+      val = data[o];
+      if ((val != null) && !isNaN(val)) {
+        r.values.push(val);
+        r.sum += val;
+        if (val < r.min) {
+          r.min = val;
+        }
+        if (val > r.max) {
+          r.max = val;
+        }
+        r.count += 1;
+      }
+    }
+    r.domain = [r.min, r.max];
+    r.limits = function(mode, num) {
+      return chroma.limits(r, mode, num);
+    };
+    return r;
+  };
+
+  chroma.scale = function(colors, positions) {
+    var _classes, _colorCache, _colors, _correctLightness, _domain, _fixed, _gamma, _max, _min, _mode, _nacol, _out, _padding, _pos, _spread, _useCache, classifyValue, f, getClass, getColor, resetCache, setColors, tmap;
+    _mode = 'rgb';
+    _nacol = chroma('#ccc');
+    _spread = 0;
+    _fixed = false;
+    _domain = [0, 1];
+    _pos = [];
+    _padding = [0, 0];
+    _classes = false;
+    _colors = [];
+    _out = false;
+    _min = 0;
+    _max = 1;
+    _correctLightness = false;
+    _colorCache = {};
+    _useCache = true;
+    _gamma = 1;
+    setColors = function(colors) {
+      var c, col, o, ref, ref1, w;
+      if (colors == null) {
+        colors = ['#fff', '#000'];
+      }
+      if ((colors != null) && type(colors) === 'string' && (chroma.brewer != null)) {
+        colors = chroma.brewer[colors] || chroma.brewer[colors.toLowerCase()] || colors;
+      }
+      if (type(colors) === 'array') {
+        colors = colors.slice(0);
+        for (c = o = 0, ref = colors.length - 1; 0 <= ref ? o <= ref : o >= ref; c = 0 <= ref ? ++o : --o) {
+          col = colors[c];
+          if (type(col) === "string") {
+            colors[c] = chroma(col);
+          }
+        }
+        _pos.length = 0;
+        for (c = w = 0, ref1 = colors.length - 1; 0 <= ref1 ? w <= ref1 : w >= ref1; c = 0 <= ref1 ? ++w : --w) {
+          _pos.push(c / (colors.length - 1));
+        }
+      }
+      resetCache();
+      return _colors = colors;
+    };
+    getClass = function(value) {
+      var i, n;
+      if (_classes != null) {
+        n = _classes.length - 1;
+        i = 0;
+        while (i < n && value >= _classes[i]) {
+          i++;
+        }
+        return i - 1;
+      }
+      return 0;
+    };
+    tmap = function(t) {
+      return t;
+    };
+    classifyValue = function(value) {
+      var i, maxc, minc, n, val;
+      val = value;
+      if (_classes.length > 2) {
+        n = _classes.length - 1;
+        i = getClass(value);
+        minc = _classes[0] + (_classes[1] - _classes[0]) * (0 + _spread * 0.5);
+        maxc = _classes[n - 1] + (_classes[n] - _classes[n - 1]) * (1 - _spread * 0.5);
+        val = _min + ((_classes[i] + (_classes[i + 1] - _classes[i]) * 0.5 - minc) / (maxc - minc)) * (_max - _min);
+      }
+      return val;
+    };
+    getColor = function(val, bypassMap) {
+      var c, col, i, k, o, p, ref, t;
+      if (bypassMap == null) {
+        bypassMap = false;
+      }
+      if (isNaN(val)) {
+        return _nacol;
+      }
+      if (!bypassMap) {
+        if (_classes && _classes.length > 2) {
+          c = getClass(val);
+          t = c / (_classes.length - 2);
+        } else if (_max !== _min) {
+          t = (val - _min) / (_max - _min);
+        } else {
+          t = 1;
+        }
+      } else {
+        t = val;
+      }
+      if (!bypassMap) {
+        t = tmap(t);
+      }
+      if (_gamma !== 1) {
+        t = pow(t, _gamma);
+      }
+      t = _padding[0] + (t * (1 - _padding[0] - _padding[1]));
+      t = Math.min(1, Math.max(0, t));
+      k = Math.floor(t * 10000);
+      if (_useCache && _colorCache[k]) {
+        col = _colorCache[k];
+      } else {
+        if (type(_colors) === 'array') {
+          for (i = o = 0, ref = _pos.length - 1; 0 <= ref ? o <= ref : o >= ref; i = 0 <= ref ? ++o : --o) {
+            p = _pos[i];
+            if (t <= p) {
+              col = _colors[i];
+              break;
+            }
+            if (t >= p && i === _pos.length - 1) {
+              col = _colors[i];
+              break;
+            }
+            if (t > p && t < _pos[i + 1]) {
+              t = (t - p) / (_pos[i + 1] - p);
+              col = chroma.interpolate(_colors[i], _colors[i + 1], t, _mode);
+              break;
+            }
+          }
+        } else if (type(_colors) === 'function') {
+          col = _colors(t);
+        }
+        if (_useCache) {
+          _colorCache[k] = col;
+        }
+      }
+      return col;
+    };
+    resetCache = function() {
+      return _colorCache = {};
+    };
+    setColors(colors);
+    f = function(v) {
+      var c;
+      c = chroma(getColor(v));
+      if (_out && c[_out]) {
+        return c[_out]();
+      } else {
+        return c;
+      }
+    };
+    f.classes = function(classes) {
+      var d;
+      if (classes != null) {
+        if (type(classes) === 'array') {
+          _classes = classes;
+          _domain = [classes[0], classes[classes.length - 1]];
+        } else {
+          d = chroma.analyze(_domain);
+          if (classes === 0) {
+            _classes = [d.min, d.max];
+          } else {
+            _classes = chroma.limits(d, 'e', classes);
+          }
+        }
+        return f;
+      }
+      return _classes;
+    };
+    f.domain = function(domain) {
+      var c, d, k, len, o, ref, w;
+      if (!arguments.length) {
+        return _domain;
+      }
+      _min = domain[0];
+      _max = domain[domain.length - 1];
+      _pos = [];
+      k = _colors.length;
+      if (domain.length === k && _min !== _max) {
+        for (o = 0, len = domain.length; o < len; o++) {
+          d = domain[o];
+          _pos.push((d - _min) / (_max - _min));
+        }
+      } else {
+        for (c = w = 0, ref = k - 1; 0 <= ref ? w <= ref : w >= ref; c = 0 <= ref ? ++w : --w) {
+          _pos.push(c / (k - 1));
+        }
+      }
+      _domain = [_min, _max];
+      return f;
+    };
+    f.mode = function(_m) {
+      if (!arguments.length) {
+        return _mode;
+      }
+      _mode = _m;
+      resetCache();
+      return f;
+    };
+    f.range = function(colors, _pos) {
+      setColors(colors, _pos);
+      return f;
+    };
+    f.out = function(_o) {
+      _out = _o;
+      return f;
+    };
+    f.spread = function(val) {
+      if (!arguments.length) {
+        return _spread;
+      }
+      _spread = val;
+      return f;
+    };
+    f.correctLightness = function(v) {
+      if (v == null) {
+        v = true;
+      }
+      _correctLightness = v;
+      resetCache();
+      if (_correctLightness) {
+        tmap = function(t) {
+          var L0, L1, L_actual, L_diff, L_ideal, max_iter, pol, t0, t1;
+          L0 = getColor(0, true).lab()[0];
+          L1 = getColor(1, true).lab()[0];
+          pol = L0 > L1;
+          L_actual = getColor(t, true).lab()[0];
+          L_ideal = L0 + (L1 - L0) * t;
+          L_diff = L_actual - L_ideal;
+          t0 = 0;
+          t1 = 1;
+          max_iter = 20;
+          while (Math.abs(L_diff) > 1e-2 && max_iter-- > 0) {
+            (function() {
+              if (pol) {
+                L_diff *= -1;
+              }
+              if (L_diff < 0) {
+                t0 = t;
+                t += (t1 - t) * 0.5;
+              } else {
+                t1 = t;
+                t += (t0 - t) * 0.5;
+              }
+              L_actual = getColor(t, true).lab()[0];
+              return L_diff = L_actual - L_ideal;
+            })();
+          }
+          return t;
+        };
+      } else {
+        tmap = function(t) {
+          return t;
+        };
+      }
+      return f;
+    };
+    f.padding = function(p) {
+      if (p != null) {
+        if (type(p) === 'number') {
+          p = [p, p];
+        }
+        _padding = p;
+        return f;
+      } else {
+        return _padding;
+      }
+    };
+    f.colors = function(numColors, out) {
+      var dd, dm, i, o, ref, result, results, samples, w;
+      if (arguments.length < 2) {
+        out = 'hex';
+      }
+      result = [];
+      if (arguments.length === 0) {
+        result = _colors.slice(0);
+      } else if (numColors === 1) {
+        result = [f(0.5)];
+      } else if (numColors > 1) {
+        dm = _domain[0];
+        dd = _domain[1] - dm;
+        result = (function() {
+          results = [];
+          for (var o = 0; 0 <= numColors ? o < numColors : o > numColors; 0 <= numColors ? o++ : o--){ results.push(o); }
+          return results;
+        }).apply(this).map(function(i) {
+          return f(dm + i / (numColors - 1) * dd);
+        });
+      } else {
+        colors = [];
+        samples = [];
+        if (_classes && _classes.length > 2) {
+          for (i = w = 1, ref = _classes.length; 1 <= ref ? w < ref : w > ref; i = 1 <= ref ? ++w : --w) {
+            samples.push((_classes[i - 1] + _classes[i]) * 0.5);
+          }
+        } else {
+          samples = _domain;
+        }
+        result = samples.map(function(v) {
+          return f(v);
+        });
+      }
+      if (chroma[out]) {
+        result = result.map(function(c) {
+          return c[out]();
+        });
+      }
+      return result;
+    };
+    f.cache = function(c) {
+      if (c != null) {
+        _useCache = c;
+        return f;
+      } else {
+        return _useCache;
+      }
+    };
+    f.gamma = function(g) {
+      if (g != null) {
+        _gamma = g;
+        return f;
+      } else {
+        return _gamma;
+      }
+    };
+    return f;
+  };
+
+  if (chroma.scales == null) {
+    chroma.scales = {};
+  }
+
+  chroma.scales.cool = function() {
+    return chroma.scale([chroma.hsl(180, 1, .9), chroma.hsl(250, .7, .4)]);
+  };
+
+  chroma.scales.hot = function() {
+    return chroma.scale(['#000', '#f00', '#ff0', '#fff'], [0, .25, .75, 1]).mode('rgb');
+  };
+
+  chroma.analyze = function(data, key, filter) {
+    var add, k, len, o, r, val, visit;
+    r = {
+      min: Number.MAX_VALUE,
+      max: Number.MAX_VALUE * -1,
+      sum: 0,
+      values: [],
+      count: 0
+    };
+    if (filter == null) {
+      filter = function() {
+        return true;
+      };
+    }
+    add = function(val) {
+      if ((val != null) && !isNaN(val)) {
+        r.values.push(val);
+        r.sum += val;
+        if (val < r.min) {
+          r.min = val;
+        }
+        if (val > r.max) {
+          r.max = val;
+        }
+        r.count += 1;
+      }
+    };
+    visit = function(val, k) {
+      if (filter(val, k)) {
+        if ((key != null) && type(key) === 'function') {
+          return add(key(val));
+        } else if ((key != null) && type(key) === 'string' || type(key) === 'number') {
+          return add(val[key]);
+        } else {
+          return add(val);
+        }
+      }
+    };
+    if (type(data) === 'array') {
+      for (o = 0, len = data.length; o < len; o++) {
+        val = data[o];
+        visit(val);
+      }
+    } else {
+      for (k in data) {
+        val = data[k];
+        visit(val, k);
+      }
+    }
+    r.domain = [r.min, r.max];
+    r.limits = function(mode, num) {
+      return chroma.limits(r, mode, num);
+    };
+    return r;
+  };
+
+  chroma.limits = function(data, mode, num) {
+    var aa, ab, ac, ad, ae, af, ag, ah, ai, aj, ak, al, am, assignments, best, centroids, cluster, clusterSizes, dist, i, j, kClusters, limits, max_log, min, min_log, mindist, n, nb_iters, newCentroids, o, p, pb, pr, ref, ref1, ref10, ref11, ref12, ref13, ref14, ref2, ref3, ref4, ref5, ref6, ref7, ref8, ref9, repeat, sum, tmpKMeansBreaks, v, value, values, w;
+    if (mode == null) {
+      mode = 'equal';
+    }
+    if (num == null) {
+      num = 7;
+    }
+    if (type(data) === 'array') {
+      data = chroma.analyze(data);
+    }
+    min = data.min;
+    max = data.max;
+    sum = data.sum;
+    values = data.values.sort(function(a, b) {
+      return a - b;
+    });
+    if (num === 1) {
+      return [min, max];
+    }
+    limits = [];
+    if (mode.substr(0, 1) === 'c') {
+      limits.push(min);
+      limits.push(max);
+    }
+    if (mode.substr(0, 1) === 'e') {
+      limits.push(min);
+      for (i = o = 1, ref = num - 1; 1 <= ref ? o <= ref : o >= ref; i = 1 <= ref ? ++o : --o) {
+        limits.push(min + (i / num) * (max - min));
+      }
+      limits.push(max);
+    } else if (mode.substr(0, 1) === 'l') {
+      if (min <= 0) {
+        throw 'Logarithmic scales are only possible for values > 0';
+      }
+      min_log = Math.LOG10E * log(min);
+      max_log = Math.LOG10E * log(max);
+      limits.push(min);
+      for (i = w = 1, ref1 = num - 1; 1 <= ref1 ? w <= ref1 : w >= ref1; i = 1 <= ref1 ? ++w : --w) {
+        limits.push(pow(10, min_log + (i / num) * (max_log - min_log)));
+      }
+      limits.push(max);
+    } else if (mode.substr(0, 1) === 'q') {
+      limits.push(min);
+      for (i = aa = 1, ref2 = num - 1; 1 <= ref2 ? aa <= ref2 : aa >= ref2; i = 1 <= ref2 ? ++aa : --aa) {
+        p = (values.length - 1) * i / num;
+        pb = floor(p);
+        if (pb === p) {
+          limits.push(values[pb]);
+        } else {
+          pr = p - pb;
+          limits.push(values[pb] * (1 - pr) + values[pb + 1] * pr);
+        }
+      }
+      limits.push(max);
+    } else if (mode.substr(0, 1) === 'k') {
+
+      /*
+      implementation based on
+      http://code.google.com/p/figue/source/browse/trunk/figue.js#336
+      simplified for 1-d input values
+       */
+      n = values.length;
+      assignments = new Array(n);
+      clusterSizes = new Array(num);
+      repeat = true;
+      nb_iters = 0;
+      centroids = null;
+      centroids = [];
+      centroids.push(min);
+      for (i = ab = 1, ref3 = num - 1; 1 <= ref3 ? ab <= ref3 : ab >= ref3; i = 1 <= ref3 ? ++ab : --ab) {
+        centroids.push(min + (i / num) * (max - min));
+      }
+      centroids.push(max);
+      while (repeat) {
+        for (j = ac = 0, ref4 = num - 1; 0 <= ref4 ? ac <= ref4 : ac >= ref4; j = 0 <= ref4 ? ++ac : --ac) {
+          clusterSizes[j] = 0;
+        }
+        for (i = ad = 0, ref5 = n - 1; 0 <= ref5 ? ad <= ref5 : ad >= ref5; i = 0 <= ref5 ? ++ad : --ad) {
+          value = values[i];
+          mindist = Number.MAX_VALUE;
+          for (j = ae = 0, ref6 = num - 1; 0 <= ref6 ? ae <= ref6 : ae >= ref6; j = 0 <= ref6 ? ++ae : --ae) {
+            dist = abs(centroids[j] - value);
+            if (dist < mindist) {
+              mindist = dist;
+              best = j;
+            }
+          }
+          clusterSizes[best]++;
+          assignments[i] = best;
+        }
+        newCentroids = new Array(num);
+        for (j = af = 0, ref7 = num - 1; 0 <= ref7 ? af <= ref7 : af >= ref7; j = 0 <= ref7 ? ++af : --af) {
+          newCentroids[j] = null;
+        }
+        for (i = ag = 0, ref8 = n - 1; 0 <= ref8 ? ag <= ref8 : ag >= ref8; i = 0 <= ref8 ? ++ag : --ag) {
+          cluster = assignments[i];
+          if (newCentroids[cluster] === null) {
+            newCentroids[cluster] = values[i];
+          } else {
+            newCentroids[cluster] += values[i];
+          }
+        }
+        for (j = ah = 0, ref9 = num - 1; 0 <= ref9 ? ah <= ref9 : ah >= ref9; j = 0 <= ref9 ? ++ah : --ah) {
+          newCentroids[j] *= 1 / clusterSizes[j];
+        }
+        repeat = false;
+        for (j = ai = 0, ref10 = num - 1; 0 <= ref10 ? ai <= ref10 : ai >= ref10; j = 0 <= ref10 ? ++ai : --ai) {
+          if (newCentroids[j] !== centroids[i]) {
+            repeat = true;
+            break;
+          }
+        }
+        centroids = newCentroids;
+        nb_iters++;
+        if (nb_iters > 200) {
+          repeat = false;
+        }
+      }
+      kClusters = {};
+      for (j = aj = 0, ref11 = num - 1; 0 <= ref11 ? aj <= ref11 : aj >= ref11; j = 0 <= ref11 ? ++aj : --aj) {
+        kClusters[j] = [];
+      }
+      for (i = ak = 0, ref12 = n - 1; 0 <= ref12 ? ak <= ref12 : ak >= ref12; i = 0 <= ref12 ? ++ak : --ak) {
+        cluster = assignments[i];
+        kClusters[cluster].push(values[i]);
+      }
+      tmpKMeansBreaks = [];
+      for (j = al = 0, ref13 = num - 1; 0 <= ref13 ? al <= ref13 : al >= ref13; j = 0 <= ref13 ? ++al : --al) {
+        tmpKMeansBreaks.push(kClusters[j][0]);
+        tmpKMeansBreaks.push(kClusters[j][kClusters[j].length - 1]);
+      }
+      tmpKMeansBreaks = tmpKMeansBreaks.sort(function(a, b) {
+        return a - b;
+      });
+      limits.push(tmpKMeansBreaks[0]);
+      for (i = am = 1, ref14 = tmpKMeansBreaks.length - 1; am <= ref14; i = am += 2) {
+        v = tmpKMeansBreaks[i];
+        if (!isNaN(v) && limits.indexOf(v) === -1) {
+          limits.push(v);
+        }
+      }
+    }
+    return limits;
+  };
+
+  hsi2rgb = function(h, s, i) {
+
+    /*
+    borrowed from here:
+    http://hummer.stanford.edu/museinfo/doc/examples/humdrum/keyscape2/hsi2rgb.cpp
+     */
+    var args, b, g, r;
+    args = unpack(arguments);
+    h = args[0], s = args[1], i = args[2];
+    if (isNaN(h)) {
+      h = 0;
+    }
+    h /= 360;
+    if (h < 1 / 3) {
+      b = (1 - s) / 3;
+      r = (1 + s * cos(TWOPI * h) / cos(PITHIRD - TWOPI * h)) / 3;
+      g = 1 - (b + r);
+    } else if (h < 2 / 3) {
+      h -= 1 / 3;
+      r = (1 - s) / 3;
+      g = (1 + s * cos(TWOPI * h) / cos(PITHIRD - TWOPI * h)) / 3;
+      b = 1 - (r + g);
+    } else {
+      h -= 2 / 3;
+      g = (1 - s) / 3;
+      b = (1 + s * cos(TWOPI * h) / cos(PITHIRD - TWOPI * h)) / 3;
+      r = 1 - (g + b);
+    }
+    r = limit(i * r * 3);
+    g = limit(i * g * 3);
+    b = limit(i * b * 3);
+    return [r * 255, g * 255, b * 255, args.length > 3 ? args[3] : 1];
+  };
+
+  rgb2hsi = function() {
+
+    /*
+    borrowed from here:
+    http://hummer.stanford.edu/museinfo/doc/examples/humdrum/keyscape2/rgb2hsi.cpp
+     */
+    var b, g, h, i, min, r, ref, s;
+    ref = unpack(arguments), r = ref[0], g = ref[1], b = ref[2];
+    TWOPI = Math.PI * 2;
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    min = Math.min(r, g, b);
+    i = (r + g + b) / 3;
+    s = 1 - min / i;
+    if (s === 0) {
+      h = 0;
+    } else {
+      h = ((r - g) + (r - b)) / 2;
+      h /= Math.sqrt((r - g) * (r - g) + (r - b) * (g - b));
+      h = Math.acos(h);
+      if (b > g) {
+        h = TWOPI - h;
+      }
+      h /= TWOPI;
+    }
+    return [h * 360, s, i];
+  };
+
+  chroma.hsi = function() {
+    return (function(func, args, ctor) {
+      ctor.prototype = func.prototype;
+      var child = new ctor, result = func.apply(child, args);
+      return Object(result) === result ? result : child;
+    })(Color, slice.call(arguments).concat(['hsi']), function(){});
+  };
+
+  _input.hsi = hsi2rgb;
+
+  Color.prototype.hsi = function() {
+    return rgb2hsi(this._rgb);
+  };
+
+  interpolate_hsx = function(col1, col2, f, m) {
+    var dh, hue, hue0, hue1, lbv, lbv0, lbv1, res, sat, sat0, sat1, xyz0, xyz1;
+    if (m === 'hsl') {
+      xyz0 = col1.hsl();
+      xyz1 = col2.hsl();
+    } else if (m === 'hsv') {
+      xyz0 = col1.hsv();
+      xyz1 = col2.hsv();
+    } else if (m === 'hcg') {
+      xyz0 = col1.hcg();
+      xyz1 = col2.hcg();
+    } else if (m === 'hsi') {
+      xyz0 = col1.hsi();
+      xyz1 = col2.hsi();
+    } else if (m === 'lch' || m === 'hcl') {
+      m = 'hcl';
+      xyz0 = col1.hcl();
+      xyz1 = col2.hcl();
+    }
+    if (m.substr(0, 1) === 'h') {
+      hue0 = xyz0[0], sat0 = xyz0[1], lbv0 = xyz0[2];
+      hue1 = xyz1[0], sat1 = xyz1[1], lbv1 = xyz1[2];
+    }
+    if (!isNaN(hue0) && !isNaN(hue1)) {
+      if (hue1 > hue0 && hue1 - hue0 > 180) {
+        dh = hue1 - (hue0 + 360);
+      } else if (hue1 < hue0 && hue0 - hue1 > 180) {
+        dh = hue1 + 360 - hue0;
+      } else {
+        dh = hue1 - hue0;
+      }
+      hue = hue0 + f * dh;
+    } else if (!isNaN(hue0)) {
+      hue = hue0;
+      if ((lbv1 === 1 || lbv1 === 0) && m !== 'hsv') {
+        sat = sat0;
+      }
+    } else if (!isNaN(hue1)) {
+      hue = hue1;
+      if ((lbv0 === 1 || lbv0 === 0) && m !== 'hsv') {
+        sat = sat1;
+      }
+    } else {
+      hue = Number.NaN;
+    }
+    if (sat == null) {
+      sat = sat0 + f * (sat1 - sat0);
+    }
+    lbv = lbv0 + f * (lbv1 - lbv0);
+    return res = chroma[m](hue, sat, lbv);
+  };
+
+  _interpolators = _interpolators.concat((function() {
+    var len, o, ref, results;
+    ref = ['hsv', 'hsl', 'hsi', 'hcl', 'lch', 'hcg'];
+    results = [];
+    for (o = 0, len = ref.length; o < len; o++) {
+      m = ref[o];
+      results.push([m, interpolate_hsx]);
+    }
+    return results;
+  })());
+
+  interpolate_num = function(col1, col2, f, m) {
+    var n1, n2;
+    n1 = col1.num();
+    n2 = col2.num();
+    return chroma.num(n1 + (n2 - n1) * f, 'num');
+  };
+
+  _interpolators.push(['num', interpolate_num]);
+
+  interpolate_lab = function(col1, col2, f, m) {
+    var res, xyz0, xyz1;
+    xyz0 = col1.lab();
+    xyz1 = col2.lab();
+    return res = new Color(xyz0[0] + f * (xyz1[0] - xyz0[0]), xyz0[1] + f * (xyz1[1] - xyz0[1]), xyz0[2] + f * (xyz1[2] - xyz0[2]), m);
+  };
+
+  _interpolators.push(['lab', interpolate_lab]);
+
+}).call(this);
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(55)(module)))
+
+/***/ }),
+/* 755 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73329,37 +76094,37 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_fp_bindAll__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_fp_bindAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_fp_bindAll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat__ = __webpack_require__(755);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat__ = __webpack_require__(756);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_fp_map__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_fp_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_fp_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_size__ = __webpack_require__(757);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_size__ = __webpack_require__(758);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_size___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash_fp_size__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_fp_times__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_fp_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash_fp_times__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_styles__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_material_ui_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Breed__ = __webpack_require__(764);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Generations__ = __webpack_require__(789);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Breed__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Generations__ = __webpack_require__(790);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__GenerateSuitors__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Inventory__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Inventory__ = __webpack_require__(799);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Configuration_json__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Configuration_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__Configuration_json__);
 var _slicedToArray=function(){function sliceIterator(arr,i){var _arr=[];var _n=true;var _d=false;var _e=undefined;try{for(var _i=arr[Symbol.iterator](),_s;!(_n=(_s=_i.next()).done);_n=true){_arr.push(_s.value);if(i&&_arr.length===i)break;}}catch(err){_d=true;_e=err;}finally{try{if(!_n&&_i["return"])_i["return"]();}finally{if(_d)throw _e;}}return _arr;}return function(arr,i){if(Array.isArray(arr)){return arr;}else if(Symbol.iterator in Object(arr)){return sliceIterator(arr,i);}else{throw new TypeError("Invalid attempt to destructure non-iterable instance");}};}();var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _asyncToGenerator(fn){return function(){var gen=fn.apply(this,arguments);return new Promise(function(resolve,reject){function step(key,arg){try{var info=gen[key](arg);var value=info.value;}catch(error){reject(error);return;}if(info.done){resolve(value);}else{return Promise.resolve(value).then(function(value){step("next",value);},function(err){step("throw",err);});}}return step("next");});};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var styles={root:{flex:1,display:'flex',flexDirection:'column'},Generations:{flex:1,overflowY:'scroll'},Inventory:{maxHeight:'64px',flexShrink:0}};var Pick=function(_Component){_inherits(Pick,_Component);function Pick(){_classCallCheck(this,Pick);var _this=_possibleConstructorReturn(this,(Pick.__proto__||Object.getPrototypeOf(Pick)).call(this));__WEBPACK_IMPORTED_MODULE_2_lodash_fp_bindAll___default()(Object.getOwnPropertyNames(Pick.prototype),_this);_this.state={parents:[],generations:[],inventory:[]};_this.initialize();return _this;}_createClass(Pick,[{key:'initialize',value:function(){var _ref=_asyncToGenerator(/*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(){var _ref2,_ref3,children,suitors;return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context){while(1){switch(_context.prev=_context.next){case 0:_context.next=2;return Promise.all([Object(__WEBPACK_IMPORTED_MODULE_10__GenerateSuitors__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_12__Configuration_json__["numChildren"]),Object(__WEBPACK_IMPORTED_MODULE_10__GenerateSuitors__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_12__Configuration_json__["numSuitors"])]);case 2:_ref2=_context.sent;_ref3=_slicedToArray(_ref2,2);children=_ref3[0];suitors=_ref3[1];this.setState({generations:[{children:children,suitors:suitors}]});case 7:case'end':return _context.stop();}}},_callee,this);}));function initialize(){return _ref.apply(this,arguments);}return initialize;}()},{key:'addToInventory',value:function(){var _ref4=_asyncToGenerator(/*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(creature){return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2){while(1){switch(_context2.prev=_context2.next){case 0:this.setState({inventory:__WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat___default()(this.state.inventory,creature)});case 1:case'end':return _context2.stop();}}},_callee2,this);}));function addToInventory(_x){return _ref4.apply(this,arguments);}return addToInventory;}()},{key:'selectParent',value:function(){var _ref5=_asyncToGenerator(/*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(parent){var parents,childrenGenomes,generations;return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3){while(1){switch(_context3.prev=_context3.next){case 0:parents=__WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat___default()(this.state.parents,parent);if(!(__WEBPACK_IMPORTED_MODULE_5_lodash_fp_size___default()(parents)<2)){_context3.next=3;break;}return _context3.abrupt('return',this.setState({parents:parents}));case 3:childrenGenomes=__WEBPACK_IMPORTED_MODULE_6_lodash_fp_times___default()(function(){return Object(__WEBPACK_IMPORTED_MODULE_8__Breed__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_4_lodash_fp_map___default()('genome',parents));},__WEBPACK_IMPORTED_MODULE_12__Configuration_json__["numChildren"]);_context3.t0=__WEBPACK_IMPORTED_MODULE_3_lodash_fp_concat___default.a;_context3.t1=this.state.generations;_context3.t2=__WEBPACK_IMPORTED_MODULE_4_lodash_fp_map___default()(function(genome){return{genome:genome,health:0};},childrenGenomes);_context3.next=9;return Object(__WEBPACK_IMPORTED_MODULE_10__GenerateSuitors__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_12__Configuration_json__["numSuitors"]);case 9:_context3.t3=_context3.sent;_context3.t4={children:_context3.t2,suitors:_context3.t3};generations=(0,_context3.t0)(_context3.t1,_context3.t4);this.setState({parents:[],generations:generations});case 13:case'end':return _context3.stop();}}},_callee3,this);}));function selectParent(_x2){return _ref5.apply(this,arguments);}return selectParent;}()},{key:'render',value:function render(){var _state=this.state,generations=_state.generations,inventory=_state.inventory;var classes=this.props.classes;return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('div',{className:classes.root},__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__Generations__["a" /* default */],{className:classes.Generations,generations:generations,onAddToInventory:this.addToInventory,onSelectParent:this.selectParent}),__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__Inventory__["a" /* default */],{className:classes.Inventory,creatures:inventory}));}}]);return Pick;}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_material_ui_styles__["withStyles"])(styles)(Pick));
 
 /***/ }),
-/* 755 */
+/* 756 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('concat', __webpack_require__(756));
+    func = convert('concat', __webpack_require__(757));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 756 */
+/* 757 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(103),
@@ -73408,25 +76173,25 @@ module.exports = concat;
 
 
 /***/ }),
-/* 757 */
+/* 758 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('size', __webpack_require__(758), __webpack_require__(25));
+    func = convert('size', __webpack_require__(759), __webpack_require__(25));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 758 */
+/* 759 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseKeys = __webpack_require__(155),
-    getTag = __webpack_require__(55),
+    getTag = __webpack_require__(56),
     isArrayLike = __webpack_require__(44),
-    isString = __webpack_require__(759),
-    stringSize = __webpack_require__(760);
+    isString = __webpack_require__(760),
+    stringSize = __webpack_require__(761);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -73471,7 +76236,7 @@ module.exports = size;
 
 
 /***/ }),
-/* 759 */
+/* 760 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(35),
@@ -73507,12 +76272,12 @@ module.exports = isString;
 
 
 /***/ }),
-/* 760 */
+/* 761 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var asciiSize = __webpack_require__(761),
-    hasUnicode = __webpack_require__(762),
-    unicodeSize = __webpack_require__(763);
+var asciiSize = __webpack_require__(762),
+    hasUnicode = __webpack_require__(763),
+    unicodeSize = __webpack_require__(764);
 
 /**
  * Gets the number of symbols in `string`.
@@ -73531,7 +76296,7 @@ module.exports = stringSize;
 
 
 /***/ }),
-/* 761 */
+/* 762 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseProperty = __webpack_require__(167);
@@ -73549,7 +76314,7 @@ module.exports = asciiSize;
 
 
 /***/ }),
-/* 762 */
+/* 763 */
 /***/ (function(module, exports) {
 
 /** Used to compose unicode character classes. */
@@ -73581,7 +76346,7 @@ module.exports = hasUnicode;
 
 
 /***/ }),
-/* 763 */
+/* 764 */
 /***/ (function(module, exports) {
 
 /** Used to compose unicode character classes. */
@@ -73631,53 +76396,53 @@ module.exports = unicodeSize;
 
 
 /***/ }),
-/* 764 */
+/* 765 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample__ = __webpack_require__(766);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_mean__ = __webpack_require__(768);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_mean__ = __webpack_require__(769);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_mean___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_fp_mean__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_fp_map__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_fp_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_fp_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_each__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_each__ = __webpack_require__(773);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash_fp_each___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash_fp_each__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_fp_random__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash_fp_random___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash_fp_random__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_clamp__ = __webpack_require__(775);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_clamp__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_fp_clamp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash_fp_clamp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_fp_isArray__ = __webpack_require__(778);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_fp_isArray__ = __webpack_require__(779);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash_fp_isArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash_fp_isArray__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_lodash_fp_isObject__ = __webpack_require__(779);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_lodash_fp_isObject__ = __webpack_require__(780);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_lodash_fp_isObject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_lodash_fp_isObject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash_fp_compact__ = __webpack_require__(780);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash_fp_compact__ = __webpack_require__(781);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash_fp_compact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_lodash_fp_compact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_lodash_fp_zipAll__ = __webpack_require__(782);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_lodash_fp_zipAll__ = __webpack_require__(783);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_lodash_fp_zipAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_lodash_fp_zipAll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_fp_difference__ = __webpack_require__(785);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_fp_difference__ = __webpack_require__(786);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_fp_difference___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_fp_difference__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_lodash_fp_cloneDeep__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_lodash_fp_cloneDeep___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_lodash_fp_cloneDeep__);
 var randomWithFloat=__WEBPACK_IMPORTED_MODULE_4_lodash_fp_random___default.a.convert({fixed:false});var eachWithKey=__WEBPACK_IMPORTED_MODULE_3_lodash_fp_each___default.a.convert({cap:false});var plus=function plus(a,b){return a+b;};var minus=function minus(a,b){return a-b;};var mutateFloat=function mutateFloat(originalValue){var mutationSelector=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()([plus,minus]);var mutant=mutationSelector(originalValue,originalValue/10||0.01);return __WEBPACK_IMPORTED_MODULE_5_lodash_fp_clamp___default()(0,1,mutant);};var remove=function remove(originalArray){return __WEBPACK_IMPORTED_MODULE_10_lodash_fp_difference___default()(originalArray,[__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()(originalArray)]);};var add=function add(originalArray){return __WEBPACK_IMPORTED_MODULE_11_lodash_fp_cloneDeep___default()(originalArray).push(__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()(originalArray));};var mutateArray=function mutateArray(originalArray){var mutationSelector=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()([remove,add]);return mutationSelector(originalArray);};var crossAndMutateFloat=function crossAndMutateFloat(_ref){var genomes=_ref.genomes,key=_ref.key,mutationRate=_ref.mutationRate;var geneSelector=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()([__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default.a,__WEBPACK_IMPORTED_MODULE_1_lodash_fp_mean___default.a]);var props=__WEBPACK_IMPORTED_MODULE_2_lodash_fp_map___default()(key,genomes);var childValue=geneSelector(props);if(randomWithFloat(0,1,true)<mutationRate){return mutateFloat(childValue);}return childValue;};var crossAndMutateObject=function crossAndMutateObject(_ref2){var genomes=_ref2.genomes,key=_ref2.key,mutationRate=_ref2.mutationRate;return Breed(__WEBPACK_IMPORTED_MODULE_2_lodash_fp_map___default()(key,genomes),mutationRate);};var crossAndMutateArray=function crossAndMutateArray(_ref3){var genomes=_ref3.genomes,key=_ref3.key,mutationRate=_ref3.mutationRate;var genomeParts=__WEBPACK_IMPORTED_MODULE_2_lodash_fp_map___default()(key,genomes);var zippedParts=__WEBPACK_IMPORTED_MODULE_9_lodash_fp_zipAll___default()(genomeParts);var newParts=__WEBPACK_IMPORTED_MODULE_2_lodash_fp_map___default()(Breed,zippedParts);if(randomWithFloat(0,1,true)<mutationRate){return mutateArray(newParts);}return newParts;};var Breed=function Breed(genomes){var defaultMutationRate=arguments.length>1&&arguments[1]!==undefined?arguments[1]:0;genomes=__WEBPACK_IMPORTED_MODULE_8_lodash_fp_compact___default()(genomes);var child={};var favoriteParent=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_sample___default()(genomes);var mutationRate=favoriteParent.mutationRate||defaultMutationRate;eachWithKey(function(value,key){if(__WEBPACK_IMPORTED_MODULE_6_lodash_fp_isArray___default()(value)){child[key]=crossAndMutateArray({genomes:genomes,key:key,mutationRate:mutationRate});return;}if(__WEBPACK_IMPORTED_MODULE_7_lodash_fp_isObject___default()(value)){return child[key]=crossAndMutateObject({genomes:genomes,key:key,mutationRate:mutationRate});}child[key]=crossAndMutateFloat({genomes:genomes,key:key,mutationRate:mutationRate});},favoriteParent);return child;};/* harmony default export */ __webpack_exports__["a"] = (Breed);
 
 /***/ }),
-/* 765 */
+/* 766 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('sample', __webpack_require__(766), __webpack_require__(25));
+    func = convert('sample', __webpack_require__(767), __webpack_require__(25));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 766 */
+/* 767 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arraySample = __webpack_require__(300),
-    baseSample = __webpack_require__(767),
+    baseSample = __webpack_require__(768),
     isArray = __webpack_require__(11);
 
 /**
@@ -73703,7 +76468,7 @@ module.exports = sample;
 
 
 /***/ }),
-/* 767 */
+/* 768 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arraySample = __webpack_require__(300),
@@ -73724,21 +76489,21 @@ module.exports = baseSample;
 
 
 /***/ }),
-/* 768 */
+/* 769 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('mean', __webpack_require__(769), __webpack_require__(25));
+    func = convert('mean', __webpack_require__(770), __webpack_require__(25));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 769 */
+/* 770 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMean = __webpack_require__(770),
+var baseMean = __webpack_require__(771),
     identity = __webpack_require__(51);
 
 /**
@@ -73763,10 +76528,10 @@ module.exports = mean;
 
 
 /***/ }),
-/* 770 */
+/* 771 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSum = __webpack_require__(771);
+var baseSum = __webpack_require__(772);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -73789,7 +76554,7 @@ module.exports = baseMean;
 
 
 /***/ }),
-/* 771 */
+/* 772 */
 /***/ (function(module, exports) {
 
 /**
@@ -73819,28 +76584,28 @@ module.exports = baseSum;
 
 
 /***/ }),
-/* 772 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(773);
-
-
-/***/ }),
 /* 773 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var convert = __webpack_require__(9),
-    func = convert('forEach', __webpack_require__(774));
-
-func.placeholder = __webpack_require__(8);
-module.exports = func;
+module.exports = __webpack_require__(774);
 
 
 /***/ }),
 /* 774 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(67),
+var convert = __webpack_require__(9),
+    func = convert('forEach', __webpack_require__(775));
+
+func.placeholder = __webpack_require__(8);
+module.exports = func;
+
+
+/***/ }),
+/* 775 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayEach = __webpack_require__(68),
     baseEach = __webpack_require__(258),
     castFunction = __webpack_require__(271),
     isArray = __webpack_require__(11);
@@ -73884,21 +76649,21 @@ module.exports = forEach;
 
 
 /***/ }),
-/* 775 */
+/* 776 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('clamp', __webpack_require__(776));
+    func = convert('clamp', __webpack_require__(777));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 776 */
+/* 777 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseClamp = __webpack_require__(777),
+var baseClamp = __webpack_require__(778),
     toNumber = __webpack_require__(147);
 
 /**
@@ -73940,7 +76705,7 @@ module.exports = clamp;
 
 
 /***/ }),
-/* 777 */
+/* 778 */
 /***/ (function(module, exports) {
 
 /**
@@ -73968,7 +76733,7 @@ module.exports = baseClamp;
 
 
 /***/ }),
-/* 778 */
+/* 779 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
@@ -73979,7 +76744,7 @@ module.exports = func;
 
 
 /***/ }),
-/* 779 */
+/* 780 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
@@ -73990,18 +76755,18 @@ module.exports = func;
 
 
 /***/ }),
-/* 780 */
+/* 781 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('compact', __webpack_require__(781), __webpack_require__(25));
+    func = convert('compact', __webpack_require__(782), __webpack_require__(25));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 781 */
+/* 782 */
 /***/ (function(module, exports) {
 
 /**
@@ -74038,22 +76803,22 @@ module.exports = compact;
 
 
 /***/ }),
-/* 782 */
+/* 783 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('zipAll', __webpack_require__(783));
+    func = convert('zipAll', __webpack_require__(784));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 783 */
+/* 784 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(169),
-    unzip = __webpack_require__(784);
+    unzip = __webpack_require__(785);
 
 /**
  * Creates an array of grouped elements, the first of which contains the
@@ -74077,11 +76842,11 @@ module.exports = zip;
 
 
 /***/ }),
-/* 784 */
+/* 785 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayFilter = __webpack_require__(241),
-    arrayMap = __webpack_require__(56),
+    arrayMap = __webpack_require__(57),
     baseProperty = __webpack_require__(167),
     baseTimes = __webpack_require__(150),
     isArrayLikeObject = __webpack_require__(301);
@@ -74128,21 +76893,21 @@ module.exports = unzip;
 
 
 /***/ }),
-/* 785 */
+/* 786 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var convert = __webpack_require__(9),
-    func = convert('difference', __webpack_require__(786));
+    func = convert('difference', __webpack_require__(787));
 
 func.placeholder = __webpack_require__(8);
 module.exports = func;
 
 
 /***/ }),
-/* 786 */
+/* 787 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseDifference = __webpack_require__(787),
+var baseDifference = __webpack_require__(788),
     baseFlatten = __webpack_require__(168),
     baseRest = __webpack_require__(169),
     isArrayLikeObject = __webpack_require__(301);
@@ -74178,13 +76943,13 @@ module.exports = difference;
 
 
 /***/ }),
-/* 787 */
+/* 788 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var SetCache = __webpack_require__(250),
     arrayIncludes = __webpack_require__(234),
-    arrayIncludesWith = __webpack_require__(788),
-    arrayMap = __webpack_require__(56),
+    arrayIncludesWith = __webpack_require__(789),
+    arrayMap = __webpack_require__(57),
     baseUnary = __webpack_require__(98),
     cacheHas = __webpack_require__(251);
 
@@ -74251,7 +77016,7 @@ module.exports = baseDifference;
 
 
 /***/ }),
-/* 788 */
+/* 789 */
 /***/ (function(module, exports) {
 
 /**
@@ -74279,7 +77044,7 @@ module.exports = arrayIncludesWith;
 
 
 /***/ }),
-/* 789 */
+/* 790 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74289,12 +77054,12 @@ module.exports = arrayIncludesWith;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Generation__ = __webpack_require__(790);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CreatureCards__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Generation__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CreatureCards__ = __webpack_require__(792);
 var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({cap:false});var styles={root:{display:'flex',flexDirection:'column',alignItems:'center'}};var Generations=function Generations(_ref){var className=_ref.className,classes=_ref.classes,generations=_ref.generations,onSelectParent=_ref.onSelectParent,onAddToInventory=_ref.onAddToInventory;var renderGeneration=function renderGeneration(_ref2,i){var children=_ref2.children,suitors=_ref2.suitors;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Generation__["a" /* default */],{key:i},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__CreatureCards__["a" /* default */],{creatures:children,onAddToInventory:onAddToInventory,onSelectParent:onSelectParent,title:'Children'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__CreatureCards__["a" /* default */],{creatures:suitors,onAddToInventory:onAddToInventory,onSelectParent:onSelectParent,title:'Suitors'}));};return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:[className,classes.root].join(' ')},mapWithIndex(renderGeneration,generations));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(Generations));
 
 /***/ }),
-/* 790 */
+/* 791 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74305,7 +77070,7 @@ var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({
 var styles=function styles(theme){return{root:{flexShrink:0,display:'flex',justifyContent:'space-between',maxWidth:theme.breakpoints.values.lg,padding:theme.spacing.unit}};};var Generation=function Generation(_ref){var children=_ref.children,classes=_ref.classes;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.root},children);};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_material_ui_styles__["withStyles"])(styles)(Generation));
 
 /***/ }),
-/* 791 */
+/* 792 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74315,11 +77080,11 @@ var styles=function styles(theme){return{root:{flexShrink:0,display:'flex',justi
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Creature_CreatureCard__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Creature_CreatureCard__ = __webpack_require__(793);
 var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({cap:false});var styles=function styles(theme){return{root:{marginRight:8*theme.spacing.unit,'&:last-child':{marginRight:0}},Creatures:{display:'flex',flexWrap:'wrap'}};};var Creatures=function Creatures(props){var classes=props.classes,_onAddToInventory=props.onAddToInventory,_onSelectParent=props.onSelectParent;var creatures=props.creatures,title=props.title;var renderCreatures=mapWithIndex(function(creature,i){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Creature_CreatureCard__["a" /* default */],{genome:creature.genome,key:i,onAddToInventory:function onAddToInventory(){return _onAddToInventory(creature);},onSelectParent:function onSelectParent(){return _onSelectParent(creature);}});});return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.root},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3',null,title),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:classes.Creatures},renderCreatures(creatures)));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(Creatures));
 
 /***/ }),
-/* 792 */
+/* 793 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74327,18 +77092,18 @@ var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_Icon__ = __webpack_require__(793);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_Icon__ = __webpack_require__(794);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_material_ui_Icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_material_ui_Icon__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_IconButton__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_IconButton__ = __webpack_require__(796);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_IconButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_IconButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_styles__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Creature__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Stats__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Stats__ = __webpack_require__(798);
 var styles=function styles(theme){return{root:{display:'flex',flexDirection:'column',width:'132px',padding:2*theme.spacing.unit,marginBottom:2*theme.spacing.unit,marginRight:2*theme.spacing.unit,'&:last-child':{marginRight:0}},Creature:{cursor:'pointer'},IconButton:{flexGrow:0,alignSelf:'flex-end'}};};var AddIcon=function AddIcon(_ref){var added=_ref.added;if(added)return null;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_material_ui_Icon___default.a,null,'add_circle_outline');};var CreatureCard=function CreatureCard(props){var onAddToInventory=props.onAddToInventory,onSelectParent=props.onSelectParent;var added=props.added,classes=props.classes,genome=props.genome;var onClickAdd=function onClickAdd(event){event.preventDefault();onAddToInventory();};return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_Card___default.a,{className:classes.root},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_IconButton___default.a,{className:classes.IconButton,onClick:onClickAdd},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AddIcon,{added:added})),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Creature__["a" /* default */],{className:classes.Creature,genome:genome,onClick:onSelectParent}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Stats__["a" /* default */],{arms:genome.arms.power,body:genome.body.power,legs:genome.legs.power}));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_material_ui_styles__["withStyles"])(styles)(CreatureCard));
 
 /***/ }),
-/* 793 */
+/* 794 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74348,7 +77113,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Icon = __webpack_require__(794);
+var _Icon = __webpack_require__(795);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -74360,7 +77125,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 794 */
+/* 795 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74478,7 +77243,7 @@ Icon.muiName = 'Icon';
 exports.default = (0, _withStyles2.default)(styles, { name: 'MuiIcon' })(Icon);
 
 /***/ }),
-/* 795 */
+/* 796 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74488,7 +77253,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _IconButton = __webpack_require__(796);
+var _IconButton = __webpack_require__(797);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -74500,7 +77265,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 796 */
+/* 797 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74651,7 +77416,7 @@ IconButton.defaultProps = {
 exports.default = (0, _withStyles2.default)(styles, { name: 'MuiIconButton' })(IconButton);
 
 /***/ }),
-/* 797 */
+/* 798 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74660,7 +77425,7 @@ exports.default = (0, _withStyles2.default)(styles, { name: 'MuiIconButton' })(I
 var format=function format(n){return parseInt(n*10,10);};var Stats=function Stats(_ref){var arms=_ref.arms,body=_ref.body,legs=_ref.legs;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p',null,format(body)+'/'+format(arms)+'/'+format(legs));};/* harmony default export */ __webpack_exports__["a"] = (Stats);
 
 /***/ }),
-/* 798 */
+/* 799 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74674,7 +77439,7 @@ var format=function format(n){return parseInt(n*10,10);};var Stats=function Stat
 var mapWithIndex=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_map___default.a.convert({cap:false});var styles=function styles(theme){return{root:{background:theme.palette.primary.main,color:theme.palette.primary.contrastText,width:'100%',display:'flex'},Creature:{width:'48px',backgroundColor:theme.palette.primary.contrastText,marginTop:theme.spacing.unit,marginBottom:theme.spacing.unit,marginLeft:theme.spacing.unit}};};var Inventory=function Inventory(_ref){var className=_ref.className,classes=_ref.classes,creatures=_ref.creatures;var renderCreatures=mapWithIndex(function(creature,i){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Creature__["a" /* default */],{added:false,className:classes.Creature,genome:creature.genome,key:i});});return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:[classes.root,className].join(' ')},renderCreatures(creatures));};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(Inventory));
 
 /***/ }),
-/* 799 */
+/* 800 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74712,4 +77477,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.0db2ec0f.js.map
+//# sourceMappingURL=main.71b27b06.js.map
