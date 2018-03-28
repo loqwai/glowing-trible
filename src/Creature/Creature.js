@@ -34,10 +34,7 @@ const Creature = ({ className, genome, onClick = noop }) => {
         vOffset={vOffset}
       />
       <Head
-        color={genome.head.color}
-        eyes={genome.head.eyes}
-        shape={genome.head.shape}
-        mouth={genome.head.mouth}
+        genome={genome.head}
         vOffset={vOffset}
       />
     </svg>
