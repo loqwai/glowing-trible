@@ -1,6 +1,11 @@
 import shuffle from 'lodash/fp/shuffle'
 import cloneDeep from 'lodash/fp/cloneDeep'
 import Round from './Round'
+
+export const WhoShouldAttack = (creature1, creature2) => {
+
+}
+
 const Fight = (creature1, creature2) => {
   const log = []
   let [attacker, defender] = shuffle([creature1, creature2])
@@ -10,6 +15,7 @@ const Fight = (creature1, creature2) => {
     outcome: {attackerDamage: 0, defenderDamage: 0, action: 'start'}
   }
   log.push(logEntry)
+
   while(logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
     logEntry = Round(attacker, defender)
     const eatsEntry = cloneDeep(logEntry)

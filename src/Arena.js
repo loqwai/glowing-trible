@@ -8,8 +8,8 @@ import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 
 import Creature from './Creature'
-import Fight from './Fight'
-import GenerateSuitors from './GenerateSuitors'
+import Fight from './logic/Fight'
+import GenerateSuitors from './logic/GenerateSuitors'
 import Log from './Log'
 import { creatureToFighter } from './helpers/fighter'
 
