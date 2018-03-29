@@ -94,7 +94,7 @@ class Arena extends Component {
               genome={this.state.rightCreature.genome}
             />
           </div>
-          <Log log={this.state.log} />
+          <Log log={this.state.log} rightId={this.state.rightCreature.id} leftId={this.state.leftCreature.id} />
         </Card>
 
         <Button className={classes.Button} onClick={this.initialize}>

@@ -5,9 +5,10 @@ import isNaN from 'lodash/fp/isNaN'
 
 const randomWithFloat = random.convert({ fixed: false })
 
+const legsDivisor = 0 //increase to decrease leg impact
 export const WhoShouldAttack = (creature1, creature2) => {
 
-  let creature1Ratio = creature1.legs / (creature1.legs + creature2.legs)
+  let creature1Ratio = (legsDivisor + creature1.legs) / (legsDivisor + creature1.legs + creature2.legs)
   if(isNaN(creature1Ratio)) creature1Ratio = 0.5
 
   if(randomWithFloat(0, 1, true) < creature1Ratio)
@@ -43,11 +44,29 @@ const Fight = (creature1, creature2) => {
   const outcome = cloneDeep(logEntry.outcome)
 
   if(outcome.action === 'starves') {
+    log.push({
+      attacker: logEntry.defender,
+      defender: logEntry.attacker,
+      outcome: {
+        action: 'wins',
+        defenderDamage: 0,
+        attackerDamage: 0,
+      }
+    })
     return log
   }
 
   outcome.action = "dies"
   log.push({defender: logEntry.defender, attacker: logEntry.defender, outcome})
+  log.push({
+    attacker: logEntry.attacker,
+    defender: logEntry.defender,
+    outcome: {
+      action: 'wins',
+      defenderDamage: 0,
+      attackerDamage: 0,
+    }
+  })
   return log
 }
 export default Fight

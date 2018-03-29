@@ -30,9 +30,10 @@ const run = async (previousGeneration=[], generationCount=0) => {
     if(generationCount === generationsToRun) return previousGeneration
 
     const suitors = await GenerateSuitors(suitorsToGenerate)
-    const generation = breedPopulation(concat(suitors, previousGeneration))
+    const generation = concat(previousGeneration, breedPopulation(concat(suitors, previousGeneration)))
     const fighters = map(creatureToFighter, generation)
-    const logs = times(() => fightAndBreed(fighters), fightCount)
+    const logs = times(() => Fight(sample(fighters), sample(fighters)), fightCount)
+    // console.log(JSON.stringify(logs, null, 2))
     const winnerIds = logsToWinners(logs)
     const winners = filter((creature) => includes(creature.id, winnerIds), generation)
     return run(winners, generationCount+1)
@@ -40,7 +41,7 @@ const run = async (previousGeneration=[], generationCount=0) => {
 
 const  breedPopulation = (population) => {
   const childGenomes = times(()=> Breed([sample(population).genome, sample(population).genome]), generationSize)
-  return map(genomeToCreature, childGenomes)  
+  return map(genomeToCreature, childGenomes)
 }
 
 const logsToWinners = (logs) => {
@@ -48,12 +49,6 @@ const logsToWinners = (logs) => {
   const scores =  orderByLength(groupByIdentity(winners))
   scores.length = winnersToKeep
   return uniq(flatten(scores))
-}
-
-const fightAndBreed  = (generation) => {
-  const creature1 = sample(generation)
-  const creature2 = sample(generation)
-  return Fight(creature1, creature2)
 }
 
 run().then(winners => {
