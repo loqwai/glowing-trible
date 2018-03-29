@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import bindAll from 'lodash/fp/bindAll'
+import isEmpty from 'lodash/fp/isEmpty'
 import isNil from 'lodash/fp/isNil'
 import map from 'lodash/fp/map'
 import Button from 'material-ui/Button'
@@ -7,8 +8,8 @@ import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 
-import Creature from './Creature'
 import Fight from './Fight'
+import FightAnimation from './FightAnimation'
 import GenerateSuitors from './GenerateSuitors'
 import Log from './Log'
 import { creatureToFighter } from './helpers/fighter'
@@ -18,9 +19,6 @@ const mapWithIndex = map.convert({ cap: false })
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
     overflowY: 'scroll',
   },
   octogon: {
@@ -58,6 +56,7 @@ class Arena extends Component {
       leftCreature: null,
       rightCreature: null,
       log: null,
+      pendingLog: null,
     }
 
     const creatures = await GenerateSuitors(2)
@@ -66,8 +65,24 @@ class Arena extends Component {
     this.setState({
       leftCreature: creatures[0],
       rightCreature: creatures[1],
-      log: Fight(fighters[0], fighters[1]),
+      log: [],
+      pendingLog: Fight(fighters[0], fighters[1]),
     })
+
+    this.nextAction()
+  }
+
+  nextAction() {
+    const { log, pendingLog } = this.state
+    if (isEmpty(pendingLog)) {
+      this.setState({ currentLogEntry: null })
+      return
+    }
+
+    const currentLogEntry = pendingLog.shift()
+    log.push(currentLogEntry)
+    this.setState({ currentLogEntry, log, pendingLog })
+    setTimeout(this.nextAction, 1000)
   }
 
   render() {
@@ -84,16 +99,12 @@ class Arena extends Component {
     return (
       <div className={classes.root}>
         <Card className={classes.Card}>
-          <div className={classes.octogon}>
-            <Creature
-              className={classes.Creature}
-              genome={this.state.leftCreature.genome}
-            />
-            <Creature
-              className={classes.Creature}
-              genome={this.state.rightCreature.genome}
-            />
-          </div>
+          <FightAnimation
+            className={classes.octogon}
+            logEntry={this.state.currentLogEntry}
+            leftCreature={this.state.leftCreature}
+            rightCreature={this.state.rightCreature}
+          />
           <Log log={this.state.log} />
         </Card>
 
