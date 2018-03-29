@@ -70,7 +70,7 @@ const Breed = (genomes, defaultMutationRate=0) => {
     }
     if (isObject(value)) {
       return child[key] = crossAndMutateObject({genomes, key, mutationRate})
-    }
+    }    
     child[key] = crossAndMutateFloat({ genomes, key, mutationRate })
   }, favoriteParent)
   return child
