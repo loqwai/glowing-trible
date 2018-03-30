@@ -2,9 +2,9 @@ import random from "lodash/fp/random"
 import cloneDeep from 'lodash/fp/cloneDeep'
 const randomWithFloat = random.convert({ fixed: false })
 const Round = (attacker, defender) =>  {
-  const energyDrainMultiplier = 10
-  const attackMultiplier = 20
-  const bodyDivisor = 2 //make smaller for the body to soak more
+  const energyDrainMultiplier = 13
+  const attackMultiplier = 50
+  const bodyDivisor = 2.5 //make smaller for the body to soak more
 
   attacker = cloneDeep(attacker)
   defender = cloneDeep(defender)
