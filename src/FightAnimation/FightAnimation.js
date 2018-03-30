@@ -3,7 +3,9 @@ import get from 'lodash/fp/get'
 import { withStyles } from 'material-ui/styles'
 import React from 'react'
 
+import DiesAnimation from './DiesAnimation'
 import EatsAnimation from './EatsAnimation'
+import HitsAnimation from './HitsAnimation'
 import NoopAnimation from './NoopAnimation'
 
 const styles = {
@@ -14,7 +16,11 @@ const styles = {
 }
 
 const getAnimation = action => {
+  console.log('getAnimation', action)
   if (action === 'eats') return EatsAnimation
+  if (action === 'hits') return HitsAnimation
+  if (action === 'dies') return DiesAnimation
+  if (action === 'starves') return DiesAnimation
   return NoopAnimation
 }
 

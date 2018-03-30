@@ -61,12 +61,14 @@ class Arena extends Component {
 
     const creatures = await GenerateSuitors(2)
     const fighters = mapWithIndex(creatureToFighter, creatures)
+    const pendingLog = Fight(fighters[0], fighters[1])
+    pendingLog.pop()
 
     this.setState({
       leftCreature: creatures[0],
       rightCreature: creatures[1],
       log: [],
-      pendingLog: Fight(fighters[0], fighters[1]),
+      pendingLog: pendingLog,
     })
 
     this.nextAction()
@@ -75,7 +77,6 @@ class Arena extends Component {
   nextAction() {
     const { log, pendingLog } = this.state
     if (isEmpty(pendingLog)) {
-      this.setState({ currentLogEntry: null })
       return
     }
 
