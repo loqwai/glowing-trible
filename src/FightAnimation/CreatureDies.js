@@ -21,7 +21,7 @@ const styles = {
       animationName: 'dies',
       animationDuration: '1s',
       animationIterationCount: 1,
-      animationTimingFunction: 'cubic-bezier(0, 0, 1, 0)',
+      animationTimingFunction: 'cubic-bezier(0, 0, 1, -0.5)',
     },
   },
 }
