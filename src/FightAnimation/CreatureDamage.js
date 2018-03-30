@@ -35,7 +35,7 @@ const styles = {
 
 const damageText = (classes, damage) => {
   if (damage > 0) {
-    return <p className={classes.damageText}>{parseInt(damage, 10)}</p>
+    return <p className={classes.damageText}>-{parseInt(damage, 10)}</p>
   }
 
   return null
