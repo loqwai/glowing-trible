@@ -4,8 +4,17 @@ import { withStyles } from 'material-ui/styles'
 import Creature from '../Creature'
 
 const styles = {
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  CreatureWrapper: {
+    width: '50%',
+    height: '200px',
+    display: 'flex',
+  },
   Creature: {
-    width: 'calc(50% - 20px)',
+    flex: 1,
   },
 }
 
@@ -14,9 +23,13 @@ const NoopAnimation = props => {
   const { className, classes } = props
 
   return (
-    <div className={className}>
-      <Creature className={classes.Creature} genome={leftCreature.genome} />
-      <Creature className={classes.Creature} genome={rightCreature.genome} />
+    <div className={[className, classes.root].join(' ')}>
+      <div className={classes.CreatureWrapper}>
+        <Creature className={classes.Creature} genome={leftCreature.genome} />
+      </div>
+      <div className={classes.CreatureWrapper}>
+        <Creature className={classes.Creature} genome={rightCreature.genome} />
+      </div>
     </div>
   )
 }
