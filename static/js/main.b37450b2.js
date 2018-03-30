@@ -43205,7 +43205,7 @@ var Legs=function Legs(_ref){var color=_ref.color,power=_ref.power,vOffset=_ref.
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_styles__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_styles__);
-var styles={'@keyframes dies':{'0%':{top:0,transform:'rotateZ(0)'},'100%':{top:'25%',transform:'rotateZ(90deg)'}},root:{position:'relative','& > svg':{position:'relative',transform:'rotateZ(90deg)',top:'25%',animationName:'dies',animationDuration:'1s',animationIterationCount:1,animationTimingFunction:'cubic-bezier(0, 0, 1, 0)'}}};var CreatureDies=function CreatureDies(_ref){var children=_ref.children,classes=_ref.classes,className=_ref.className,side=_ref.side;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:[classes.root,className].join(' ')},children);};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_material_ui_styles__["withStyles"])(styles)(CreatureDies));
+var styles={'@keyframes dies':{'0%':{top:0,transform:'rotateZ(0)'},'100%':{top:'25%',transform:'rotateZ(90deg)'}},root:{position:'relative','& > svg':{position:'relative',transform:'rotateZ(90deg)',top:'25%',animationName:'dies',animationDuration:'1s',animationIterationCount:1,animationTimingFunction:'cubic-bezier(0, 0, 1, -0.5)'}}};var CreatureDies=function CreatureDies(_ref){var children=_ref.children,classes=_ref.classes,className=_ref.className,side=_ref.side;return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:[classes.root,className].join(' ')},children);};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_material_ui_styles__["withStyles"])(styles)(CreatureDies));
 
 /***/ }),
 /* 632 */
@@ -77930,4 +77930,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.84a1f4ed.js.map
+//# sourceMappingURL=main.b37450b2.js.map
