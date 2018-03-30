@@ -5,19 +5,17 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 
 const mapWithIndex = map.convert({ cap: false })
 
-const formatPlayerById = id => {
-  if (id === 0) return 'Left'
-  if (id === 1) return 'Right'
-
-  return 'unkown'
+const formatPlayerById = (leftId, id) => {
+  if (id === leftId) return 'Left'
+  return 'Right'
 }
 
-const formatEntry = entry => {
+const formatEntry = ({ leftId, rightId, entry }) => {
   const { attacker, defender, outcome } = entry
   const { action, attackerDamage, defenderDamage } = outcome
 
-  const formattedAttacker = formatPlayerById(attacker.id)
-  const formattedDefender = formatPlayerById(defender.id)
+  const formattedAttacker = formatPlayerById(leftId, attacker.id)
+  const formattedDefender = formatPlayerById(leftId, defender.id)
 
   if (action === 'dies') return `${formattedDefender} Creature dies`
   if (action === 'eats')
@@ -36,14 +34,17 @@ const formatEntry = entry => {
   // if (action === "hits")
 }
 
-const LogEntry = (entry, i) => (
+const LogEntry = ({ leftId, rightId, entry }, i) => (
   <ListItem key={i}>
-    <ListItemText primary={formatEntry(entry)} />
+    <ListItemText primary={formatEntry({ leftId, rightId, entry })} />
   </ListItem>
 )
 
-const Log = ({ log }) => {
-  return <List dense={true}>{mapWithIndex(LogEntry, log)}</List>
+const Log = ({ log, rightId, leftId }) => {
+  const logWithIds = map(entry => {
+    return { entry, rightId, leftId }
+  }, log)
+  return <List dense={true}>{mapWithIndex(LogEntry, logWithIds)}</List>
 }
 
 export default Log

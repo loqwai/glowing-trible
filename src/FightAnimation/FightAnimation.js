@@ -3,7 +3,6 @@ import get from 'lodash/fp/get'
 import { withStyles } from 'material-ui/styles'
 import React from 'react'
 
-import Creature from '../Creature'
 import EatsAnimation from './EatsAnimation'
 import NoopAnimation from './NoopAnimation'
 

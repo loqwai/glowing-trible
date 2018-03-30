@@ -135,7 +135,7 @@ describe('When 2 creatures fight', () => {
       legs: 0,
     }
     const {attacker, defender} = Round(pushupCreature, tankCreature)
-    expect(defender.health).toBe(85)
+    expect(defender.health).toBe(50)
   })
 
   it('If a weak creature hits a tank, it should not heal', ()=> {
@@ -170,14 +170,14 @@ describe('When 2 creatures fight', () => {
       legs: 1,
     }
     const results =  times(()=> Round(pushupCreature, runnerCreature), 1000)
-    it('the runner should be hit 50% of the time', ()=> {
+    it('the runner should never be hit', ()=> {
       const averageDefenderHealth = mean(map('defender.health',results))
-      expect(averageDefenderHealth).toBeGreaterThan(80)
+      expect(averageDefenderHealth).toBe(0)
     })
 
-    it('the runner should run away sometimes', ()=> {
+    it('the runner should never run away', ()=> {
       expect(some({action: 'hits'}, map('outcome', results))).toBeTruthy()
-      expect(some({action: 'misses'}, map('outcome', results))).toBeTruthy()
+      expect(some({action: 'misses'}, map('outcome', results))).toBeFalsy()
     })
   })
 

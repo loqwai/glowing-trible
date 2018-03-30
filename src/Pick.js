@@ -6,12 +6,12 @@ import size from 'lodash/fp/size'
 import times from 'lodash/fp/times'
 import { withStyles } from 'material-ui/styles'
 
-import Breed from './Breed'
+import Breed from './logic/Breed'
 import Generations from './Generations'
-import GenerateSuitors from './GenerateSuitors'
+import GenerateSuitors from './logic/GenerateSuitors'
 import Inventory from './Inventory'
 
-import { numChildren, numSuitors } from './Configuration.json'
+import { numChildren, numSuitors } from './logic/Configuration.json'
 
 const styles = {
   root: {

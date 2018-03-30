@@ -20,22 +20,17 @@ const styles = {
   },
 }
 
-const getLeftDamage = logEntry => {
-  if (logEntry.attacker.id !== 0) return 0
-  return logEntry.outcome.attackerDamage
-}
-
-const getRightDamage = logEntry => {
-  if (logEntry.attacker.id !== 1) return 0
-  return logEntry.outcome.attackerDamage
+const getDamage = (id, logEntry) => {
+  if (logEntry.attacker.id === id) return logEntry.outcome.attackerDamage
+  return 0
 }
 
 const EatsAnimation = props => {
   const { leftCreature, logEntry, rightCreature } = props
   const { className, classes } = props
 
-  const leftDamage = getLeftDamage(logEntry)
-  const rightDamage = getRightDamage(logEntry)
+  const leftDamage = getDamage(leftCreature.id, logEntry)
+  const rightDamage = getDamage(rightCreature.id, logEntry)
 
   return (
     <div className={[className, classes.root].join(' ')}>

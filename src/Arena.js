@@ -8,9 +8,9 @@ import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 
-import Fight from './Fight'
 import FightAnimation from './FightAnimation'
-import GenerateSuitors from './GenerateSuitors'
+import Fight from './logic/Fight'
+import GenerateSuitors from './logic/GenerateSuitors'
 import Log from './Log'
 import { creatureToFighter } from './helpers/fighter'
 
@@ -105,7 +105,11 @@ class Arena extends Component {
             leftCreature={this.state.leftCreature}
             rightCreature={this.state.rightCreature}
           />
-          <Log log={this.state.log} />
+          <Log
+            log={this.state.log}
+            rightId={this.state.rightCreature.id}
+            leftId={this.state.leftCreature.id}
+          />
         </Card>
 
         <Button className={classes.Button} onClick={this.initialize}>

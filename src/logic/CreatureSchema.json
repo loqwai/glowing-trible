@@ -7,6 +7,14 @@
       "title": "head",
       "properties": {
         "color": { "$ref": "#/definitions/color" },
+        "colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rgba"
+          },
+          "minItems":4,
+          "maxItems":4
+         },
         "shape": { "$ref": "#/definitions/float" },
         "eyes": {
           "type": "object",
@@ -36,7 +44,7 @@
           "required": ["expression", "lips", "position", "width"]
         }
       },
-      "required": ["color", "shape", "eyes", "mouth"]
+      "required": ["color", "colors", "shape", "eyes", "mouth"]
     },
     "arms": {
       "type": "object",
@@ -78,6 +86,16 @@
         "luminosity": { "$ref": "#/definitions/float" }
       },
       "required": ["hue", "saturation", "luminosity"]
+    },
+    "rgba": {
+      "type": "object",
+      "properties": {
+        "red": { "$ref": "#/definitions/float" },
+        "green": { "$ref": "#/definitions/float" },
+        "blue": { "$ref": "#/definitions/float" },
+        "alpha": { "$ref": "#/definitions/float" }
+      },
+      "required": ["red", "green", "blue", "alpha"]
     }
   }
 }
