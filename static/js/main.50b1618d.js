@@ -43264,7 +43264,7 @@ module.exports = cloneDeep;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_fp_random___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_fp_random__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_cloneDeep__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_fp_cloneDeep___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_fp_cloneDeep__);
-var randomWithFloat=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_random___default.a.convert({fixed:false});var Round=function Round(attacker,defender){var energyDrainMultiplier=13;var attackMultiplier=50;var bodyDivisor=2.5;//make smaller for the body to soak more
+var randomWithFloat=__WEBPACK_IMPORTED_MODULE_0_lodash_fp_random___default.a.convert({fixed:false});var Round=function Round(attacker,defender){var energyDrainMultiplier=13;var attackMultiplier=65;var bodyDivisor=2.2;//make smaller for the body to soak more
 attacker=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_cloneDeep___default()(attacker);defender=__WEBPACK_IMPORTED_MODULE_1_lodash_fp_cloneDeep___default()(defender);var attackerDamage=(attacker.body+attacker.legs+attacker.arms)*energyDrainMultiplier+1;var outcome={attackerDamage:attackerDamage,defenderDamage:0};attacker.health-=attackerDamage;if(attacker.health<=0){outcome.action='starves';return{attacker:attacker,defender:defender,outcome:outcome};}var defenderDamage=attacker.arms*attackMultiplier;var damageSoaker=1-defender.body/bodyDivisor;if(damageSoaker>0){defenderDamage*=damageSoaker;}defender.health-=defenderDamage;outcome.action='hits';outcome.defenderDamage=defenderDamage;return{attacker:attacker,defender:defender,outcome:outcome};};/* harmony default export */ __webpack_exports__["a"] = (Round);
 
 /***/ }),
@@ -77866,4 +77866,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.eda7c091.js.map
+//# sourceMappingURL=main.50b1618d.js.map
