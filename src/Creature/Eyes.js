@@ -13,7 +13,7 @@ const Eyes = ({ color, distanceBetweenEyes, position, size, vOffset }) => {
   const fill = formatHSL(color)
 
   return (
-    <g>
+    <svg>
       <circle
         cx={formatLeftOffset(distanceBetweenEyes, r)}
         cy={cy}
@@ -26,7 +26,7 @@ const Eyes = ({ color, distanceBetweenEyes, position, size, vOffset }) => {
         r={r}
         fill={fill}
       />
-    </g>
+    </svg>
   )
 }
 

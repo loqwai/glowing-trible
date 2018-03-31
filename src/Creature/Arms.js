@@ -6,7 +6,7 @@ const Arms = ({ color, power, vOffset }) => {
   const y2 = vOffset + 100 + power * 100
 
   return (
-    <g>
+    <svg>
       <line
         x1="40"
         y1={y1}
@@ -25,7 +25,7 @@ const Arms = ({ color, power, vOffset }) => {
         strokeWidth={1 + power * 10}
         strokeLinecap="round"
       />
-    </g>
+    </svg>
   )
 }
 export default Arms

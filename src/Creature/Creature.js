@@ -15,7 +15,7 @@ const Creature = ({ className, genome, onClick = noop }) => {
     <svg
       className={className}
       onClick={onClick}
-      preserveAspectRatio="xMidYMax meet"
+
       viewBox="0 0 100 350"
     >
       <Legs

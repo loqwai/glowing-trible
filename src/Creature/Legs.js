@@ -5,7 +5,7 @@ const Legs = ({ color, power, vOffset }) => {
   const y1 = vOffset + 170
   const y2 = vOffset + 200 + power * 100
   return (
-    <g>
+    <svg>
       <line
         x1="40"
         y1={y1}
@@ -24,7 +24,7 @@ const Legs = ({ color, power, vOffset }) => {
         strokeWidth={1 + power * 10}
         strokeLinecap="round"
       />
-    </g>
+    </svg>
   )
 }
 export default Legs
