@@ -7,6 +7,7 @@ import DiesAnimation from './DiesAnimation'
 import EatsAnimation from './EatsAnimation'
 import HitsAnimation from './HitsAnimation'
 import NoopAnimation from './NoopAnimation'
+import WinsAnimation from './WinsAnimation'
 
 const styles = {
   root: {
@@ -16,11 +17,11 @@ const styles = {
 }
 
 const getAnimation = action => {
-  console.log('getAnimation', action)
   if (action === 'eats') return EatsAnimation
   if (action === 'hits') return HitsAnimation
   if (action === 'dies') return DiesAnimation
   if (action === 'starves') return DiesAnimation
+  if (action === 'wins') return WinsAnimation
   return NoopAnimation
 }
 
