@@ -7,7 +7,8 @@ const formatLeftOffset = (distance, r) => 50 + r - eyeOffset(distance)
 const formatRightOffset = (distance, r) => 50 - r + eyeOffset(distance)
 const formatR = size => size * 15 + 5
 
-const Eyes = ({ color, distanceBetweenEyes, position, size, vOffset }) => {
+const Eyes = ({ genome, vOffset }) => {
+  const {color, distanceBetweenEyes, position, size} = genome
   const r = formatR(size)
   const cy = formatCY(position, vOffset)
   const fill = formatHSL(color)
@@ -19,12 +20,16 @@ const Eyes = ({ color, distanceBetweenEyes, position, size, vOffset }) => {
         cy={cy}
         r={r}
         fill={fill}
+        stroke="white"
+        stroke-width="1"
       />
       <circle
         cx={formatRightOffset(distanceBetweenEyes, r)}
         cy={cy}
         r={r}
         fill={fill}
+        stroke="white"
+        stroke-width="1"
       />
     </svg>
   )
