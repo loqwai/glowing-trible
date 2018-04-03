@@ -6,6 +6,7 @@ import Toolbar from 'material-ui/Toolbar'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import Arena from './Arena'
+import CreatureSelection from './CreatureSelection'
 import Dating from './Dating'
 import Drawing from './Drawing'
 import Pick from './Pick'
@@ -30,6 +31,7 @@ const App = ({ classes }) => (
       <CssBaseline />
       <Switch>
         <Route path="/arena" component={Arena} />
+        <Route path="/creature-selection" component={CreatureSelection} />
         <Route path="/dating" component={Dating} />
         <Route path="/drawing" component={Drawing} />
         <Route path="/" component={Pick} />
