@@ -12,6 +12,7 @@ import SelectedCreature from './SelectedCreature'
 import GenerateSuitors from './logic/GenerateSuitors'
 
 const deselectAll = map(set('selected', false))
+const mapWithIndex = map.convert({ cap: false })
 
 const styles = theme => ({
   root: {
@@ -93,10 +94,7 @@ class CreatureSelection extends Component {
     })
   }
 
-  creatureOption({ creature, selected }) {
-    if (!creature) {
-      console.log(JSON.stringify({ creature, selected }, null, 2))
-    }
+  creatureOption({ creature, selected }, i) {
     const { classes } = this.props
 
     return (
@@ -104,6 +102,7 @@ class CreatureSelection extends Component {
         className={classes.SelectionCardCreature}
         genome={creature.genome}
         key={creature.id}
+        onSelect={() => this.selectChampion(i)}
         selected={selected}
       />
     )
@@ -137,7 +136,7 @@ class CreatureSelection extends Component {
           />
         </Card>
         <Card className={classes.SelectionCard}>
-          {map(this.creatureOption, options)}
+          {mapWithIndex(this.creatureOption, options)}
         </Card>
       </div>
     )

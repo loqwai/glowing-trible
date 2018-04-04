@@ -12,12 +12,16 @@ const styles = {
   },
 }
 
-const CreatureOption = ({ classes, className, genome, selected }) => {
+const CreatureOption = ({ classes, className, genome, onSelect, selected }) => {
   const creatureClasses = [className]
   if (selected) creatureClasses.push(classes.selected)
 
   return (
-    <Creature className={join(' ', compact(creatureClasses))} genome={genome} />
+    <Creature
+      className={join(' ', compact(creatureClasses))}
+      genome={genome}
+      onClick={onSelect}
+    />
   )
 }
 
