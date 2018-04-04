@@ -3,6 +3,7 @@ import bindAll from 'lodash/fp/bindAll'
 import get from 'lodash/fp/get'
 import map from 'lodash/fp/map'
 import set from 'lodash/fp/set'
+import Button from 'material-ui/Button'
 import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
@@ -19,17 +20,22 @@ const styles = theme => ({
     flexGrow: 1,
     overflowY: 'scroll',
   },
-  Button: {
+  FightButton: {
     width: '100%',
-    marginBottom: 2 * theme.spacing.unit,
+    marginTop: 2 * theme.spacing.unit,
   },
   FightCard: {
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'stretch',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: `calc(100% - ${4 * theme.spacing.unit}px)`,
     margin: 2 * theme.spacing.unit,
     padding: 4 * theme.spacing.unit,
+  },
+  FightRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch',
   },
   SelectedCreature: {
     width: 'calc(50% - 20px)',
@@ -123,17 +129,26 @@ class CreatureSelection extends Component {
     return (
       <div className={classes.root}>
         <Card className={classes.FightCard}>
-          <SelectedCreature
-            className={classes.SelectedCreature}
-            creature={champion}
-          />
-          <div className={classes.VS}>
-            <p>VS</p>
+          <div className={classes.FightRow}>
+            <SelectedCreature
+              className={classes.SelectedCreature}
+              creature={champion}
+            />
+            <div className={classes.VS}>
+              <p>VS</p>
+            </div>
+            <SelectedCreature
+              className={classes.SelectedCreature}
+              creature={enemy}
+            />
           </div>
-          <SelectedCreature
-            className={classes.SelectedCreature}
-            creature={enemy}
-          />
+          <Button
+            classes={{ root: classes.FightButton }}
+            color="primary"
+            fullWidth={true}
+            variant="raised">
+            Fight
+          </Button>
         </Card>
         <Card className={classes.SelectionCard}>
           {mapWithIndex(this.creatureOption, options)}
