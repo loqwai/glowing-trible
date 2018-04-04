@@ -36,7 +36,8 @@ const App = ({ classes }) => (
         <Route path="/creature-selection" component={CreatureSelection} />
         <Route path="/dating" component={Dating} />
         <Route path="/drawing" component={Drawing} />
-        <Route path="/" component={Pick} />
+        <Route path="/pick" component={Pick} />
+        <Route path="/" component={CreatureSelection} />
       </Switch>
       <AppBar>
         <Toolbar>
