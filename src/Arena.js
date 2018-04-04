@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 
 import FightAnimation from './FightAnimation'
 import Fight from './logic/Fight'
+import GenerateSuitors from './logic/GenerateSuitors'
 import Log from './Log'
 import { creatureToFighter } from './helpers/fighter'
 
@@ -23,10 +24,6 @@ const styles = theme => ({
     minHeight: '200px',
     display: 'flex',
     justifyContent: 'space-between',
-  },
-  Button: {
-    width: '100%',
-    marginBottom: 2 * theme.spacing.unit,
   },
   Card: {
     flex: 1,
@@ -77,6 +74,13 @@ class Arena extends Component {
     clearTimeout(this.animationTimeout)
   }
 
+  async breed() {
+    const champion = this.state.leftCreature
+    const suitors = await GenerateSuitors(5)
+    localStorage.setItem('breed', JSON.stringify({ champion, suitors }))
+    this.props.history.push('/breed')
+  }
+
   nextAction() {
     const { log, pendingLog } = this.state
     if (isEmpty(pendingLog)) {
@@ -89,8 +93,38 @@ class Arena extends Component {
     this.animationTimeout = setTimeout(this.nextAction, 1000)
   }
 
+  reset() {
+    this.props.history.push('/creature-selection')
+  }
+
+  renderButton() {
+    const { currentLogEntry, leftCreature, pendingLog } = this.state
+    if (!isEmpty(pendingLog)) return null
+
+    if (currentLogEntry.attacker.id === leftCreature.id) {
+      return (
+        <Button
+          onClick={this.breed}
+          color="primary"
+          fullWidth={true}
+          variant="raised">
+          Breed
+        </Button>
+      )
+    }
+    return (
+      <Button
+        onClick={this.reset}
+        color="secondary"
+        fullWidth={true}
+        variant="raised">
+        Reset
+      </Button>
+    )
+  }
+
   render() {
-    const { classes, history } = this.props
+    const { classes } = this.props
 
     if (isEmpty(this.state.log)) {
       return (
@@ -109,18 +143,13 @@ class Arena extends Component {
             leftCreature={this.state.leftCreature}
             rightCreature={this.state.rightCreature}
           />
+          {this.renderButton()}
           <Log
             log={this.state.log}
             rightId={this.state.rightCreature.id}
             leftId={this.state.leftCreature.id}
           />
         </Card>
-
-        <Button
-          className={classes.Button}
-          onClick={() => history.push('/creature-selection')}>
-          Reset
-        </Button>
       </div>
     )
   }
