@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar'
 import CssBaseline from 'material-ui/CssBaseline'
 import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import Arena from './Arena'
 import CreatureSelection from './CreatureSelection'
@@ -26,7 +26,7 @@ const styles = theme => ({
 })
 
 const App = ({ classes }) => (
-  <Router basename="glowing-trible">
+  <Router>
     <div className={classes.root}>
       <CssBaseline />
       <Switch>
