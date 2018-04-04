@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import bindAll from 'lodash/fp/bindAll'
 import get from 'lodash/fp/get'
 import map from 'lodash/fp/map'
@@ -7,6 +6,8 @@ import Button from 'material-ui/Button'
 import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import CreatureOption from './CreatureOption'
 import SelectedCreature from './SelectedCreature'
@@ -114,6 +115,13 @@ class CreatureSelection extends Component {
     )
   }
 
+  fight() {
+    const { history } = this.props
+    const { champion, enemy } = this.state
+    localStorage.setItem('fight', JSON.stringify({ champion, enemy }))
+    history.push('/arena')
+  }
+
   render() {
     const { classes } = this.props
     const { champion, enemy, loading, options } = this.state
@@ -146,6 +154,7 @@ class CreatureSelection extends Component {
             classes={{ root: classes.FightButton }}
             color="primary"
             fullWidth={true}
+            onClick={this.fight}
             variant="raised">
             Fight
           </Button>
@@ -158,4 +167,4 @@ class CreatureSelection extends Component {
   }
 }
 
-export default withStyles(styles)(CreatureSelection)
+export default withRouter(withStyles(styles)(CreatureSelection))

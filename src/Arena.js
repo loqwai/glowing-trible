@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
 import bindAll from 'lodash/fp/bindAll'
 import isEmpty from 'lodash/fp/isEmpty'
-import isNil from 'lodash/fp/isNil'
 import map from 'lodash/fp/map'
 import Button from 'material-ui/Button'
 import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import FightAnimation from './FightAnimation'
 import Fight from './logic/Fight'
-import GenerateSuitors from './logic/GenerateSuitors'
 import Log from './Log'
 import { creatureToFighter } from './helpers/fighter'
-
-const mapWithIndex = map.convert({ cap: false })
 
 const styles = theme => ({
   root: {
@@ -45,33 +42,39 @@ const styles = theme => ({
 })
 
 class Arena extends Component {
-  constructor() {
-    super()
-    bindAll(Object.getOwnPropertyNames(Arena.prototype), this)
-    this.initialize()
+  state = {
+    leftCreature: null,
+    rightCreature: null,
+    log: [],
+    pendingLog: [],
   }
 
-  async initialize() {
-    this.state = {
-      leftCreature: null,
-      rightCreature: null,
-      log: null,
-      pendingLog: null,
+  constructor({ history }) {
+    super()
+    bindAll(Object.getOwnPropertyNames(Arena.prototype), this)
+
+    const fightData = JSON.parse(localStorage.getItem('fight'))
+    localStorage.removeItem('fight')
+    if (isEmpty(fightData)) {
+      return history.push('/creature-selection')
     }
 
-    const creatures = await GenerateSuitors(2)
-    creatures[0].genome.legs.power = 1
-    const fighters = mapWithIndex(creatureToFighter, creatures)
+    const { champion, enemy } = fightData
+
+    const fighters = map(creatureToFighter, [champion, enemy])
     const pendingLog = Fight(fighters[0], fighters[1])
 
-    this.setState({
-      leftCreature: creatures[0],
-      rightCreature: creatures[1],
+    this.state = {
+      leftCreature: champion,
+      rightCreature: enemy,
       log: [],
       pendingLog: pendingLog,
-    })
+    }
+    this.animationTimeout = setTimeout(this.nextAction, 0)
+  }
 
-    this.nextAction()
+  componentWillUnmount() {
+    clearTimeout(this.animationTimeout)
   }
 
   nextAction() {
@@ -83,13 +86,13 @@ class Arena extends Component {
     const currentLogEntry = pendingLog.shift()
     log.push(currentLogEntry)
     this.setState({ currentLogEntry, log, pendingLog })
-    setTimeout(this.nextAction, 1000)
+    this.animationTimeout = setTimeout(this.nextAction, 1000)
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, history } = this.props
 
-    if (isNil(this.state.log)) {
+    if (isEmpty(this.state.log)) {
       return (
         <div className={classes.root}>
           <CircularProgress />
@@ -113,7 +116,9 @@ class Arena extends Component {
           />
         </Card>
 
-        <Button className={classes.Button} onClick={this.initialize}>
+        <Button
+          className={classes.Button}
+          onClick={() => history.push('/creature-selection')}>
           Reset
         </Button>
       </div>
@@ -121,4 +126,4 @@ class Arena extends Component {
   }
 }
 
-export default withStyles(styles)(Arena)
+export default withRouter(withStyles(styles)(Arena))
