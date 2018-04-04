@@ -7,13 +7,17 @@ import React from 'react'
 import Creature from './Creature'
 
 const styles = {
+  root: {
+    filter: 'grayscale(80)',
+    transition: 'filter 300ms',
+  },
   selected: {
-    border: '1px solid red',
+    filter: 'grayscale(0)',
   },
 }
 
 const CreatureOption = ({ classes, className, genome, onSelect, selected }) => {
-  const creatureClasses = [className]
+  const creatureClasses = [className, classes.root]
   if (selected) creatureClasses.push(classes.selected)
 
   return (
