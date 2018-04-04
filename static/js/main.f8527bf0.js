@@ -76532,7 +76532,7 @@ var _createClass=function(){function defineProperties(target,props){for(var i=0;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Creature__ = __webpack_require__(38);
-var styles={selected:{border:'1px solid red'}};var CreatureOption=function CreatureOption(_ref){var classes=_ref.classes,className=_ref.className,genome=_ref.genome,onSelect=_ref.onSelect,selected=_ref.selected;var creatureClasses=[className];if(selected)creatureClasses.push(classes.selected);return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Creature__["a" /* default */],{className:__WEBPACK_IMPORTED_MODULE_1_lodash_fp_join___default()(' ',__WEBPACK_IMPORTED_MODULE_0_lodash_fp_compact___default()(creatureClasses)),genome:genome,onClick:onSelect});};CreatureOption.propTypes={};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(CreatureOption));
+var styles={root:{filter:'grayscale(80)',transition:'filter 300ms'},selected:{filter:'grayscale(0)'}};var CreatureOption=function CreatureOption(_ref){var classes=_ref.classes,className=_ref.className,genome=_ref.genome,onSelect=_ref.onSelect,selected=_ref.selected;var creatureClasses=[className,classes.root];if(selected)creatureClasses.push(classes.selected);return __WEBPACK_IMPORTED_MODULE_4_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Creature__["a" /* default */],{className:__WEBPACK_IMPORTED_MODULE_1_lodash_fp_join___default()(' ',__WEBPACK_IMPORTED_MODULE_0_lodash_fp_compact___default()(creatureClasses)),genome:genome,onClick:onSelect});};CreatureOption.propTypes={};/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_material_ui_styles__["withStyles"])(styles)(CreatureOption));
 
 /***/ }),
 /* 772 */
@@ -78057,4 +78057,4 @@ registerValidSW(swUrl);}}).catch(function(){console.log('No internet connection 
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.b7f887ba.js.map
+//# sourceMappingURL=main.f8527bf0.js.map
