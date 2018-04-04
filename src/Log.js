@@ -6,8 +6,8 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 const mapWithIndex = map.convert({ cap: false })
 
 const formatPlayerById = (leftId, id) => {
-  if (id === leftId) return 'Left'
-  return 'Right'
+  if (id === leftId) return 'Your'
+  return 'Their'
 }
 
 const formatEntry = ({ leftId, rightId, entry }) => {
@@ -19,16 +19,13 @@ const formatEntry = ({ leftId, rightId, entry }) => {
 
   if (action === 'dies') return `${formattedDefender} Creature dies`
   if (action === 'eats')
-    return `${formattedAttacker} Eats ${round(attackerDamage)} HP (${round(
-      attacker.health,
-    )} HP remaining)`
+    return `${formattedAttacker} Creature eats ${round(attackerDamage)} HP (${round(attacker.health)} HP remaining)`
   if (action === 'hits')
-    return `${formattedAttacker} Creature hits for ${round(
-      defenderDamage,
-    )} HP (${round(defender.health)} HP remaining)`
+    return `${formattedAttacker} Creature hits for ${round(defenderDamage)} HP (${round(defender.health)} HP remaining)`
   if (action === 'misses') return `${formattedAttacker} Creature misses`
   if (action === 'start') return 'The battle begins'
   if (action === 'starves') return `${formattedAttacker} Creature starves`
+  if (action === 'wins') return `${formattedAttacker} Creature wins`
 
   return JSON.stringify(entry)
   // if (action === "hits")
