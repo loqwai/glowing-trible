@@ -2,6 +2,7 @@ import bindAll from 'lodash/fp/bindAll'
 import get from 'lodash/fp/get'
 import map from 'lodash/fp/map'
 import set from 'lodash/fp/set'
+import size from 'lodash/fp/size'
 import Button from 'material-ui/Button'
 import Card from 'material-ui/Card'
 import { CircularProgress } from 'material-ui/Progress'
@@ -79,7 +80,13 @@ class CreatureSelection extends Component {
   }
 
   async initialize() {
-    const [enemy, ...creatures] = await GenerateSuitors(6)
+    const [enemy] = await GenerateSuitors(1)
+    const creatures = JSON.parse(localStorage.getItem('creatures')) || {}
+    const additionalCreatures = await GenerateSuitors(5 - size(creatures))
+
+    additionalCreatures.forEach(creature => (creatures[creature.id] = creature))
+    localStorage.setItem('creatures', JSON.stringify(creatures))
+
     const options = map(creature => ({ creature, selected: false }), creatures)
     this.setState({ options, enemy, loading: false })
     this.selectChampion(0)
@@ -138,17 +145,11 @@ class CreatureSelection extends Component {
       <div className={classes.root}>
         <Card className={classes.FightCard}>
           <div className={classes.FightRow}>
-            <SelectedCreature
-              className={classes.SelectedCreature}
-              creature={champion}
-            />
+            <SelectedCreature className={classes.SelectedCreature} creature={champion} />
             <div className={classes.VS}>
               <p>VS</p>
             </div>
-            <SelectedCreature
-              className={classes.SelectedCreature}
-              creature={enemy}
-            />
+            <SelectedCreature className={classes.SelectedCreature} creature={enemy} />
           </div>
           <Button
             classes={{ root: classes.FightButton }}
@@ -159,9 +160,7 @@ class CreatureSelection extends Component {
             Fight
           </Button>
         </Card>
-        <Card className={classes.SelectionCard}>
-          {mapWithIndex(this.creatureOption, options)}
-        </Card>
+        <Card className={classes.SelectionCard}>{mapWithIndex(this.creatureOption, options)}</Card>
       </div>
     )
   }

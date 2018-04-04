@@ -6,6 +6,7 @@ import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import uuid from 'uuid'
 
 import { mutationRate } from './logic/Configuration.json'
 import Creature from './Creature'
@@ -74,6 +75,7 @@ class BreedComponent extends Component {
   breed() {
     const { champion, suitor } = this.state
     const child = Breed([champion, suitor], mutationRate)
+    child.id = uuid.v1()
 
     this.setState({ child, suitor })
   }
@@ -129,19 +131,11 @@ class BreedComponent extends Component {
     return (
       <div className={classes.root}>
         <Card className={classes.SuitorCard}>
-          <Button
-            className={classes.Button}
-            onClick={this.reject}
-            color="secondary"
-            variant="raised">
+          <Button className={classes.Button} onClick={this.reject} color="secondary" variant="raised">
             <Icon className={classes.Icon}>delete</Icon>
           </Button>
           <Creature className={classes.Creature} genome={suitor.genome} />
-          <Button
-            className={classes.Button}
-            onClick={this.breed}
-            color="primary"
-            variant="raised">
+          <Button className={classes.Button} onClick={this.breed} color="primary" variant="raised">
             <Icon className={classes.Icon}>local_drink</Icon>
           </Button>
         </Card>
