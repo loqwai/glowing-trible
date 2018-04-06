@@ -5,43 +5,60 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 
 const mapWithIndex = map.convert({ cap: false })
 
-const formatPlayerById = (leftId, id) => {
-  if (id === leftId) return 'Your'
-  return 'Their'
+const formatDies = ({ leftCreature, rightCreature }) => {
+  if (leftCreature.health < 0) return 'Left Creature dies'
+  return 'Right Creature dies'
 }
 
-const formatEntry = ({ leftId, rightId, entry }) => {
-  const { attacker, defender, outcome } = entry
-  const { action, attackerDamage, defenderDamage } = outcome
-
-  const formattedAttacker = formatPlayerById(leftId, attacker.id)
-  const formattedDefender = formatPlayerById(leftId, defender.id)
-
-  if (action === 'dies') return `${formattedDefender} Creature dies`
-  if (action === 'eats')
-    return `${formattedAttacker} Creature eats ${round(attackerDamage)} HP (${round(attacker.health)} HP remaining)`
-  if (action === 'hits')
-    return `${formattedAttacker} Creature hits for ${round(defenderDamage)} HP (${round(defender.health)} HP remaining)`
-  if (action === 'misses') return `${formattedAttacker} Creature misses`
-  if (action === 'start') return 'The battle begins'
-  if (action === 'starves') return `${formattedAttacker} Creature starves`
-  if (action === 'wins') return `${formattedAttacker} Creature wins`
-
-  return JSON.stringify(entry)
-  // if (action === "hits")
+const formatEats = ({ leftCreature, rightCreature }) => {
+  if (leftCreature.damageTaken > 0)
+    return `Left Creature eats ${round(leftCreature.damageTaken)} HP (${round(leftCreature.health)})`
+  return `Right Creature eats ${round(rightCreature.damageTaken)} HP (${round(rightCreature.health)})`
 }
 
-const LogEntry = ({ leftId, rightId, entry }, i) => (
+const formatHits = ({ leftCreature, rightCreature }) => {
+  if (leftCreature.damageDone > 0)
+    return `Left Creature hits for ${round(leftCreature.damageDone)} HP (${round(rightCreature.health)} HP remaining)`
+  return `Right Creature hits for ${round(rightCreature.damageDone)} HP (${round(leftCreature.health)} HP remaining)`
+}
+
+const formatStarves = ({ leftCreature, rightCreature }) => {
+  if (leftCreature.health < 0) return 'Left Creature starves'
+  return 'Right Creature starves'
+}
+
+const formatWins = ({ leftCreature, rightCreature }) => {
+  if (leftCreature.health > 0) return 'Left Creature wins'
+  return 'Right Creature wins'
+}
+
+const formatEntry = ({ action, leftCreature, rightCreature }) => {
+  switch (action) {
+    case 'dies':
+      return formatDies({ leftCreature, rightCreature })
+    case 'eats':
+      return formatEats({ leftCreature, rightCreature })
+    case 'hits':
+      return formatHits({ leftCreature, rightCreature })
+    case 'start':
+      return 'The battle begins'
+    case 'starves':
+      return formatStarves({ leftCreature, rightCreature })
+    case 'wins':
+      return formatWins({ leftCreature, rightCreature })
+    default:
+      return JSON.stringify({ action, leftCreature, rightCreature })
+  }
+}
+
+const LogEntry = (logEntry, i) => (
   <ListItem key={i}>
-    <ListItemText primary={formatEntry({ leftId, rightId, entry })} />
+    <ListItemText primary={formatEntry(logEntry)} />
   </ListItem>
 )
 
 const Log = ({ log, rightId, leftId }) => {
-  const logWithIds = map(entry => {
-    return { entry, rightId, leftId }
-  }, log)
-  return <List dense={true}>{mapWithIndex(LogEntry, logWithIds)}</List>
+  return <List dense={true}>{mapWithIndex(LogEntry, log)}</List>
 }
 
 export default Log

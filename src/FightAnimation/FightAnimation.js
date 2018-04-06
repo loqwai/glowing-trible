@@ -26,15 +26,10 @@ const getAnimation = action => {
 }
 
 const FightAnimation = ({ classes, leftCreature, logEntry, rightCreature }) => {
-  const Animation = getAnimation(get('outcome.action', logEntry))
+  const Animation = getAnimation(get('action', logEntry))
 
   return (
-    <Animation
-      className={classes.root}
-      leftCreature={leftCreature}
-      logEntry={logEntry}
-      rightCreature={rightCreature}
-    />
+    <Animation className={classes.root} leftCreature={leftCreature} logEntry={logEntry} rightCreature={rightCreature} />
   )
 }
 

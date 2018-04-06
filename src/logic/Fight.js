@@ -1,34 +1,70 @@
 import cloneDeep from 'lodash/fp/cloneDeep'
 import Round from './Round'
-import random from "lodash/fp/random"
+import find from 'lodash/fp/find'
+import map from 'lodash/fp/map'
+import random from 'lodash/fp/random'
 import isNaN from 'lodash/fp/isNaN'
 
 const randomWithFloat = random.convert({ fixed: false })
 
-export const WhoShouldAttack = (creature1, creature2) => {
+export const WhoShouldAttack = (leftCreature, rightCreature) => {
+  let leftCreatureRatio = leftCreature.legs / (leftCreature.legs + rightCreature.legs)
+  if (isNaN(leftCreatureRatio)) leftCreatureRatio = 0.5
 
-  let creature1Ratio = creature1.legs / (creature1.legs + creature2.legs)
-  if(isNaN(creature1Ratio)) creature1Ratio = 0.5
-
-  if(randomWithFloat(0, 1, true) < creature1Ratio)
-    return {attacker: creature1, defender: creature2}
-  return {attacker: creature2, defender: creature1}
+  if (randomWithFloat(0, 1, true) < leftCreatureRatio) return { attacker: leftCreature, defender: rightCreature }
+  return { attacker: rightCreature, defender: leftCreature }
 }
 
-const Fight = (creature1, creature2) => {
+const damageDone = (id, logEntry) => {
+  if (id === logEntry.defender.id) return logEntry.outcome.attackerDamage
+  return logEntry.outcome.defenderDamage
+}
+
+const damageTaken = (id, logEntry) => {
+  if (id === logEntry.attacker.id) return logEntry.outcome.attackerDamage
+  return logEntry.outcome.defenderDamage
+}
+
+const transformAugmentedLogEntry = ({ leftCreatureId, logEntry, rightCreatureId }) => {
+  const leftCreature = find({ id: leftCreatureId }, logEntry)
+  const rightCreature = find({ id: rightCreatureId }, logEntry)
+
+  return {
+    action: logEntry.outcome.action,
+    leftCreature: {
+      ...leftCreature,
+      damageDone: damageDone(leftCreatureId, logEntry),
+      damageTaken: damageTaken(leftCreatureId, logEntry),
+    },
+    rightCreature: {
+      ...rightCreature,
+      damageDone: damageDone(rightCreatureId, logEntry),
+      damageTaken: damageTaken(rightCreatureId, logEntry),
+    },
+  }
+}
+
+const transformLog = ({ leftCreatureId, log, rightCreatureId }) => {
+  const augmentedLog = map(logEntry => ({ leftCreatureId, rightCreatureId, logEntry }), log)
+  return map(transformAugmentedLogEntry, augmentedLog)
+}
+
+const Fight = (leftCreature, rightCreature) => {
   const log = []
-  let {attacker, defender} = WhoShouldAttack(creature1, creature2)
+  const leftCreatureId = leftCreature.id
+  const rightCreatureId = rightCreature.id
+
+  let { attacker, defender } = WhoShouldAttack(leftCreature, rightCreature)
 
   var logEntry = {
     attacker,
     defender,
-    outcome: {attackerDamage: 0, defenderDamage: 0, action: 'start'}
+    outcome: { attackerDamage: 0, defenderDamage: 0, action: 'start' },
   }
 
   log.push(logEntry)
 
-  while(logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
-
+  while (logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
     const fightOrder = WhoShouldAttack(logEntry.attacker, logEntry.defender)
     logEntry = Round(fightOrder.attacker, fightOrder.defender)
 
@@ -42,7 +78,7 @@ const Fight = (creature1, creature2) => {
   }
   const outcome = cloneDeep(logEntry.outcome)
 
-  if(outcome.action === 'starves') {
+  if (outcome.action === 'starves') {
     log.push({
       attacker: logEntry.defender,
       defender: logEntry.attacker,
@@ -50,13 +86,13 @@ const Fight = (creature1, creature2) => {
         action: 'wins',
         defenderDamage: 0,
         attackerDamage: 0,
-      }
+      },
     })
-    return log
+    return transformLog({ leftCreatureId, log, rightCreatureId })
   }
 
-  outcome.action = "dies"
-  log.push({defender: logEntry.defender, attacker: logEntry.defender, outcome})
+  outcome.action = 'dies'
+  log.push({ defender: logEntry.defender, attacker: logEntry.defender, outcome })
   log.push({
     attacker: logEntry.attacker,
     defender: logEntry.defender,
@@ -64,8 +100,8 @@ const Fight = (creature1, creature2) => {
       action: 'wins',
       defenderDamage: 0,
       attackerDamage: 0,
-    }
+    },
   })
-  return log
+  return transformLog({ leftCreatureId, log, rightCreatureId })
 }
 export default Fight

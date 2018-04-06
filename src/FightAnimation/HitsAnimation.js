@@ -22,35 +22,21 @@ const styles = {
   },
 }
 
-const getDamage = (id, logEntry) => {
-  if (logEntry.defender.id === id) return logEntry.outcome.defenderDamage
-  return 0
-}
-
 const HitsAnimation = props => {
   const { leftCreature, logEntry, rightCreature } = props
   const { className, classes } = props
 
-  const leftDamage = getDamage(leftCreature.id, logEntry)
-  const rightDamage = getDamage(rightCreature.id, logEntry)
-
-  const LeftCreatureWrapper = rightDamage ? LeftCreatureHit : CreatureDamage
-  const RightCreatureWrapper = leftDamage ? RightCreatureHit : CreatureDamage
+  const LeftWrapper = logEntry.leftCreature.damageDone ? LeftCreatureHit : CreatureDamage
+  const RightWrapper = logEntry.rightCreature.damageDone ? RightCreatureHit : CreatureDamage
 
   return (
     <div className={[className, classes.root].join(' ')}>
-      <LeftCreatureWrapper
-        className={classes.CreatureWrapper}
-        damage={leftDamage}
-        side={'left'}>
+      <LeftWrapper className={classes.CreatureWrapper} damage={logEntry.leftCreature.damageTaken} side={'left'}>
         <Creature className={classes.Creature} genome={leftCreature.genome} />
-      </LeftCreatureWrapper>
-      <RightCreatureWrapper
-        className={classes.CreatureWrapper}
-        damage={rightDamage}
-        side={'right'}>
+      </LeftWrapper>
+      <RightWrapper className={classes.CreatureWrapper} damage={logEntry.rightCreature.damageTaken} side={'right'}>
         <Creature className={classes.Creature} genome={rightCreature.genome} />
-      </RightCreatureWrapper>
+      </RightWrapper>
     </div>
   )
 }

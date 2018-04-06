@@ -21,29 +21,21 @@ const styles = {
   },
 }
 
-const getHealth = (id, logEntry) => {
-  if (logEntry.attacker.id === id) return logEntry.attacker.health
-  if (logEntry.defender.id === id) return logEntry.defender.health
-  return 0
-}
-
 const WinsAnimation = props => {
   const { leftCreature, logEntry, rightCreature } = props
   const { className, classes } = props
 
-  const leftHealth = getHealth(leftCreature.id, logEntry)
-  const LeftCreatureWrapper = leftHealth < 0 ? CreatureDead : CreatureWins
-  const rightHealth = getHealth(rightCreature.id, logEntry)
-  const RightCreatureWrapper = rightHealth < 0 ? CreatureDead : CreatureWins
+  const LeftWrapper = logEntry.leftCreature.health < 0 ? CreatureDead : CreatureWins
+  const RightWrapper = logEntry.rightCreature.health < 0 ? CreatureDead : CreatureWins
 
   return (
     <div className={[className, classes.root].join(' ')}>
-      <LeftCreatureWrapper className={classes.CreatureWrapper}>
+      <LeftWrapper className={classes.CreatureWrapper}>
         <Creature className={classes.Creature} genome={leftCreature.genome} />
-      </LeftCreatureWrapper>
-      <RightCreatureWrapper className={classes.CreatureWrapper}>
+      </LeftWrapper>
+      <RightWrapper className={classes.CreatureWrapper}>
         <Creature className={classes.Creature} genome={rightCreature.genome} />
-      </RightCreatureWrapper>
+      </RightWrapper>
     </div>
   )
 }
