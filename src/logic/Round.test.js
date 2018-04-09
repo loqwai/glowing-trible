@@ -14,7 +14,7 @@ describe('When 2 creatures fight', () => {
         body: 1,
         legs: 0,
       }
-      const { outcome } = Round(armlessCreature, armlessCreature)
+      const [{ outcome }] = Round(armlessCreature, armlessCreature)
       expect(outcome.attackerDamage).toBeCloseTo(14)
     })
   })
@@ -27,7 +27,7 @@ describe('When 2 creatures fight', () => {
         body: 0.5,
         legs: 0,
       }
-      const { outcome } = Round(armlessCreature, armlessCreature)
+      const [{ outcome }] = Round(armlessCreature, armlessCreature)
       expect(outcome.attackerDamage).toBeCloseTo(7.5)
     })
   })
@@ -40,7 +40,7 @@ describe('When 2 creatures fight', () => {
         body: 0,
         legs: 0,
       }
-      const { outcome } = Round(creature, creature)
+      const [{ outcome }] = Round(creature, creature)
       expect(outcome).toEqual({
         action: 'hits',
         defenderDamage: 65,
@@ -57,7 +57,7 @@ describe('When 2 creatures fight', () => {
         body: 1,
         legs: 1,
       }
-      const { outcome } = Round(ultimateCreature, ultimateCreature)
+      const [{ outcome }] = Round(ultimateCreature, ultimateCreature)
       expect(outcome.defenderDamage).toBeCloseTo(35.45)
     })
   })
@@ -71,7 +71,7 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
 
-      const { outcome } = Round(creature, creature)
+      const [{ outcome }] = Round(creature, creature)
       expect(outcome.defenderDamage).toBeCloseTo(32.5)
     })
   })
@@ -85,7 +85,7 @@ describe('When 2 creatures fight', () => {
         legs: 1,
       }
 
-      const { outcome } = Round(creature, creature)
+      const [{ outcome }] = Round(creature, creature)
       expect(outcome).toEqual({
         action: 'starves',
         attackerDamage: 40,
@@ -103,7 +103,7 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
 
-      const { defender } = Round(creature, creature)
+      const [{ defender }] = Round(creature, creature)
       expect(defender.health).toBeCloseTo(64.545)
     })
   })
@@ -117,7 +117,7 @@ describe('When 2 creatures fight', () => {
         legs: 0,
       }
 
-      const { outcome } = Round(creature, creature)
+      const [{ outcome }] = Round(creature, creature)
       expect(outcome.defenderDamage).toBeCloseTo(0)
     })
   })

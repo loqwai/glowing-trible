@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/fp/cloneDeep'
+
 const Round = (attacker, defender) => {
   const energyDrainMultiplier = 13
   const attackMultiplier = 65
@@ -7,14 +8,13 @@ const Round = (attacker, defender) => {
   attacker = cloneDeep(attacker)
   defender = cloneDeep(defender)
 
-  const attackerDamage =
-    (attacker.body + attacker.legs + attacker.arms) * energyDrainMultiplier + 1
+  const attackerDamage = (attacker.body + attacker.legs + attacker.arms) * energyDrainMultiplier + 1
   const outcome = { attackerDamage, defenderDamage: 0 }
 
   attacker.health -= attackerDamage
   if (attacker.health <= 0) {
     outcome.action = 'starves'
-    return { attacker, defender, outcome }
+    return [{ attacker, defender, outcome }]
   }
 
   let defenderDamage = attacker.arms * attackMultiplier
@@ -26,7 +26,7 @@ const Round = (attacker, defender) => {
   defender.health -= defenderDamage
   outcome.action = 'hits'
   outcome.defenderDamage = defenderDamage
-  return { attacker, defender, outcome }
+  return [{ attacker, defender, outcome }]
 }
 
 export default Round

@@ -66,7 +66,7 @@ const Fight = (leftCreature, rightCreature) => {
 
   while (logEntry.attacker.health > 0 && logEntry.defender.health > 0) {
     const fightOrder = WhoShouldAttack(logEntry.attacker, logEntry.defender)
-    logEntry = Round(fightOrder.attacker, fightOrder.defender)
+    logEntry = Round(fightOrder.attacker, fightOrder.defender)[0]
 
     const eatsEntry = cloneDeep(logEntry)
     eatsEntry.outcome.action = 'eats'
