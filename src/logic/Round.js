@@ -19,7 +19,7 @@ const buildEatsAction = ({ leftCreature, rightCreature, attacker }) => {
 
 const buildHitsAction = ({ leftCreature, rightCreature, attacker, eatsAction }) => {
   if (attacker === 'left') {
-    const damageDone = 10 * rightCreature.body
+    const damageDone = 10 * leftCreature.arms * (1 - rightCreature.body)
     return {
       action: 'hits',
       leftCreature: { damageDone: damageDone, damageTaken: 0, health: eatsAction.leftCreature.health },

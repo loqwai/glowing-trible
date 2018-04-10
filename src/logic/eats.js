@@ -1,4 +1,4 @@
-const energyDrainMultiplier = 13
+const energyDrainMultiplier = 10
 
 const Hits = ({ arms, body, legs, health }) => {
   const damageTaken = (arms + body + legs) * energyDrainMultiplier

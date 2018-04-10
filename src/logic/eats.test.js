@@ -13,12 +13,12 @@ describe('When a creature eats', () => {
   })
 
   describe('With a strong everything', () => {
-    it('should take 39 damage', () => {
+    it('should take 30 damage', () => {
       const result = eats({ arms: 1.0, body: 1.0, legs: 1.0, health: 100 })
       expect(result).toEqual({
         damageDone: 0,
-        damageTaken: 39,
-        health: 61,
+        damageTaken: 30,
+        health: 70,
       })
     })
   })
