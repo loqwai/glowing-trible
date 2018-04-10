@@ -1,19 +1,45 @@
 import cloneDeep from 'lodash/fp/cloneDeep'
 import eats from './eats'
 
-const Round = ({ leftCreature, rightCreature }) => {
-  const eatsAction = {
-    action: 'eats',
-    leftCreature: eats(leftCreature),
-    rightCreature: { damageDone: 0, damageTaken: 0, health: 100 },
+const buildEatsAction = ({ leftCreature, rightCreature, attacker }) => {
+  if (attacker === 'left') {
+    return {
+      action: 'eats',
+      leftCreature: eats(leftCreature),
+      rightCreature: { damageDone: 0, damageTaken: 0, health: rightCreature.health },
+    }
   }
 
-  const damageDone = 10 * rightCreature.body
-  const hitsAction = {
-    action: 'hits',
-    leftCreature: { ...eatsAction.leftCreature, damageDone: damageDone, damageTaken: 0 },
-    rightCreature: { damageDone: 0, damageTaken: damageDone, health: rightCreature.health - damageDone },
+  return {
+    action: 'eats',
+    leftCreature: { damageDone: 0, damageTaken: 0, health: leftCreature.health },
+    rightCreature: eats(rightCreature),
   }
+}
+
+const buildHitsAction = ({ leftCreature, rightCreature, attacker, eatsAction }) => {
+  if (attacker === 'left') {
+    const damageDone = 10 * rightCreature.body
+    return {
+      action: 'hits',
+      leftCreature: { damageDone: damageDone, damageTaken: 0, health: eatsAction.leftCreature.health },
+      rightCreature: { damageDone: 0, damageTaken: damageDone, health: eatsAction.rightCreature.health - damageDone },
+    }
+  }
+
+  const damageDone = 10 * leftCreature.body
+  return {
+    action: 'hits',
+    leftCreature: { damageDone: 0, damageTaken: damageDone, health: eatsAction.leftCreature.health - damageDone },
+    rightCreature: { damageDone: damageDone, damageTaken: 0, health: eatsAction.rightCreature.health },
+  }
+}
+
+const Round = ({ leftCreature, rightCreature, attackerOverride }) => {
+  const attacker = attackerOverride
+  const eatsAction = buildEatsAction({ leftCreature, rightCreature, attacker })
+  const hitsAction = buildHitsAction({ leftCreature, rightCreature, attacker, eatsAction })
+
   return [eatsAction, hitsAction]
   // const energyDrainMultiplier = 13
   // const attackMultiplier = 65

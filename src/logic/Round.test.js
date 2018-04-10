@@ -78,6 +78,39 @@ describe('When 2 creatures fight', () => {
     })
   })
 
+  describe('When the right creature attacks', () => {
+    beforeEach(() => {
+      const armless = { health: 100, arms: 0, body: 1, legs: 1 }
+
+      const logEntries = Round({
+        leftCreature: armless,
+        rightCreature: armless,
+        attackerOverride: 'right',
+      })
+
+      const [eatsAction, hitsAction] = logEntries
+
+      t.eatsAction = eatsAction
+      t.hitsAction = hitsAction
+    })
+
+    it('should reduce the health of the right creature by 26 with an eat action', () => {
+      expect(t.eatsAction).toEqual({
+        action: 'eats',
+        leftCreature: { damageDone: 0, damageTaken: 0, health: 100 },
+        rightCreature: { damageDone: 0, damageTaken: 26, health: 74 },
+      })
+    })
+
+    it('should reduce the health of the left creature by 10', () => {
+      expect(t.hitsAction).toEqual({
+        action: 'hits',
+        leftCreature: { damageDone: 0, damageTaken: 10, health: 90 },
+        rightCreature: { damageDone: 10, damageTaken: 0, health: 74 },
+      })
+    })
+  })
+
   // describe('When they have huge arms and no body', () => {
   //   it('should do 65 damage', () => {
   //     const creature = {
