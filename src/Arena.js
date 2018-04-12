@@ -98,26 +98,18 @@ class Arena extends Component {
   }
 
   renderButton() {
-    const { currentLogEntry, leftCreature, pendingLog } = this.state
+    const { currentLogEntry, pendingLog } = this.state
     if (!isEmpty(pendingLog)) return null
 
-    if (currentLogEntry.attacker.id === leftCreature.id) {
+    if (currentLogEntry.leftCreature.health > 0) {
       return (
-        <Button
-          onClick={this.breed}
-          color="primary"
-          fullWidth={true}
-          variant="raised">
+        <Button onClick={this.breed} color="primary" fullWidth={true} variant="raised">
           Breed
         </Button>
       )
     }
     return (
-      <Button
-        onClick={this.reset}
-        color="secondary"
-        fullWidth={true}
-        variant="raised">
+      <Button onClick={this.reset} color="secondary" fullWidth={true} variant="raised">
         Reset
       </Button>
     )
@@ -144,11 +136,7 @@ class Arena extends Component {
             rightCreature={this.state.rightCreature}
           />
           {this.renderButton()}
-          <Log
-            log={this.state.log}
-            rightId={this.state.rightCreature.id}
-            leftId={this.state.leftCreature.id}
-          />
+          <Log log={this.state.log} rightId={this.state.rightCreature.id} leftId={this.state.leftCreature.id} />
         </Card>
       </div>
     )

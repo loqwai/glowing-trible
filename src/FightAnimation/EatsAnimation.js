@@ -20,24 +20,16 @@ const styles = {
   },
 }
 
-const getDamage = (id, logEntry) => {
-  if (logEntry.attacker.id === id) return logEntry.outcome.attackerDamage
-  return 0
-}
-
 const EatsAnimation = props => {
   const { leftCreature, logEntry, rightCreature } = props
   const { className, classes } = props
 
-  const leftDamage = getDamage(leftCreature.id, logEntry)
-  const rightDamage = getDamage(rightCreature.id, logEntry)
-
   return (
     <div className={[className, classes.root].join(' ')}>
-      <CreatureDamage className={classes.CreatureWrapper} damage={leftDamage}>
+      <CreatureDamage className={classes.CreatureWrapper} damage={logEntry.leftCreature.damageTaken}>
         <Creature className={classes.Creature} genome={leftCreature.genome} />
       </CreatureDamage>
-      <CreatureDamage className={classes.CreatureWrapper} damage={rightDamage}>
+      <CreatureDamage className={classes.CreatureWrapper} damage={logEntry.rightCreature.damageTaken}>
         <Creature className={classes.Creature} genome={rightCreature.genome} />
       </CreatureDamage>
     </div>
