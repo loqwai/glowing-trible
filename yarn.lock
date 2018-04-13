@@ -1256,6 +1256,10 @@ babylon@^7.0.0-beta.30:
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.42.tgz#67cfabcd4f3ec82999d29031ccdea89d0ba99657"
 
+babylonjs@^3.2.0-beta.5:
+  version "3.2.0-beta.5"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-3.2.0-beta.5.tgz#8fee543817770aebc89da4ee3f0c82811c178b14"
+
 balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"

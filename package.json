@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://loqwai.github.com/glowing-trible",
   "dependencies": {
+    "babylonjs": "^3.2.0-beta.5",
     "chroma-js": "^1.3.6",
     "gh-pages": "^1.1.0",
     "jest-enzyme": "^6.0.0",
