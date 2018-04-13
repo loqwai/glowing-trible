@@ -15,10 +15,13 @@ class Scene extends Component {
     this.state = {}
   }
 
-  onResizeWindow = () => {
-    if (this.engine) {
-      this.engine.resize()
-    }
+  onResizeCanvas = () => {
+    if (!this.engine) return
+    this.engine.resize()
+  }
+
+  componentWillMount = () => {
+    window.addEventListener('resize', this.onResizeCanvas)
   }
 
   componentWillUnmount = () => {
@@ -56,15 +59,15 @@ class Scene extends Component {
 
       // Default intensity is 1. Let's dim the light a small amount
       light.intensity = 0.7
-      // Resize the babylon engine when the window is resized
-      window.addEventListener('resize', this.onResizeWindow)
 
       this.engine.runRenderLoop(() => {
         scene.render()
+      })
+      setInterval(() => {
         morphTargetManager.influences[0] = Math.random()
         morphTargetManager.influences[1] = Math.random()
         morphTargetManager.influences[2] = Math.random()
-      })
+      }, 1000)
     })
   }
 
