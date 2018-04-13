@@ -37,8 +37,8 @@ class Scene extends Component {
     if (ref === null) return
 
     this.setState({
-      height: ref.offsetHeight,
-      width: ref.offsetWidth,
+      height: ref.clientHeight,
+      width: ref.clientWidth,
     })
   }
 
