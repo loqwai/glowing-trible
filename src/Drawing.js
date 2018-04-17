@@ -64,6 +64,11 @@ class Scene extends Component {
       scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
 
+      // uncomment these 4 lines and comment the 2 lines below to see flat shaded no morph
+      // const ogFox = scene.meshes[0]
+      // const fox = ogFox.clone('fox').convertToFlatShadedMesh()
+      // const morphTargetManager = ogFox.morphTargetManager
+      // fox.morphTargetManager = morphTargetManager
       const fox = scene.meshes[0]
       const morphTargetManager = fox.morphTargetManager
 
