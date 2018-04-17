@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
+import curry from 'lodash/fp/curry'
+import PingPongMorph from './helpers/PingPongMorph'
 
 import * as BABYLON from 'babylonjs'
 
@@ -8,6 +10,17 @@ const styles = {
     flex: 1,
   },
 }
+
+const wrap = curry((min, max, n) => {
+  if (n > max) return min
+  if (n < min) return max
+  return n
+})
+
+const ROTATION_SPEED = Math.PI / 100
+const MORPH_SPEED = 1 / 100
+
+const wrapRotation = wrap(-1 * Math.PI, Math.PI)
 
 class Scene extends Component {
   constructor() {
@@ -48,26 +61,31 @@ class Scene extends Component {
   setupBabylon() {
     this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio)
     BABYLON.SceneLoader.Load('models/', 'fox.babylon', this.engine, scene => {
-      this.scene = scene
-      const morphTargetManager = scene.meshes[0].morphTargetManager
-      window.morphTargetManager = morphTargetManager
+      scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
+      scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
+
+      const fox = scene.meshes[0]
+      const morphTargetManager = fox.morphTargetManager
+
+      var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
+      light.intensity = 0.7
+
       const camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene)
       camera.setTarget(BABYLON.Vector3.Zero())
       camera.attachControl(this.canvas, true)
-      this.camera = camera
-      var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
 
-      // Default intensity is 1. Let's dim the light a small amount
-      light.intensity = 0.7
+      const cheek = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
+      const ears = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
+      const chin = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
 
       this.engine.runRenderLoop(() => {
+        fox.rotation.y = wrapRotation(fox.rotation.y + ROTATION_SPEED)
+
+        morphTargetManager.influences[0] = cheek.nextValue()
+        morphTargetManager.influences[1] = ears.nextValue()
+        morphTargetManager.influences[2] = chin.nextValue()
         scene.render()
       })
-      setInterval(() => {
-        morphTargetManager.influences[0] = Math.random()
-        morphTargetManager.influences[1] = Math.random()
-        morphTargetManager.influences[2] = Math.random()
-      }, 1000)
     })
   }
 
