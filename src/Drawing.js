@@ -17,7 +17,7 @@ const wrap = curry((min, max, n) => {
   return n
 })
 
-const ROTATION_SPEED = Math.PI / 1000
+const ROTATION_SPEED = Math.PI / 1000000000
 const MORPH_SPEED = 1 / 100
 
 const wrapRotation = wrap(-1 * Math.PI, Math.PI)
@@ -77,6 +77,7 @@ class Scene extends Component {
       const cheek = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
       const ears = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 2 })
       const chin = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 3 })
+      const eyes = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 4 })
 
       this.engine.runRenderLoop(() => {
         fox.rotation.y = wrapRotation(fox.rotation.y + ROTATION_SPEED)
@@ -84,6 +85,7 @@ class Scene extends Component {
         morphTargetManager.influences[0] = cheek.nextValue()
         morphTargetManager.influences[1] = ears.nextValue()
         morphTargetManager.influences[2] = chin.nextValue()
+        morphTargetManager.influences[3] = eyes.nextValue()
         scene.render()
       })
     })
