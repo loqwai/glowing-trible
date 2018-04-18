@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "deploy": "gh-pages -d build",
-    "build": "env NODE_ENV=production webpack",
+    "build": "rm -rf build && cp -r public build && env NODE_ENV=production webpack",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "evolve-perfect-fighter": "babel-node --presets es2015 ./src/tools/evolve-perfect-fighter.js"

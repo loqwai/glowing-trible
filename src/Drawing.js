@@ -60,7 +60,8 @@ class Scene extends Component {
 
   setupBabylon() {
     this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio)
-    BABYLON.SceneLoader.Load('models/', 'fox.babylon', this.engine, scene => {
+    const rootURL = `${process.env.PUBLIC_URL}/models/`
+    BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
       scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
 
