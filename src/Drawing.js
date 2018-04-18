@@ -17,7 +17,7 @@ const wrap = curry((min, max, n) => {
   return n
 })
 
-const ROTATION_SPEED = Math.PI / 100
+const ROTATION_SPEED = Math.PI / 1000
 const MORPH_SPEED = 1 / 100
 
 const wrapRotation = wrap(-1 * Math.PI, Math.PI)
@@ -64,11 +64,6 @@ class Scene extends Component {
       scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
 
-      // uncomment these 4 lines and comment the 2 lines below to see flat shaded no morph
-      // const ogFox = scene.meshes[0]
-      // const fox = ogFox.clone('fox').convertToFlatShadedMesh()
-      // const morphTargetManager = ogFox.morphTargetManager
-      // fox.morphTargetManager = morphTargetManager
       const fox = scene.meshes[0]
       const morphTargetManager = fox.morphTargetManager
 
@@ -80,8 +75,8 @@ class Scene extends Component {
       camera.attachControl(this.canvas, true)
 
       const cheek = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
-      const ears = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
-      const chin = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
+      const ears = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 2 })
+      const chin = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 3 })
 
       this.engine.runRenderLoop(() => {
         fox.rotation.y = wrapRotation(fox.rotation.y + ROTATION_SPEED)
