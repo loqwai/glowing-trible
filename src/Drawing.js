@@ -17,7 +17,7 @@ const wrap = curry((min, max, n) => {
   return n
 })
 
-const ROTATION_SPEED = Math.PI / 1000000000
+const ROTATION_SPEED = Math.PI / 1000
 const MORPH_SPEED = 1 / 100
 
 const wrapRotation = wrap(-1 * Math.PI, Math.PI)
