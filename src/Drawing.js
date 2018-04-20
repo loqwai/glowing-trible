@@ -34,18 +34,63 @@ class Drawing extends Component {
       chin: new TweenMorph({ from: 0, to: 0, steps: 100 }),
       ears: new TweenMorph({ from: 0, to: 0, steps: 100 }),
       eyes: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+      colors: {
+        skin: {
+          red: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          green: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          blue: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+        },
+        nose: {
+          red: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          green: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          blue: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+        },
+        ears: {
+          red: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          green: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          blue: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+        },
+        eyes: {
+          red: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          green: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+          blue: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+        },
+      },
     }
     this.initialize()
   }
 
   initialize = async () => {
     const [creature] = await GenerateSuitors(1)
-    this.creature = creature
     const { head } = creature.genome
-    this.morphs.cheeks = this.morphs.cheeks.newTo(head.cheeks)
-    this.morphs.chin = this.morphs.chin.newTo(head.chin)
-    this.morphs.ears = this.morphs.ears.newTo(head.ears)
-    this.morphs.eyes = this.morphs.eyes.newTo(head.eyes.position)
+    this.morphs = {
+      cheeks: this.morphs.cheeks.newTo(head.cheeks),
+      chin: this.morphs.chin.newTo(head.chin),
+      ears: this.morphs.ears.newTo(head.ears),
+      eyes: this.morphs.eyes.newTo(head.eyes.position),
+      colors: {
+        skin: {
+          red: this.morphs.colors.skin.red.newTo(head.colors[0].red),
+          green: this.morphs.colors.skin.green.newTo(head.colors[0].green),
+          blue: this.morphs.colors.skin.blue.newTo(head.colors[0].blue),
+        },
+        nose: {
+          red: this.morphs.colors.nose.red.newTo(head.colors[1].red),
+          green: this.morphs.colors.nose.green.newTo(head.colors[1].green),
+          blue: this.morphs.colors.nose.blue.newTo(head.colors[1].blue),
+        },
+        ears: {
+          red: this.morphs.colors.ears.red.newTo(head.colors[2].red),
+          green: this.morphs.colors.ears.green.newTo(head.colors[2].green),
+          blue: this.morphs.colors.ears.blue.newTo(head.colors[2].blue),
+        },
+        eyes: {
+          red: this.morphs.colors.eyes.red.newTo(head.colors[3].red),
+          green: this.morphs.colors.eyes.green.newTo(head.colors[3].green),
+          blue: this.morphs.colors.eyes.blue.newTo(head.colors[3].blue),
+        },
+      },
+    }
     setTimeout(this.initialize, 3000)
   }
 
@@ -85,7 +130,7 @@ class Drawing extends Component {
     BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
       scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
-      // window.scene = scene
+      window.scene = scene
 
       var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
       light.intensity = 0.7
@@ -101,6 +146,7 @@ class Drawing extends Component {
 
   renderDrawing() {
     const { morphs, scene } = this
+    if (!morphs) return
     if (!scene) return
 
     const mesh = first(scene.meshes)
@@ -111,6 +157,13 @@ class Drawing extends Component {
     morphTargetManager.influences[1] = morphs.ears.nextValue()
     morphTargetManager.influences[2] = morphs.chin.nextValue()
     morphTargetManager.influences[3] = morphs.eyes.nextValue()
+
+    const { skin, nose, ears, eyes } = morphs.colors
+    const [mSkin, mNose, mEars, mEyes] = scene.materials
+    mSkin.ambientColor = new BABYLON.Color3(skin.red.nextValue(), skin.green.nextValue(), skin.blue.nextValue())
+    mNose.ambientColor = new BABYLON.Color3(nose.red.nextValue(), nose.green.nextValue(), nose.blue.nextValue())
+    mEars.ambientColor = new BABYLON.Color3(ears.red.nextValue(), ears.green.nextValue(), ears.blue.nextValue())
+    mEyes.ambientColor = new BABYLON.Color3(eyes.red.nextValue(), eyes.green.nextValue(), eyes.blue.nextValue())
     scene.render()
   }
 
