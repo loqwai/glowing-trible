@@ -15,16 +15,6 @@ const styles = {
   },
 }
 
-const wrap = curry((min, max, n) => {
-  if (n > max) return min
-  if (n < min) return max
-  return n
-})
-
-const ROTATION_SPEED = Math.PI / 1000
-
-const wrapRotation = wrap(-1 * Math.PI, Math.PI)
-
 class Drawing extends Component {
   constructor() {
     super()
