@@ -5,6 +5,7 @@ import curry from 'lodash/fp/curry'
 import first from 'lodash/fp/first'
 import GenerateSuitors from './logic/GenerateSuitors'
 import TweenMorph from './helpers/TweenMorph'
+import PingPongMorph from './helpers/PingPongMorph'
 
 import * as BABYLON from 'babylonjs'
 
@@ -29,7 +30,10 @@ class Drawing extends Component {
     super()
     bindAll(Object.getOwnPropertyNames(Drawing.prototype), this)
     this.state = {}
+    const rotMin = Math.PI / 4
+    const rotMax = rotMin + rotMin
     this.morphs = {
+      rotation: new PingPongMorph({ min: rotMin, max: rotMax, steps: 1000 }),
       cheeks: new TweenMorph({ from: 0, to: 0, steps: 100 }),
       chin: new TweenMorph({ from: 0, to: 0, steps: 100 }),
       ears: new TweenMorph({ from: 0, to: 0, steps: 100 }),
@@ -64,6 +68,7 @@ class Drawing extends Component {
     const [creature] = await GenerateSuitors(1)
     const { head } = creature.genome
     this.morphs = {
+      ...this.morphs,
       cheeks: this.morphs.cheeks.newTo(head.cheeks),
       chin: this.morphs.chin.newTo(head.chin),
       ears: this.morphs.ears.newTo(head.ears),
@@ -152,7 +157,7 @@ class Drawing extends Component {
     const mesh = first(scene.meshes)
     const morphTargetManager = mesh.morphTargetManager
 
-    mesh.rotation.y = wrapRotation(mesh.rotation.y + ROTATION_SPEED)
+    mesh.rotation.y = morphs.rotation.nextValue()
     morphTargetManager.influences[0] = morphs.cheeks.nextValue()
     morphTargetManager.influences[1] = morphs.ears.nextValue()
     morphTargetManager.influences[2] = morphs.chin.nextValue()

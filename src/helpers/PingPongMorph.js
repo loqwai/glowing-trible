@@ -1,8 +1,9 @@
 class PingPongMorph {
-  constructor({ min, max, step }) {
+  constructor({ min, max, steps }) {
     this.min = min
     this.max = max
-    this.step = step
+    this.step = Math.abs(max - min) / steps
+    this.steps = steps
     this.direction = 1
     this.value = min
   }
