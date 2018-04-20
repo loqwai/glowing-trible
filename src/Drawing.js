@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
+import bindAll from 'lodash/fp/bindAll'
 import curry from 'lodash/fp/curry'
-import PingPongMorph from './helpers/PingPongMorph'
+import first from 'lodash/fp/first'
+import GenerateSuitors from './logic/GenerateSuitors'
+import TweenMorph from './helpers/TweenMorph'
 
 import * as BABYLON from 'babylonjs'
 
@@ -18,14 +21,32 @@ const wrap = curry((min, max, n) => {
 })
 
 const ROTATION_SPEED = Math.PI / 1000
-const MORPH_SPEED = 1 / 100
 
 const wrapRotation = wrap(-1 * Math.PI, Math.PI)
 
-class Scene extends Component {
+class Drawing extends Component {
   constructor() {
     super()
+    bindAll(Object.getOwnPropertyNames(Drawing.prototype), this)
     this.state = {}
+    this.morphs = {
+      cheeks: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+      chin: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+      ears: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+      eyes: new TweenMorph({ from: 0, to: 0, steps: 100 }),
+    }
+    this.initialize()
+  }
+
+  initialize = async () => {
+    const [creature] = await GenerateSuitors(1)
+    this.creature = creature
+    const { head } = creature.genome
+    this.morphs.cheeks = this.morphs.cheeks.newTo(head.cheeks)
+    this.morphs.chin = this.morphs.chin.newTo(head.chin)
+    this.morphs.ears = this.morphs.ears.newTo(head.ears)
+    this.morphs.eyes = this.morphs.eyes.newTo(head.eyes.position)
+    setTimeout(this.initialize, 3000)
   }
 
   onResizeCanvas = () => {
@@ -64,9 +85,7 @@ class Scene extends Component {
     BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
       scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
-
-      const fox = scene.meshes[0]
-      const morphTargetManager = fox.morphTargetManager
+      // window.scene = scene
 
       var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
       light.intensity = 0.7
@@ -75,21 +94,24 @@ class Scene extends Component {
       camera.setTarget(BABYLON.Vector3.Zero())
       camera.attachControl(this.canvas, true)
 
-      const cheek = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED })
-      const ears = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 2 })
-      const chin = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 3 })
-      const eyes = new PingPongMorph({ min: 0, max: 1, step: MORPH_SPEED / 4 })
-
-      this.engine.runRenderLoop(() => {
-        fox.rotation.y = wrapRotation(fox.rotation.y + ROTATION_SPEED)
-
-        morphTargetManager.influences[0] = cheek.nextValue()
-        morphTargetManager.influences[1] = ears.nextValue()
-        morphTargetManager.influences[2] = chin.nextValue()
-        morphTargetManager.influences[3] = eyes.nextValue()
-        scene.render()
-      })
+      this.scene = scene
+      this.engine.runRenderLoop(this.renderDrawing)
     })
+  }
+
+  renderDrawing() {
+    const { morphs, scene } = this
+    if (!scene) return
+
+    const mesh = first(scene.meshes)
+    const morphTargetManager = mesh.morphTargetManager
+
+    mesh.rotation.y = wrapRotation(mesh.rotation.y + ROTATION_SPEED)
+    morphTargetManager.influences[0] = morphs.cheeks.nextValue()
+    morphTargetManager.influences[1] = morphs.ears.nextValue()
+    morphTargetManager.influences[2] = morphs.chin.nextValue()
+    morphTargetManager.influences[3] = morphs.eyes.nextValue()
+    scene.render()
   }
 
   render() {
@@ -101,4 +123,4 @@ class Scene extends Component {
     return <canvas className={classes.root} width={width} height={height} ref={this.onCanvasLoaded} />
   }
 }
-export default withStyles(styles)(Scene)
+export default withStyles(styles)(Drawing)

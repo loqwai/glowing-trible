@@ -6,16 +6,18 @@
       "type": "object",
       "title": "head",
       "properties": {
+        "cheeks": { "$ref": "#/definitions/float" },
+        "chin": { "$ref": "#/definitions/float" },
         "color": { "$ref": "#/definitions/color" },
         "colors": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/rgba"
           },
-          "minItems":4,
-          "maxItems":4
-         },
-        "shape": { "$ref": "#/definitions/float" },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "ears": { "$ref": "#/definitions/float" },
         "eyes": {
           "type": "object",
           "properties": {
@@ -25,13 +27,7 @@
             "count": { "$ref": "#/definitions/float" },
             "color": { "$ref": "#/definitions/color" }
           },
-          "required": [
-            "position",
-            "size",
-            "distanceBetweenEyes",
-            "count",
-            "color"
-          ]
+          "required": ["position", "size", "distanceBetweenEyes", "count", "color"]
         },
         "mouth": {
           "type": "object",
@@ -42,9 +38,10 @@
             "width": { "$ref": "#/definitions/float" }
           },
           "required": ["expression", "lips", "position", "width"]
-        }
+        },
+        "shape": { "$ref": "#/definitions/float" }
       },
-      "required": ["color", "colors", "shape", "eyes", "mouth"]
+      "required": ["cheeks", "chin", "color", "colors", "shape", "ears", "eyes", "mouth"]
     },
     "arms": {
       "type": "object",
