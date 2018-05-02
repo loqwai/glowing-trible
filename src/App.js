@@ -17,9 +17,14 @@ const styles = theme => {
   return {
     root: {
       flexGrow: 1,
-      paddingTop: theme.spacing.unit * 10,
+      paddingTop: theme.mixins.toolbar.minHeight,
       display: 'flex',
       flexDirection: 'column',
+    },
+    '@media (min-width: 600px)': {
+      root: {
+        paddingTop: theme.mixins.toolbar['@media (min-width:600px)'].minHeight,
+      },
     },
     AppBarHeader: {
       ...theme.typography.title,
