@@ -1,17 +1,19 @@
-import React, { Component } from 'react'
-import { withStyles } from 'material-ui/styles'
+import * as BABYLON from 'babylonjs'
 import bindAll from 'lodash/fp/bindAll'
-import curry from 'lodash/fp/curry'
 import first from 'lodash/fp/first'
+import { withStyles } from 'material-ui/styles'
+import React, { Component } from 'react'
+
+import Creature3D from './Creature3D'
 import GenerateSuitors from './logic/GenerateSuitors'
 import TweenMorph from './helpers/TweenMorph'
 import PingPongMorph from './helpers/PingPongMorph'
 
-import * as BABYLON from 'babylonjs'
-
 const styles = {
   root: {
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
   },
 }
 
@@ -86,6 +88,7 @@ class Drawing extends Component {
         },
       },
     }
+    this.setState({ creature })
     setTimeout(this.initialize, 3000)
   }
 
@@ -164,11 +167,16 @@ class Drawing extends Component {
 
   render() {
     const { classes } = this.props
-    const { width, height } = this.state
+    const { creature, height, width } = this.state
 
-    if (!width || !height) return <div className={classes.root} ref={this.onEmptyDivLoaded} />
+    if (!width || !height || !creature) return <div className={classes.root} ref={this.onEmptyDivLoaded} />
 
-    return <canvas className={classes.root} width={width} height={height} ref={this.onCanvasLoaded} />
+    /* <canvas className={classes.root} width={width} height={height} ref={this.onCanvasLoaded} /> */
+    return (
+      <div className={classes.root}>
+        <Creature3D genome={creature.genome} />
+      </div>
+    )
   }
 }
 export default withStyles(styles)(Drawing)

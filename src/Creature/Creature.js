@@ -12,31 +12,11 @@ const Creature = ({ className, genome, onClick = noop }) => {
   const vOffset = 300 - creatureHeight
 
   return (
-    <svg
-      className={className}
-      onClick={onClick}
-
-      viewBox="0 0 100 350"
-    >
-      <Legs
-        power={genome.legs.power}
-        color={genome.legs.color}
-        vOffset={vOffset}
-      />
-      <Arms
-        power={genome.arms.power}
-        color={genome.arms.color}
-        vOffset={vOffset}
-      />
-      <Body
-        power={genome.body.power}
-        color={genome.body.color}
-        vOffset={vOffset}
-      />
-      <Head
-        genome={genome.head}
-        vOffset={vOffset}
-      />
+    <svg className={className} onClick={onClick} viewBox="0 0 100 350">
+      <Legs power={genome.legs.power} color={genome.legs.color} vOffset={vOffset} />
+      <Arms power={genome.arms.power} color={genome.arms.color} vOffset={vOffset} />
+      <Body power={genome.body.power} color={genome.body.color} vOffset={vOffset} />
+      <Head genome={genome.head} vOffset={vOffset} />
     </svg>
   )
 }
