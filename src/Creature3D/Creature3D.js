@@ -57,7 +57,6 @@ class Creature3D extends Component {
   }
 
   onResizeCanvas = () => {
-    console.log('onResizeCanvas')
     if (!this.engine) return
     this.engine.resize()
   }
