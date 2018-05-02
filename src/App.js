@@ -13,7 +13,6 @@ import Drawing from './Drawing'
 import Pick from './Pick'
 
 const styles = theme => {
-  console.log('theme', { theme })
   return {
     root: {
       flexGrow: 1,

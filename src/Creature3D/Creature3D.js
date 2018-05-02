@@ -6,6 +6,8 @@ import join from 'lodash/fp/join'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
 
+import PingPongMorph from '../helpers/PingPongMorph'
+
 const joinClasses = join(' ')
 
 const styles = ({ vOffset }) => ({
@@ -21,11 +23,17 @@ const styles = ({ vOffset }) => ({
   },
 })
 
+const offset = Math.PI / 2
+const rotationAmount = Math.PI / 4
+const maxRotation = offset + rotationAmount
+const minRotation = offset - rotationAmount
+
 class Creature3D extends Component {
   constructor() {
     super()
     bindAll(Object.getOwnPropertyNames(Creature3D.prototype), this)
     this.state = {}
+    this.rotator = new PingPongMorph({ min: minRotation, max: maxRotation, steps: 500 })
   }
 
   componentWillMount = () => {
@@ -83,6 +91,7 @@ class Creature3D extends Component {
     window.scene = scene
     const mesh = first(scene.meshes)
     const morphTargetManager = mesh.morphTargetManager
+    mesh.rotation.y = this.rotator.nextValue()
 
     morphTargetManager.influences[0] = head.cheeks
     morphTargetManager.influences[1] = head.ears
