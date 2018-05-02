@@ -93,10 +93,12 @@ class Creature3D extends Component {
     const morphTargetManager = mesh.morphTargetManager
     mesh.rotation.y = this.rotator.nextValue()
 
-    morphTargetManager.influences[0] = head.cheeks
-    morphTargetManager.influences[1] = head.ears
-    morphTargetManager.influences[2] = head.chin
-    morphTargetManager.influences[3] = head.eyes.position
+    morphTargetManager.influences[0] = genome.body.power
+    morphTargetManager.influences[1] = genome.arms.power
+    morphTargetManager.influences[2] = genome.legs.power
+    morphTargetManager.influences[3] = head.cheeks
+    morphTargetManager.influences[4] = head.ears
+    morphTargetManager.influences[5] = head.chin
 
     const [skin, nose, ears, eyes] = head.colors
     const [mSkin, mNose, mEars, mEyes] = scene.materials
