@@ -4,6 +4,7 @@ import first from 'lodash/fp/first'
 import isEmpty from 'lodash/fp/isEmpty'
 import isNil from 'lodash/fp/isNil'
 import join from 'lodash/fp/join'
+import merge from 'lodash/fp/merge'
 import noop from 'lodash/fp/noop'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
@@ -18,7 +19,6 @@ const styles = ({ vOffset }) => ({
   },
   div: {
     position: 'relative',
-    // height: '100%',
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -65,6 +65,7 @@ class Creature3D extends Component {
 
   setupBabylon() {
     this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio)
+    this.engine.loadingScreen = new LoadingScreen()
     const rootURL = `${process.env.PUBLIC_URL}/models/`
     BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
       scene.clearColor = new BABYLON.Color4(0.98, 0.98, 0.98, 0.0)
@@ -123,6 +124,11 @@ class Creature3D extends Component {
       </div>
     )
   }
+}
+
+class LoadingScreen {
+  displayLoadingUI = () => {}
+  hideLoadingUI = () => {}
 }
 
 export default withStyles(styles)(Creature3D)

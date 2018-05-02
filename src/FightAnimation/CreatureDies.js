@@ -14,7 +14,7 @@ const styles = {
   },
   root: {
     position: 'relative',
-    '& > svg': {
+    '&:first-child': {
       position: 'relative',
       transform: 'rotateZ(90deg)',
       top: '25%',

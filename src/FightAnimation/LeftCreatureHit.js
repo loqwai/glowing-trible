@@ -15,7 +15,7 @@ const styles = {
   },
   root: {
     position: 'relative',
-    '& > svg': {
+    '&:first-child': {
       position: 'relative',
       animationName: 'hits',
       animationDuration: '1s',
