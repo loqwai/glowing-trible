@@ -12,19 +12,22 @@ import Dating from './Dating'
 import Drawing from './Drawing'
 import Pick from './Pick'
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    paddingTop: theme.spacing.unit * 10,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  AppBarHeader: {
-    ...theme.typography.title,
-    color: theme.palette.primary.contrastText,
-    textDecoration: 'none',
-  },
-})
+const styles = theme => {
+  console.log('theme', { theme })
+  return {
+    root: {
+      flexGrow: 1,
+      paddingTop: theme.spacing.unit * 10,
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    AppBarHeader: {
+      ...theme.typography.title,
+      color: theme.palette.primary.contrastText,
+      textDecoration: 'none',
+    },
+  }
+}
 
 const App = ({ classes }) => (
   <Router>

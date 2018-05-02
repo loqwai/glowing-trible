@@ -15,6 +15,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
+  Creature3D: {
+    flex: 1,
+  },
 }
 
 class Drawing extends Component {
@@ -174,7 +177,7 @@ class Drawing extends Component {
     /* <canvas className={classes.root} width={width} height={height} ref={this.onCanvasLoaded} /> */
     return (
       <div className={classes.root}>
-        <Creature3D genome={creature.genome} />
+        <Creature3D className={classes.Creature3D} genome={creature.genome} />
       </div>
     )
   }
