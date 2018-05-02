@@ -1,6 +1,4 @@
-import * as BABYLON from 'babylonjs'
 import bindAll from 'lodash/fp/bindAll'
-import first from 'lodash/fp/first'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
 
@@ -108,14 +106,6 @@ class Drawing extends Component {
     window.removeEventListener('resize', this.onResizeWindow)
   }
 
-  onCanvasLoaded = canvas => {
-    if (!canvas) return
-    if (this.canvas) return
-
-    this.canvas = canvas
-    this.setupBabylon()
-  }
-
   onEmptyDivLoaded = ref => {
     if (ref === null) return
 
@@ -125,56 +115,12 @@ class Drawing extends Component {
     })
   }
 
-  setupBabylon() {
-    this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio)
-    const rootURL = `${process.env.PUBLIC_URL}/models/`
-    BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
-      scene.clearColor = new BABYLON.Color3(1.0, 1.0, 1.0)
-      scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
-      window.scene = scene
-
-      var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
-      light.intensity = 0.7
-
-      const camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene)
-      camera.setTarget(BABYLON.Vector3.Zero())
-      camera.attachControl(this.canvas, true)
-
-      this.scene = scene
-      this.engine.runRenderLoop(this.renderDrawing)
-    })
-  }
-
-  renderDrawing() {
-    const { morphs, scene } = this
-    if (!morphs) return
-    if (!scene) return
-
-    const mesh = first(scene.meshes)
-    const morphTargetManager = mesh.morphTargetManager
-
-    mesh.rotation.y = morphs.rotation.nextValue()
-    morphTargetManager.influences[0] = morphs.cheeks.nextValue()
-    morphTargetManager.influences[1] = morphs.ears.nextValue()
-    morphTargetManager.influences[2] = morphs.chin.nextValue()
-    morphTargetManager.influences[3] = morphs.eyes.nextValue()
-
-    const { skin, nose, ears, eyes } = morphs.colors
-    const [mSkin, mNose, mEars, mEyes] = scene.materials
-    mSkin.ambientColor = new BABYLON.Color3(skin.red.nextValue(), skin.green.nextValue(), skin.blue.nextValue())
-    mNose.ambientColor = new BABYLON.Color3(nose.red.nextValue(), nose.green.nextValue(), nose.blue.nextValue())
-    mEars.ambientColor = new BABYLON.Color3(ears.red.nextValue(), ears.green.nextValue(), ears.blue.nextValue())
-    mEyes.ambientColor = new BABYLON.Color3(eyes.red.nextValue(), eyes.green.nextValue(), eyes.blue.nextValue())
-    scene.render()
-  }
-
   render() {
     const { classes } = this.props
-    const { creature, height, width } = this.state
+    const { creature } = this.state
 
-    if (!width || !height || !creature) return <div className={classes.root} ref={this.onEmptyDivLoaded} />
+    if (!creature) return <div className={classes.root} />
 
-    /* <canvas className={classes.root} width={width} height={height} ref={this.onCanvasLoaded} /> */
     return (
       <div className={classes.root}>
         <Creature3D className={classes.Creature3D} genome={creature.genome} />
