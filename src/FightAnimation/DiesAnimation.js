@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
 
-import Creature from '../Creature'
+import Creature from '../Creature3D'
 import CreatureDamage from './CreatureDamage'
 import CreatureDies from './CreatureDies'
 

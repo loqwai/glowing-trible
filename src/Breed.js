@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
 import uuid from 'uuid'
 
 import { mutationRate } from './logic/Configuration.json'
-import Creature from './Creature'
+import Creature from './Creature3D'
 import Breed from './logic/Breed'
 
 const styles = theme => ({
@@ -37,7 +37,7 @@ const styles = theme => ({
     fontSize: 32,
   },
   Creature: {
-    flex: 1,
+    flexGrow: 1,
   },
   Icon: {
     fontSize: 64,
