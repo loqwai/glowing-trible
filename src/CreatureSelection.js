@@ -1,5 +1,6 @@
 import bindAll from 'lodash/fp/bindAll'
 import get from 'lodash/fp/get'
+import isNil from 'lodash/fp/isNil'
 import map from 'lodash/fp/map'
 import set from 'lodash/fp/set'
 import size from 'lodash/fp/size'
@@ -38,9 +39,11 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
+    width: '100%',
   },
   SelectedCreature: {
     width: 'calc(50% - 20px)',
+    height: '150px',
   },
   SelectionCard: {
     width: `calc(100% - ${4 * theme.spacing.unit}px)`,
@@ -51,6 +54,7 @@ const styles = theme => ({
     padding: 4 * theme.spacing.unit,
   },
   SelectionCardCreature: {
+    height: '150px',
     width: '100px',
 
     '&.selected': {
@@ -140,6 +144,8 @@ class CreatureSelection extends Component {
         </div>
       )
     }
+
+    if (isNil(champion) || isNil(enemy)) return <h1>Loading...</h1>
 
     return (
       <div className={classes.root}>

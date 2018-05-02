@@ -3,7 +3,7 @@ import join from 'lodash/fp/join'
 import { withStyles } from 'material-ui/styles'
 import React from 'react'
 
-import Creature from './Creature'
+import Creature3D from './Creature3D'
 
 const styles = {
   root: {
@@ -19,13 +19,7 @@ const CreatureOption = ({ classes, className, genome, onSelect, selected }) => {
   const creatureClasses = [className, classes.root]
   if (selected) creatureClasses.push(classes.selected)
 
-  return (
-    <Creature
-      className={join(' ', compact(creatureClasses))}
-      genome={genome}
-      onClick={onSelect}
-    />
-  )
+  return <Creature3D className={join(' ', compact(creatureClasses))} genome={genome} onClick={onSelect} />
 }
 
 CreatureOption.propTypes = {}

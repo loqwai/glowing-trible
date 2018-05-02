@@ -1,8 +1,10 @@
 import * as BABYLON from 'babylonjs'
 import bindAll from 'lodash/fp/bindAll'
 import first from 'lodash/fp/first'
+import isEmpty from 'lodash/fp/isEmpty'
 import isNil from 'lodash/fp/isNil'
 import join from 'lodash/fp/join'
+import noop from 'lodash/fp/noop'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
 
@@ -65,7 +67,7 @@ class Creature3D extends Component {
     this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio)
     const rootURL = `${process.env.PUBLIC_URL}/models/`
     BABYLON.SceneLoader.Load(rootURL, 'fox.babylon', this.engine, scene => {
-      scene.clearColor = new BABYLON.Color4(0.98, 0.98, 0.98, 1.0)
+      scene.clearColor = new BABYLON.Color4(0.98, 0.98, 0.98, 0.0)
       scene.ambientColor = new BABYLON.Color3(1.0, 1.0, 1.0)
       window.scene = scene
 
@@ -109,14 +111,14 @@ class Creature3D extends Component {
   }
 
   render() {
-    const { classes, className, genome } = this.props
+    const { classes, className, genome, onClick } = this.props
     const { height, width } = this.state
     const divClassName = joinClasses([classes.div, className])
 
-    if (isNil(height) || isNil(width) || isNil(genome)) return <div className={divClassName} ref={this.onDivLoaded} />
+    if (isNil(height) || isNil(width) || isEmpty(genome)) return <div className={divClassName} ref={this.onDivLoaded} />
 
     return (
-      <div className={divClassName}>
+      <div className={divClassName} onClick={onClick || noop}>
         <canvas width={width} height={height} ref={this.onCanvasLoaded} className={classes.canvas} />
       </div>
     )

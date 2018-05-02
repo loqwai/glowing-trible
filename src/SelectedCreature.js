@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import Creature from './Creature'
+import Creature from './Creature3D'
 
 const SelectedCreature = ({ className, creature }) => {
   if (!creature) return <div className={className} />
