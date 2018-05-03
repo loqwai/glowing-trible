@@ -4,7 +4,7 @@ import Icon from 'material-ui/Icon'
 import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 
-import Creature from './Creature'
+import Creature from '../Creature3D'
 import Stats from './Stats'
 
 const styles = theme => ({
@@ -21,6 +21,8 @@ const styles = theme => ({
   },
   Creature: {
     cursor: 'pointer',
+    flexGrow: 1,
+    height: '150px'
   },
   IconButton: {
     flexGrow: 0,
