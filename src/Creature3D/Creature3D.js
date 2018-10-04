@@ -2,6 +2,7 @@ import * as BABYLON from 'babylonjs'
 import bindAll from 'lodash/fp/bindAll'
 import first from 'lodash/fp/first'
 import isNil from 'lodash/fp/isNil'
+import isEqual from 'lodash/fp/isEqual'
 import join from 'lodash/fp/join'
 import { withStyles } from 'material-ui/styles'
 import React, { Component } from 'react'
@@ -38,6 +39,13 @@ class Creature3D extends Component {
 
   componentWillMount = () => {
     window.addEventListener('resize', this.onResizeCanvas)
+  }
+
+  shouldComponentUpdate(newProps) {
+    if (!isEqual(this.props, newProps)) return true
+    if(isNil(this.state.width)) return true
+    if(isNil(this.state.height)) return true
+    return false
   }
 
   onCanvasLoaded = canvas => {
